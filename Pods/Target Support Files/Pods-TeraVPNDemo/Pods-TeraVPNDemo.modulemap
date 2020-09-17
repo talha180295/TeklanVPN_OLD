@@ -1,0 +1,6 @@
+framework module Pods_TeraVPNDemo {
+  umbrella header "Pods-TeraVPNDemo-umbrella.h"
+
+  export *
+  module * { export * }
+}

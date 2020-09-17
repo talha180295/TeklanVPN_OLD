@@ -1,0 +1,59 @@
+PODS:
+  - Alamofire (4.9.1)
+  - EzPopup (1.1)
+  - iProgressHUD (1.1.1)
+  - OpenVPNAdapter (0.4.0):
+    - OpenVPNAdapter/asio (= 0.4.0)
+    - OpenVPNAdapter/lz4 (= 0.4.0)
+    - OpenVPNAdapter/mbedtls (= 0.4.0)
+    - OpenVPNAdapter/openvpn (= 0.4.0)
+  - OpenVPNAdapter/asio (0.4.0)
+  - OpenVPNAdapter/lz4 (0.4.0)
+  - OpenVPNAdapter/mbedtls (0.4.0)
+  - OpenVPNAdapter/openvpn (0.4.0)
+  - SDWebImage (5.8.4):
+    - SDWebImage/Core (= 5.8.4)
+  - SDWebImage/Core (5.8.4)
+  - SideMenu (6.4.8)
+  - Toast-Swift (5.0.1)
+
+DEPENDENCIES:
+  - Alamofire (~> 4.2)
+  - EzPopup
+  - iProgressHUD
+  - OpenVPNAdapter (from `https://github.com/ss-abramchuk/OpenVPNAdapter.git`, tag `0.4.0`)
+  - SDWebImage
+  - SideMenu
+  - Toast-Swift
+
+SPEC REPOS:
+  trunk:
+    - Alamofire
+    - EzPopup
+    - iProgressHUD
+    - SDWebImage
+    - SideMenu
+    - Toast-Swift
+
+EXTERNAL SOURCES:
+  OpenVPNAdapter:
+    :git: https://github.com/ss-abramchuk/OpenVPNAdapter.git
+    :tag: 0.4.0
+
+CHECKOUT OPTIONS:
+  OpenVPNAdapter:
+    :git: https://github.com/ss-abramchuk/OpenVPNAdapter.git
+    :tag: 0.4.0
+
+SPEC CHECKSUMS:
+  Alamofire: 85e8a02c69d6020a0d734f6054870d7ecb75cf18
+  EzPopup: b959cfb0d70d782a28e770a96c454df0401467c7
+  iProgressHUD: caa742128253c97f2c2e1ec59e2bbe6cf689df6a
+  OpenVPNAdapter: 68a98746423a3d4f96fbdc7f1214671a9db55ca9
+  SDWebImage: cf6922231e95550934da2ada0f20f2becf2ceba9
+  SideMenu: 4a891be552d30bb6fa87ad404d62e485f8450c34
+  Toast-Swift: 9b6a70f28b3bf0b96c40d46c0c4b9d6639846711
+
+PODFILE CHECKSUM: 2b23147c8c24ad70efea9eb5de3ce2d3302fa9c2
+
+COCOAPODS: 1.9.3

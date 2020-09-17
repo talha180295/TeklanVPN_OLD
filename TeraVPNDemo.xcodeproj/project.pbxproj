@@ -3,27 +3,121 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		50AE9477B26E0193A81C18C2 /* Pods_PacketTunnel.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F8F0E426031E0BFCDFC3B2A /* Pods_PacketTunnel.framework */; };
+		8B08384FE5363CFD8715A322 /* Pods_TeraVPNDemo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8C74BFF98BD909D653711658 /* Pods_TeraVPNDemo.framework */; };
+		BC3736152512B051007A1D13 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC3736142512B051007A1D13 /* HomeViewController.swift */; };
+		BC3736182512B8AE007A1D13 /* SideMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC3736172512B8AE007A1D13 /* SideMenuViewController.swift */; };
+		BC37361C2512BE85007A1D13 /* MenuCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC37361A2512BE85007A1D13 /* MenuCell.swift */; };
+		BC37361D2512BE85007A1D13 /* MenuCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC37361B2512BE85007A1D13 /* MenuCell.xib */; };
+		BC3736332512C0C3007A1D13 /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC3736252512C0C3007A1D13 /* CardView.swift */; };
+		BC3736342512C0C3007A1D13 /* KeychainItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC3736262512C0C3007A1D13 /* KeychainItem.swift */; };
+		BC3736352512C0C3007A1D13 /* UIButtonBadge.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC3736272512C0C3007A1D13 /* UIButtonBadge.swift */; };
+		BC3736362512C0C3007A1D13 /* RoundedImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC3736282512C0C3007A1D13 /* RoundedImageView.swift */; };
+		BC3736372512C0C3007A1D13 /* HelperFunc.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC3736292512C0C3007A1D13 /* HelperFunc.swift */; };
+		BC3736382512C0C3007A1D13 /* AppConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC37362A2512C0C3007A1D13 /* AppConstants.swift */; };
+		BC3736392512C0C3007A1D13 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC37362B2512C0C3007A1D13 /* Colors.swift */; };
+		BC37363A2512C0C3007A1D13 /* RoundedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC37362C2512C0C3007A1D13 /* RoundedButton.swift */; };
+		BC37363B2512C0C3007A1D13 /* UISwitchCustom.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC37362D2512C0C3007A1D13 /* UISwitchCustom.swift */; };
+		BC3736472512C0D9007A1D13 /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC37363D2512C0D9007A1D13 /* UIColor+Extension.swift */; };
+		BC3736482512C0D9007A1D13 /* UIButton+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC37363E2512C0D9007A1D13 /* UIButton+Extension.swift */; };
+		BC3736492512C0D9007A1D13 /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC37363F2512C0D9007A1D13 /* UIView+Extension.swift */; };
+		BC37364A2512C0D9007A1D13 /* TopBarView.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC3736422512C0D9007A1D13 /* TopBarView.xib */; };
+		BC37364B2512C0D9007A1D13 /* TopBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC3736432512C0D9007A1D13 /* TopBarView.swift */; };
+		BC37364C2512C0D9007A1D13 /* BottomBarView.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC3736452512C0D9007A1D13 /* BottomBarView.xib */; };
+		BC37364D2512C0D9007A1D13 /* BottomBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC3736462512C0D9007A1D13 /* BottomBarView.swift */; };
+		BC3736512512D075007A1D13 /* vpn-01.ovpn in Resources */ = {isa = PBXBuildFile; fileRef = BC3736502512D074007A1D13 /* vpn-01.ovpn */; };
 		BC4B483D2511686A00E7CC2F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC4B483C2511686A00E7CC2F /* AppDelegate.swift */; };
 		BC4B483F2511686A00E7CC2F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC4B483E2511686A00E7CC2F /* SceneDelegate.swift */; };
-		BC4B48412511686A00E7CC2F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC4B48402511686A00E7CC2F /* ViewController.swift */; };
 		BC4B48442511686A00E7CC2F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BC4B48422511686A00E7CC2F /* Main.storyboard */; };
 		BC4B48462511686F00E7CC2F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BC4B48452511686F00E7CC2F /* Assets.xcassets */; };
 		BC4B48492511686F00E7CC2F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BC4B48472511686F00E7CC2F /* LaunchScreen.storyboard */; };
+		BC4B485725116B9E00E7CC2F /* PacketTunnelProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC4B485625116B9E00E7CC2F /* PacketTunnelProvider.swift */; };
+		BC4B485C25116B9E00E7CC2F /* PacketTunnel.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = BC4B485425116B9E00E7CC2F /* PacketTunnel.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		BC4B486325116C8200E7CC2F /* NetworkExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BC4B486225116C8200E7CC2F /* NetworkExtension.framework */; };
+		BC4B486425116CC400E7CC2F /* NetworkExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BC4B486225116C8200E7CC2F /* NetworkExtension.framework */; };
+		BC4B48662511712200E7CC2F /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC4B48652511712200E7CC2F /* LoginViewController.swift */; };
+		BC4B48682511726300E7CC2F /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC4B48672511726300E7CC2F /* NetworkService.swift */; };
+		BC4B486C2511737800E7CC2F /* LoginResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC4B486B2511737800E7CC2F /* LoginResponse.swift */; };
+		BC4B486E2511747600E7CC2F /* LoginRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC4B486D2511747600E7CC2F /* LoginRequest.swift */; };
+		BC4B4870251177CB00E7CC2F /* APIRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC4B486F251177CB00E7CC2F /* APIRouter.swift */; };
+		BCCBB99A2513B5A6002FBD6E /* VPNViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCCBB9992513B5A6002FBD6E /* VPNViewController.swift */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		BC4B485A25116B9E00E7CC2F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BC4B48312511686A00E7CC2F /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = BC4B485325116B9E00E7CC2F;
+			remoteInfo = PacketTunnel;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		BC4B485D25116B9E00E7CC2F /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				BC4B485C25116B9E00E7CC2F /* PacketTunnel.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
+		067BB7016A64A76077F13C0B /* Pods-TeraVPNDemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TeraVPNDemo.debug.xcconfig"; path = "Target Support Files/Pods-TeraVPNDemo/Pods-TeraVPNDemo.debug.xcconfig"; sourceTree = "<group>"; };
+		199953BA8C71747FD9CBE729 /* Pods-PacketTunnel.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PacketTunnel.debug.xcconfig"; path = "Target Support Files/Pods-PacketTunnel/Pods-PacketTunnel.debug.xcconfig"; sourceTree = "<group>"; };
+		4F8F0E426031E0BFCDFC3B2A /* Pods_PacketTunnel.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PacketTunnel.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		5FAC8CE7270B843D85C81018 /* Pods-TeraVPNDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TeraVPNDemo.release.xcconfig"; path = "Target Support Files/Pods-TeraVPNDemo/Pods-TeraVPNDemo.release.xcconfig"; sourceTree = "<group>"; };
+		8C74BFF98BD909D653711658 /* Pods_TeraVPNDemo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TeraVPNDemo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		94BACDFF84660D1B9D6E769A /* Pods-PacketTunnel.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PacketTunnel.release.xcconfig"; path = "Target Support Files/Pods-PacketTunnel/Pods-PacketTunnel.release.xcconfig"; sourceTree = "<group>"; };
+		BC3736142512B051007A1D13 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		BC3736172512B8AE007A1D13 /* SideMenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuViewController.swift; sourceTree = "<group>"; };
+		BC37361A2512BE85007A1D13 /* MenuCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuCell.swift; sourceTree = "<group>"; };
+		BC37361B2512BE85007A1D13 /* MenuCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MenuCell.xib; sourceTree = "<group>"; };
+		BC3736252512C0C3007A1D13 /* CardView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
+		BC3736262512C0C3007A1D13 /* KeychainItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeychainItem.swift; sourceTree = "<group>"; };
+		BC3736272512C0C3007A1D13 /* UIButtonBadge.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIButtonBadge.swift; sourceTree = "<group>"; };
+		BC3736282512C0C3007A1D13 /* RoundedImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoundedImageView.swift; sourceTree = "<group>"; };
+		BC3736292512C0C3007A1D13 /* HelperFunc.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HelperFunc.swift; sourceTree = "<group>"; };
+		BC37362A2512C0C3007A1D13 /* AppConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppConstants.swift; sourceTree = "<group>"; };
+		BC37362B2512C0C3007A1D13 /* Colors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
+		BC37362C2512C0C3007A1D13 /* RoundedButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoundedButton.swift; sourceTree = "<group>"; };
+		BC37362D2512C0C3007A1D13 /* UISwitchCustom.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UISwitchCustom.swift; sourceTree = "<group>"; };
+		BC37363D2512C0D9007A1D13 /* UIColor+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
+		BC37363E2512C0D9007A1D13 /* UIButton+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIButton+Extension.swift"; sourceTree = "<group>"; };
+		BC37363F2512C0D9007A1D13 /* UIView+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
+		BC3736422512C0D9007A1D13 /* TopBarView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TopBarView.xib; sourceTree = "<group>"; };
+		BC3736432512C0D9007A1D13 /* TopBarView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TopBarView.swift; sourceTree = "<group>"; };
+		BC3736452512C0D9007A1D13 /* BottomBarView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BottomBarView.xib; sourceTree = "<group>"; };
+		BC3736462512C0D9007A1D13 /* BottomBarView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BottomBarView.swift; sourceTree = "<group>"; };
+		BC3736502512D074007A1D13 /* vpn-01.ovpn */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "vpn-01.ovpn"; sourceTree = "<group>"; };
 		BC4B48392511686A00E7CC2F /* TeraVPNDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TeraVPNDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BC4B483C2511686A00E7CC2F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BC4B483E2511686A00E7CC2F /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		BC4B48402511686A00E7CC2F /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		BC4B48432511686A00E7CC2F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		BC4B48452511686F00E7CC2F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		BC4B48482511686F00E7CC2F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		BC4B484A2511686F00E7CC2F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		BC4B485425116B9E00E7CC2F /* PacketTunnel.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = PacketTunnel.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		BC4B485625116B9E00E7CC2F /* PacketTunnelProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PacketTunnelProvider.swift; sourceTree = "<group>"; };
+		BC4B485825116B9E00E7CC2F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		BC4B485925116B9E00E7CC2F /* PacketTunnel.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = PacketTunnel.entitlements; sourceTree = "<group>"; };
+		BC4B486125116C8200E7CC2F /* TeraVPNDemo.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = TeraVPNDemo.entitlements; sourceTree = "<group>"; };
+		BC4B486225116C8200E7CC2F /* NetworkExtension.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NetworkExtension.framework; path = System/Library/Frameworks/NetworkExtension.framework; sourceTree = SDKROOT; };
+		BC4B48652511712200E7CC2F /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		BC4B48672511726300E7CC2F /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
+		BC4B486B2511737800E7CC2F /* LoginResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginResponse.swift; sourceTree = "<group>"; };
+		BC4B486D2511747600E7CC2F /* LoginRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginRequest.swift; sourceTree = "<group>"; };
+		BC4B486F251177CB00E7CC2F /* APIRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIRouter.swift; sourceTree = "<group>"; };
+		BCCBB9992513B5A6002FBD6E /* VPNViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VPNViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -31,17 +125,135 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8B08384FE5363CFD8715A322 /* Pods_TeraVPNDemo.framework in Frameworks */,
+				BC4B486325116C8200E7CC2F /* NetworkExtension.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BC4B485125116B9E00E7CC2F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				50AE9477B26E0193A81C18C2 /* Pods_PacketTunnel.framework in Frameworks */,
+				BC4B486425116CC400E7CC2F /* NetworkExtension.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		47F8E5224AC820FB88702100 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				BC4B486225116C8200E7CC2F /* NetworkExtension.framework */,
+				8C74BFF98BD909D653711658 /* Pods_TeraVPNDemo.framework */,
+				4F8F0E426031E0BFCDFC3B2A /* Pods_PacketTunnel.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		AE843648FCFDBE94C42C00B1 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				067BB7016A64A76077F13C0B /* Pods-TeraVPNDemo.debug.xcconfig */,
+				5FAC8CE7270B843D85C81018 /* Pods-TeraVPNDemo.release.xcconfig */,
+				199953BA8C71747FD9CBE729 /* Pods-PacketTunnel.debug.xcconfig */,
+				94BACDFF84660D1B9D6E769A /* Pods-PacketTunnel.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		BC3736132512B001007A1D13 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				BC4B48652511712200E7CC2F /* LoginViewController.swift */,
+				BC3736142512B051007A1D13 /* HomeViewController.swift */,
+				BC3736172512B8AE007A1D13 /* SideMenuViewController.swift */,
+				BCCBB9992513B5A6002FBD6E /* VPNViewController.swift */,
+			);
+			name = Controller;
+			path = ..;
+			sourceTree = "<group>";
+		};
+		BC3736192512BE57007A1D13 /* cell */ = {
+			isa = PBXGroup;
+			children = (
+				BC37361A2512BE85007A1D13 /* MenuCell.swift */,
+				BC37361B2512BE85007A1D13 /* MenuCell.xib */,
+			);
+			path = cell;
+			sourceTree = "<group>";
+		};
+		BC37361E2512C0C3007A1D13 /* Helper */ = {
+			isa = PBXGroup;
+			children = (
+				BC3736202512C0C3007A1D13 /* Popup */,
+				BC3736252512C0C3007A1D13 /* CardView.swift */,
+				BC3736262512C0C3007A1D13 /* KeychainItem.swift */,
+				BC3736272512C0C3007A1D13 /* UIButtonBadge.swift */,
+				BC3736282512C0C3007A1D13 /* RoundedImageView.swift */,
+				BC3736292512C0C3007A1D13 /* HelperFunc.swift */,
+				BC37362A2512C0C3007A1D13 /* AppConstants.swift */,
+				BC37362B2512C0C3007A1D13 /* Colors.swift */,
+				BC37362C2512C0C3007A1D13 /* RoundedButton.swift */,
+				BC37362D2512C0C3007A1D13 /* UISwitchCustom.swift */,
+			);
+			path = Helper;
+			sourceTree = "<group>";
+		};
+		BC3736202512C0C3007A1D13 /* Popup */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Popup;
+			sourceTree = "<group>";
+		};
+		BC37363C2512C0D9007A1D13 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				BC37363D2512C0D9007A1D13 /* UIColor+Extension.swift */,
+				BC37363E2512C0D9007A1D13 /* UIButton+Extension.swift */,
+				BC37363F2512C0D9007A1D13 /* UIView+Extension.swift */,
+				BC3736402512C0D9007A1D13 /* Reusable Views */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
+		BC3736402512C0D9007A1D13 /* Reusable Views */ = {
+			isa = PBXGroup;
+			children = (
+				BC3736412512C0D9007A1D13 /* Top Bar View */,
+				BC3736442512C0D9007A1D13 /* Bottom Bar */,
+			);
+			path = "Reusable Views";
+			sourceTree = "<group>";
+		};
+		BC3736412512C0D9007A1D13 /* Top Bar View */ = {
+			isa = PBXGroup;
+			children = (
+				BC3736422512C0D9007A1D13 /* TopBarView.xib */,
+				BC3736432512C0D9007A1D13 /* TopBarView.swift */,
+			);
+			path = "Top Bar View";
+			sourceTree = "<group>";
+		};
+		BC3736442512C0D9007A1D13 /* Bottom Bar */ = {
+			isa = PBXGroup;
+			children = (
+				BC3736452512C0D9007A1D13 /* BottomBarView.xib */,
+				BC3736462512C0D9007A1D13 /* BottomBarView.swift */,
+			);
+			path = "Bottom Bar";
+			sourceTree = "<group>";
+		};
 		BC4B48302511686A00E7CC2F = {
 			isa = PBXGroup;
 			children = (
 				BC4B483B2511686A00E7CC2F /* TeraVPNDemo */,
+				BC4B485525116B9E00E7CC2F /* PacketTunnel */,
 				BC4B483A2511686A00E7CC2F /* Products */,
+				AE843648FCFDBE94C42C00B1 /* Pods */,
+				47F8E5224AC820FB88702100 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -49,6 +261,7 @@
 			isa = PBXGroup;
 			children = (
 				BC4B48392511686A00E7CC2F /* TeraVPNDemo.app */,
+				BC4B485425116B9E00E7CC2F /* PacketTunnel.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -56,15 +269,34 @@
 		BC4B483B2511686A00E7CC2F /* TeraVPNDemo */ = {
 			isa = PBXGroup;
 			children = (
+				BC3736502512D074007A1D13 /* vpn-01.ovpn */,
+				BC37363C2512C0D9007A1D13 /* Extension */,
+				BC37361E2512C0C3007A1D13 /* Helper */,
+				BC3736192512BE57007A1D13 /* cell */,
+				BC3736132512B001007A1D13 /* Controller */,
+				BC4B486125116C8200E7CC2F /* TeraVPNDemo.entitlements */,
 				BC4B483C2511686A00E7CC2F /* AppDelegate.swift */,
 				BC4B483E2511686A00E7CC2F /* SceneDelegate.swift */,
-				BC4B48402511686A00E7CC2F /* ViewController.swift */,
 				BC4B48422511686A00E7CC2F /* Main.storyboard */,
 				BC4B48452511686F00E7CC2F /* Assets.xcassets */,
 				BC4B48472511686F00E7CC2F /* LaunchScreen.storyboard */,
 				BC4B484A2511686F00E7CC2F /* Info.plist */,
+				BC4B48672511726300E7CC2F /* NetworkService.swift */,
+				BC4B486B2511737800E7CC2F /* LoginResponse.swift */,
+				BC4B486D2511747600E7CC2F /* LoginRequest.swift */,
+				BC4B486F251177CB00E7CC2F /* APIRouter.swift */,
 			);
 			path = TeraVPNDemo;
+			sourceTree = "<group>";
+		};
+		BC4B485525116B9E00E7CC2F /* PacketTunnel */ = {
+			isa = PBXGroup;
+			children = (
+				BC4B485625116B9E00E7CC2F /* PacketTunnelProvider.swift */,
+				BC4B485825116B9E00E7CC2F /* Info.plist */,
+				BC4B485925116B9E00E7CC2F /* PacketTunnel.entitlements */,
+			);
+			path = PacketTunnel;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -74,18 +306,40 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = BC4B484D2511686F00E7CC2F /* Build configuration list for PBXNativeTarget "TeraVPNDemo" */;
 			buildPhases = (
+				7DDEAA89A1B23F14F5AC2893 /* [CP] Check Pods Manifest.lock */,
 				BC4B48352511686A00E7CC2F /* Sources */,
 				BC4B48362511686A00E7CC2F /* Frameworks */,
 				BC4B48372511686A00E7CC2F /* Resources */,
+				5B19131B132B4DDC65E9DE6E /* [CP] Embed Pods Frameworks */,
+				BC4B485D25116B9E00E7CC2F /* Embed App Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				BC4B485B25116B9E00E7CC2F /* PBXTargetDependency */,
 			);
 			name = TeraVPNDemo;
 			productName = TeraVPNDemo;
 			productReference = BC4B48392511686A00E7CC2F /* TeraVPNDemo.app */;
 			productType = "com.apple.product-type.application";
+		};
+		BC4B485325116B9E00E7CC2F /* PacketTunnel */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = BC4B486025116B9E00E7CC2F /* Build configuration list for PBXNativeTarget "PacketTunnel" */;
+			buildPhases = (
+				A3024B0C63B388209ABB4B56 /* [CP] Check Pods Manifest.lock */,
+				BC4B485025116B9E00E7CC2F /* Sources */,
+				BC4B485125116B9E00E7CC2F /* Frameworks */,
+				BC4B485225116B9E00E7CC2F /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = PacketTunnel;
+			productName = PacketTunnel;
+			productReference = BC4B485425116B9E00E7CC2F /* PacketTunnel.appex */;
+			productType = "com.apple.product-type.app-extension";
 		};
 /* End PBXNativeTarget section */
 
@@ -98,6 +352,9 @@
 				ORGANIZATIONNAME = abc;
 				TargetAttributes = {
 					BC4B48382511686A00E7CC2F = {
+						CreatedOnToolsVersion = 11.5;
+					};
+					BC4B485325116B9E00E7CC2F = {
 						CreatedOnToolsVersion = 11.5;
 					};
 				};
@@ -116,6 +373,7 @@
 			projectRoot = "";
 			targets = (
 				BC4B48382511686A00E7CC2F /* TeraVPNDemo */,
+				BC4B485325116B9E00E7CC2F /* PacketTunnel */,
 			);
 		};
 /* End PBXProject section */
@@ -125,26 +383,139 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BC37364A2512C0D9007A1D13 /* TopBarView.xib in Resources */,
 				BC4B48492511686F00E7CC2F /* LaunchScreen.storyboard in Resources */,
+				BC3736512512D075007A1D13 /* vpn-01.ovpn in Resources */,
 				BC4B48462511686F00E7CC2F /* Assets.xcassets in Resources */,
+				BC37361D2512BE85007A1D13 /* MenuCell.xib in Resources */,
 				BC4B48442511686A00E7CC2F /* Main.storyboard in Resources */,
+				BC37364C2512C0D9007A1D13 /* BottomBarView.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BC4B485225116B9E00E7CC2F /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		5B19131B132B4DDC65E9DE6E /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-TeraVPNDemo/Pods-TeraVPNDemo-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-TeraVPNDemo/Pods-TeraVPNDemo-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-TeraVPNDemo/Pods-TeraVPNDemo-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		7DDEAA89A1B23F14F5AC2893 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-TeraVPNDemo-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		A3024B0C63B388209ABB4B56 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-PacketTunnel-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		BC4B48352511686A00E7CC2F /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BC4B48412511686A00E7CC2F /* ViewController.swift in Sources */,
+				BC4B48682511726300E7CC2F /* NetworkService.swift in Sources */,
+				BC4B48662511712200E7CC2F /* LoginViewController.swift in Sources */,
+				BC37364D2512C0D9007A1D13 /* BottomBarView.swift in Sources */,
+				BC3736382512C0C3007A1D13 /* AppConstants.swift in Sources */,
+				BC4B486C2511737800E7CC2F /* LoginResponse.swift in Sources */,
 				BC4B483D2511686A00E7CC2F /* AppDelegate.swift in Sources */,
+				BC37361C2512BE85007A1D13 /* MenuCell.swift in Sources */,
+				BC3736342512C0C3007A1D13 /* KeychainItem.swift in Sources */,
+				BC3736152512B051007A1D13 /* HomeViewController.swift in Sources */,
+				BC4B4870251177CB00E7CC2F /* APIRouter.swift in Sources */,
+				BC4B486E2511747600E7CC2F /* LoginRequest.swift in Sources */,
+				BC3736392512C0C3007A1D13 /* Colors.swift in Sources */,
+				BC3736482512C0D9007A1D13 /* UIButton+Extension.swift in Sources */,
+				BC3736182512B8AE007A1D13 /* SideMenuViewController.swift in Sources */,
+				BCCBB99A2513B5A6002FBD6E /* VPNViewController.swift in Sources */,
+				BC3736362512C0C3007A1D13 /* RoundedImageView.swift in Sources */,
+				BC37363A2512C0C3007A1D13 /* RoundedButton.swift in Sources */,
+				BC3736332512C0C3007A1D13 /* CardView.swift in Sources */,
+				BC3736492512C0D9007A1D13 /* UIView+Extension.swift in Sources */,
+				BC37363B2512C0C3007A1D13 /* UISwitchCustom.swift in Sources */,
 				BC4B483F2511686A00E7CC2F /* SceneDelegate.swift in Sources */,
+				BC37364B2512C0D9007A1D13 /* TopBarView.swift in Sources */,
+				BC3736472512C0D9007A1D13 /* UIColor+Extension.swift in Sources */,
+				BC3736372512C0C3007A1D13 /* HelperFunc.swift in Sources */,
+				BC3736352512C0C3007A1D13 /* UIButtonBadge.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BC4B485025116B9E00E7CC2F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BC4B485725116B9E00E7CC2F /* PacketTunnelProvider.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		BC4B485B25116B9E00E7CC2F /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = BC4B485325116B9E00E7CC2F /* PacketTunnel */;
+			targetProxy = BC4B485A25116B9E00E7CC2F /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		BC4B48422511686A00E7CC2F /* Main.storyboard */ = {
@@ -282,10 +653,15 @@
 		};
 		BC4B484E2511686F00E7CC2F /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 067BB7016A64A76077F13C0B /* Pods-TeraVPNDemo.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = TeraVPNDemo/TeraVPNDemo.entitlements;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 5H5DV35BTW;
 				INFOPLIST_FILE = TeraVPNDemo/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -299,16 +675,63 @@
 		};
 		BC4B484F2511686F00E7CC2F /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5FAC8CE7270B843D85C81018 /* Pods-TeraVPNDemo.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = TeraVPNDemo/TeraVPNDemo.entitlements;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 5H5DV35BTW;
 				INFOPLIST_FILE = TeraVPNDemo/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = abc.org.TeraVPNDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		BC4B485E25116B9E00E7CC2F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 199953BA8C71747FD9CBE729 /* Pods-PacketTunnel.debug.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = PacketTunnel/PacketTunnel.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 5H5DV35BTW;
+				INFOPLIST_FILE = PacketTunnel/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = abc.org.TeraVPNDemo.PacketTunnel;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		BC4B485F25116B9E00E7CC2F /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 94BACDFF84660D1B9D6E769A /* Pods-PacketTunnel.release.xcconfig */;
+			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = PacketTunnel/PacketTunnel.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 5H5DV35BTW;
+				INFOPLIST_FILE = PacketTunnel/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = abc.org.TeraVPNDemo.PacketTunnel;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -331,6 +754,15 @@
 			buildConfigurations = (
 				BC4B484E2511686F00E7CC2F /* Debug */,
 				BC4B484F2511686F00E7CC2F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		BC4B486025116B9E00E7CC2F /* Build configuration list for PBXNativeTarget "PacketTunnel" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BC4B485E25116B9E00E7CC2F /* Debug */,
+				BC4B485F25116B9E00E7CC2F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

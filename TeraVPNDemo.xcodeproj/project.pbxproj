@@ -45,6 +45,7 @@
 		BC4B486E2511747600E7CC2F /* LoginRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC4B486D2511747600E7CC2F /* LoginRequest.swift */; };
 		BC4B4870251177CB00E7CC2F /* APIRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC4B486F251177CB00E7CC2F /* APIRouter.swift */; };
 		BCCBB99A2513B5A6002FBD6E /* VPNViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCCBB9992513B5A6002FBD6E /* VPNViewController.swift */; };
+		BCE2C5872516AF0400CD81FE /* PacketTunnelProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC4B485625116B9E00E7CC2F /* PacketTunnelProvider.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -485,6 +486,7 @@
 				BC3736392512C0C3007A1D13 /* Colors.swift in Sources */,
 				BC3736482512C0D9007A1D13 /* UIButton+Extension.swift in Sources */,
 				BC3736182512B8AE007A1D13 /* SideMenuViewController.swift in Sources */,
+				BCE2C5872516AF0400CD81FE /* PacketTunnelProvider.swift in Sources */,
 				BCCBB99A2513B5A6002FBD6E /* VPNViewController.swift in Sources */,
 				BC3736362512C0C3007A1D13 /* RoundedImageView.swift in Sources */,
 				BC37363A2512C0C3007A1D13 /* RoundedButton.swift in Sources */,

@@ -14,8 +14,17 @@ import SDWebImage
 
 class VPNViewController: UIViewController {
     
+
+    
+    @IBOutlet weak var flag:UIImageView!
+    @IBOutlet weak var countryName:UILabel!
+    @IBOutlet weak var cityName:UILabel!
+    @IBOutlet weak var timmer:UILabel!
+    @IBOutlet weak var connectionBtn:GradientButton!
     @IBOutlet weak var serverIP:UILabel!
-    @IBOutlet weak var connectionBtn:UIButton!
+    @IBOutlet weak var dataRecieved:UILabel!
+    @IBOutlet weak var dataSent:UILabel!
+    @IBOutlet weak var connectionStatus:UILabel!
     
     //Intent Variables
     var serverList = [Server]()
@@ -36,8 +45,16 @@ class VPNViewController: UIViewController {
         
         NotificationCenter.default.addObserver(self, selector: #selector(VPNViewController.VPNStatusDidChange(_:)), name: NSNotification.Name.NEVPNStatusDidChange, object: nil)
         
-        self.serverIP.text = "\(serverList[0].serverIP ?? "0") \(serverList[0].serverPort ?? "0")"
+        self.title = "TeraVPN"
+        
         self.selectedIP = "\(serverList[0].serverIP ?? "0") \(serverList[0].serverPort ?? "0")"
+        self.serverIP.text = "\(serverList[0].serverIP ?? "0") \(serverList[0].serverPort ?? "0")"
+        self.countryName.text = "\(serverList[0].country ?? "")"
+        self.cityName.text = "\(serverList[0].city ?? "")"
+        
+        
+        self.connectionBtn.backgroundColor = UIColor(hexString: "3CB371")
+//        self.connectionBtn.setGradiantColors(colours: [UIColor(hexString: "#2B1468").cgColor, UIColor(hexString: "#70476F").cgColor])
         
     }
     
@@ -108,6 +125,9 @@ class VPNViewController: UIViewController {
         leftMenuNavigationController.statusBarEndAlpha = 0
         leftMenuNavigationController.menuWidth = 280
         present(leftMenuNavigationController, animated: true, completion: nil)
+    }
+    
+    @IBAction func settingsBtn(_ sender:UIBarButtonItem){
     }
     
     func loadProviderManager(completion:@escaping () -> Void) {
@@ -193,22 +213,28 @@ class VPNViewController: UIViewController {
         switch status {
         case .connecting:
             print("Connecting...")
-            self.connectionBtn.setTitle("Connecting...", for: .normal)
+            self.connectionStatus.text = "Connecting..."
             break
         case .connected:
             isVPNConnected = true
             print("Connected...")
-            self.connectionBtn.setTitle("Disconnect", for: .normal)
+            self.connectionStatus.text = "Connected"
+            self.connectionStatus.textColor = .green
+            self.connectionBtn.setTitle("Stop Connection", for: .normal)
+            self.connectionBtn.backgroundColor = .red
             
             break
         case .disconnecting:
             print("Disconnecting...")
-            self.connectionBtn.setTitle("Disconnecting...", for: .normal)
+            self.connectionStatus.text = "Disconnecting..."
             break
         case .disconnected:
             isVPNConnected = false
             print("Disconnected...")
-            self.connectionBtn.setTitle("Connect", for: .normal)
+            self.connectionStatus.text = "Disconnected"
+            self.connectionStatus.textColor = .red
+            self.connectionBtn.setTitle("Start Connection", for: .normal)
+            self.connectionBtn.backgroundColor = UIColor(hexString: "3CB371")
             break
         case .invalid:
             print("Invliad")
@@ -233,8 +259,11 @@ extension VPNViewController:ServerListProtocol{
         if isVPNConnected{
             self.providerManager.connection.stopVPNTunnel()
         }
-        serverIP.text = server.serverIP
+        
         self.selectedIP = "\(server.serverIP ?? "0") \(server.serverPort ?? "0")"
+        self.serverIP.text = server.serverIP
+        self.countryName.text = "\(server.country ?? "")"
+        self.cityName.text = "\(server.city ?? "")"
         
     }
     

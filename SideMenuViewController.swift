@@ -39,7 +39,10 @@ extension SideMenuViewController: UITableViewDelegate, UITableViewDataSource{
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "MenuCell", for: indexPath) as! MenuCell
-        cell.name.text = serverList[indexPath.item].country
+//        cell.flag.set = serverList[indexPath.item].country
+        cell.countryName.text = serverList[indexPath.item].country
+        cell.cityName.text = serverList[indexPath.item].city
+        cell.time.text = ""
         return cell
     }
     

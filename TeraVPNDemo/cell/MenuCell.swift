@@ -10,7 +10,11 @@ import UIKit
 
 class MenuCell: UITableViewCell {
 
-    @IBOutlet weak var name:UILabel!
+    @IBOutlet weak var flag:UIImageView!
+    @IBOutlet weak var countryName:UILabel!
+    @IBOutlet weak var cityName:UILabel!
+    @IBOutlet weak var time:UILabel!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

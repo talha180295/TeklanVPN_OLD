@@ -9,6 +9,11 @@
 import Foundation
 import UIKit
 
+struct User_Defaults {
+    static let user = "User"
+    static let usage = "usage"
+}
+
 class AppConstants {
         
     static let mainStoryBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)    
@@ -18,36 +23,10 @@ class AppConstants {
         static let IMG_URL = "http://app.bidkum.com/uploads/"
         
     }
-    
-    
-    static let msk = "0rDfLKFURLJQEZKp6iEOmTxOTGftAq5BSJRDuwxlihcXgWmnf0bCTIqNpGh07nCZ7tCBZaXir9fH6B5mCgYvZpjo5BocZ1c6uOHu"
-
-    static let me = "info@bidkum.com"
-   
-    
-    static let user = "User"
-    static let cartItems = "Cart_Items"
-    static let favItems = "fav_Items"
-    static let orderModel = "orderModel"
-    static let cartModel = "cartModel"
-}
-
-class AppLanguage{
-    
-    static let AppLang = "AppLang"
-    static let english = "en"
-    static let arabic = "ar"
-   
-    static func getAppLang() -> String{
-        
-       return  UserDefaults.standard.string(forKey: AppLanguage.AppLang) ?? "en"
-    }
-    static func setAppLang(lang:String){
-        
-        UserDefaults.standard.set(lang, forKey: AppLanguage.AppLang)
-    }
 
 }
+
+
 
 enum HTTPHeaderField: String {
     case authentication = "Authorization"

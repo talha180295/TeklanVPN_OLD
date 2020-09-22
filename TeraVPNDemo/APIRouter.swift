@@ -66,9 +66,9 @@ enum APIRouter: URLRequestConvertible {
         switch self {
        
         case .login:
-            return "login.php"
+            return "https://cloud.teravpn.com/api/app/login.php"
         case .usage:
-            return "usage.php"
+            return "https://cloud.teravpn.com/api/usage.php"
         case .signup:
             return "signup"
         case .getShopList:
@@ -194,9 +194,12 @@ enum APIRouter: URLRequestConvertible {
     
     // MARK: - URLRequestConvertible
     func asURLRequest() throws -> URLRequest {
-        let url = try AppConstants.API.BASE_URL.asURL()
+//        let url = try AppConstants.API.BASE_URL.asURL()
         
-        var urlRequest = URLRequest(url: url.appendingPathComponent(path))
+//        var urlRequest = URLRequest(url: url.appendingPathComponent(path))
+        let url = try path.asURL()
+        var urlRequest = URLRequest(url: url)
+        
         
         // HTTP Method
         urlRequest.httpMethod = method.rawValue

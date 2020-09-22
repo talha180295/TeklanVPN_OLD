@@ -53,6 +53,10 @@ class LoginViewController: UIViewController {
                 vc.serverList = loginResponse?.server ?? [Server]()
                 vc.username = loginResponse?.username
                 vc.password = loginResponse?.password
+                vc.usagelimit = Double(loginResponse?.usage?.usagelimit ?? "0")
+                vc.usageRemaining = Double(loginResponse?.usage?.remaining ?? 0)
+                
+                HelperFunc().saveUserDefaultData(data: loginResponse, title: User_Defaults.user)
                 self.navigationController?.pushViewController(vc, animated: true)
  
             }

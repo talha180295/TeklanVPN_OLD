@@ -11,11 +11,18 @@ import SideMenu
 import CoreLocation
 import NetworkExtension
 import SDWebImage
+import LMGaugeViewSwift
 
 class VPNViewController: UIViewController {
     
-
     
+  
+//    var usage:UsageResponse!
+    var usagelimit:Double!// =      32210912720
+    var usageRemaining: Double!// = 30210912720
+    
+    
+    @IBOutlet weak var gaugeView: GaugeView!
     @IBOutlet weak var flag:UIImageView!
     @IBOutlet weak var countryName:UILabel!
     @IBOutlet weak var cityName:UILabel!
@@ -45,6 +52,7 @@ class VPNViewController: UIViewController {
         
         NotificationCenter.default.addObserver(self, selector: #selector(VPNViewController.VPNStatusDidChange(_:)), name: NSNotification.Name.NEVPNStatusDidChange, object: nil)
         
+        setupGaugeView()
         self.title = "TeraVPN"
         
         self.selectedIP = "\(serverList[0].serverIP ?? "0") \(serverList[0].serverPort ?? "0")"
@@ -52,13 +60,34 @@ class VPNViewController: UIViewController {
         self.countryName.text = "\(serverList[0].country ?? "")"
         self.cityName.text = "\(serverList[0].city ?? "")"
         self.flag.image = UIImage.init(named: serverList[0].flag ?? "")
-        
+        self.connectionStatus.text = "Disconnected"
+        self.connectionStatus.textColor = .red
         self.connectionBtn.backgroundColor = UIColor(hexString: "3CB371")
-//        self.connectionBtn.setGradiantColors(colours: [UIColor(hexString: "#2B1468").cgColor, UIColor(hexString: "#70476F").cgColor])
+        //        self.connectionBtn.setGradiantColors(colours: [UIColor(hexString: "#2B1468").cgColor, UIColor(hexString: "#70476F").cgColor])
         
     }
+
     
-    @IBAction func connectBtn(_ sender:UIButton){
+    func checkUsage(){
+        
+        let userData = HelperFunc().getUserDefaultData(dec: LoginResponse.self, title: User_Defaults.user)
+        let params = ["user":"\(userData?.username ?? "")"]
+        
+        let request = APIRouter.usage(params)
+        NetworkService.serverRequest(url: request, dec: UsageResponse.self, view: self.view) { (usageResponse, error) in
+            
+            if usageResponse?.success == "true"{
+                
+                self.usagelimit = Double(usageResponse?.usagelimit ?? "0")
+                self.usageRemaining =  Double(usageResponse?.remaining ?? "0")
+                self.connectVpn()
+                
+            }
+            
+        }
+    }
+    
+    func connectVpn(){
         
         if isVPNConnected == true {
             
@@ -102,6 +131,11 @@ class VPNViewController: UIViewController {
             
         }
         
+    }
+    
+    @IBAction func connectBtn(_ sender:UIButton){
+        
+        self.checkUsage()
         
     }
     
@@ -281,4 +315,56 @@ extension VPNViewController:ServerListProtocol{
     }
     
     
+}
+
+
+//Gauge View
+extension VPNViewController{
+    
+    func setupGaugeView(){
+        
+        // Configure gauge view
+        let screenMinSize = min(UIScreen.main.bounds.size.width, UIScreen.main.bounds.size.height)
+        let ratio = Double(screenMinSize)/320
+        gaugeView.divisionsRadius = 1.25 * ratio
+        gaugeView.subDivisionsRadius = (1.25 - 0.5) * ratio
+        gaugeView.ringThickness = 16 * ratio
+        gaugeView.valueFont = UIFont(name: GaugeView.defaultFontName, size: CGFloat(16 * ratio))!
+        gaugeView.unitOfMeasurementFont = UIFont(name: GaugeView.defaultFontName, size: CGFloat(9 * ratio))!
+        gaugeView.minMaxValueFont = UIFont(name: GaugeView.defaultMinMaxValueFont, size: CGFloat(9 * ratio))!
+        gaugeView.unitOfMeasurement = "Remaining MB/S"
+        
+        // Update gauge view
+        gaugeView.minValue = 0
+        gaugeView.maxValue = usagelimit
+//        gaugeView.limitValue = 50
+        gaugeView.showMinMaxValue = false
+        gaugeView.value = usageRemaining
+        
+        // Create a timer to update value for gauge view
+        Timer.scheduledTimer(timeInterval: 2,
+                             target: self,
+                             selector: #selector(updateGaugeTimer),
+                             userInfo: nil,
+                             repeats: true)
+    }
+    // MARK: GAUGE VIEW DELEGATE
+    
+    func ringStokeColor(gaugeView: GaugeView, value: Double) -> UIColor {
+
+//        if nightModeSwitch.isOn {
+//            return UIColor(red: 76.0/255, green: 217.0/255, blue: 100.0/255, alpha: 1)
+//        }
+        return UIColor(red: 11.0/255, green: 150.0/255, blue: 246.0/255, alpha: 1)
+    }
+    
+    // MARK: EVENTS
+
+    @objc func updateGaugeTimer() {
+
+        usageRemaining -= 111254720
+        
+        // Set value for gauge view
+        gaugeView.value = usageRemaining
+    }
 }

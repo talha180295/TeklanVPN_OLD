@@ -16,8 +16,8 @@ class HelperFunc{
     let iprogress: iProgressHUD = iProgressHUD()
    
     lazy var userIsLogin:Bool = {
-             
-          guard let _ = getUserDefaultData(dec: LoginResponse.self, title: AppConstants.user)
+
+          guard let _ = getUserDefaultData(dec: LoginResponse.self, title: User_Defaults.user)
               else{return false}
 
           return true
@@ -104,15 +104,15 @@ class HelperFunc{
           
     }
     
-    func checkLang(){
-        
-        if(AppLanguage.getAppLang() == "ar"){
-            UIView.appearance().semanticContentAttribute = .forceRightToLeft
-        }
-        else{
-            UIView.appearance().semanticContentAttribute = .forceLeftToRight
-        }
-    }
+//    func checkLang(){
+//
+//        if(AppLanguage.getAppLang() == "ar"){
+//            UIView.appearance().semanticContentAttribute = .forceRightToLeft
+//        }
+//        else{
+//            UIView.appearance().semanticContentAttribute = .forceLeftToRight
+//        }
+//    }
     
     /**
     * @brief this is a generic method use to show toast with generic message

@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		50AE9477B26E0193A81C18C2 /* Pods_PacketTunnel.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F8F0E426031E0BFCDFC3B2A /* Pods_PacketTunnel.framework */; };
 		8B08384FE5363CFD8715A322 /* Pods_TeraVPNDemo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8C74BFF98BD909D653711658 /* Pods_TeraVPNDemo.framework */; };
+		BC2DCDB4251AB36F00956916 /* UsageResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC2DCDB3251AB36E00956916 /* UsageResponse.swift */; };
+		BC2DCDB6251AB99700956916 /* SplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC2DCDB5251AB99700956916 /* SplashViewController.swift */; };
 		BC3736152512B051007A1D13 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC3736142512B051007A1D13 /* HomeViewController.swift */; };
 		BC3736182512B8AE007A1D13 /* SideMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC3736172512B8AE007A1D13 /* SideMenuViewController.swift */; };
 		BC37361C2512BE85007A1D13 /* MenuCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC37361A2512BE85007A1D13 /* MenuCell.swift */; };
@@ -79,6 +81,8 @@
 		5FAC8CE7270B843D85C81018 /* Pods-TeraVPNDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TeraVPNDemo.release.xcconfig"; path = "Target Support Files/Pods-TeraVPNDemo/Pods-TeraVPNDemo.release.xcconfig"; sourceTree = "<group>"; };
 		8C74BFF98BD909D653711658 /* Pods_TeraVPNDemo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TeraVPNDemo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		94BACDFF84660D1B9D6E769A /* Pods-PacketTunnel.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PacketTunnel.release.xcconfig"; path = "Target Support Files/Pods-PacketTunnel/Pods-PacketTunnel.release.xcconfig"; sourceTree = "<group>"; };
+		BC2DCDB3251AB36E00956916 /* UsageResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsageResponse.swift; sourceTree = "<group>"; };
+		BC2DCDB5251AB99700956916 /* SplashViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashViewController.swift; sourceTree = "<group>"; };
 		BC3736142512B051007A1D13 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		BC3736172512B8AE007A1D13 /* SideMenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuViewController.swift; sourceTree = "<group>"; };
 		BC37361A2512BE85007A1D13 /* MenuCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuCell.swift; sourceTree = "<group>"; };
@@ -164,6 +168,15 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
+		BC2DCDB2251AB35600956916 /* Response */ = {
+			isa = PBXGroup;
+			children = (
+				BC4B486B2511737800E7CC2F /* LoginResponse.swift */,
+				BC2DCDB3251AB36E00956916 /* UsageResponse.swift */,
+			);
+			path = Response;
+			sourceTree = "<group>";
+		};
 		BC3736132512B001007A1D13 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
@@ -171,6 +184,7 @@
 				BC3736142512B051007A1D13 /* HomeViewController.swift */,
 				BC3736172512B8AE007A1D13 /* SideMenuViewController.swift */,
 				BCCBB9992513B5A6002FBD6E /* VPNViewController.swift */,
+				BC2DCDB5251AB99700956916 /* SplashViewController.swift */,
 			);
 			name = Controller;
 			path = ..;
@@ -270,6 +284,7 @@
 		BC4B483B2511686A00E7CC2F /* TeraVPNDemo */ = {
 			isa = PBXGroup;
 			children = (
+				BC2DCDB2251AB35600956916 /* Response */,
 				BC3736502512D074007A1D13 /* vpn-01.ovpn */,
 				BC37363C2512C0D9007A1D13 /* Extension */,
 				BC37361E2512C0C3007A1D13 /* Helper */,
@@ -283,7 +298,6 @@
 				BC4B48472511686F00E7CC2F /* LaunchScreen.storyboard */,
 				BC4B484A2511686F00E7CC2F /* Info.plist */,
 				BC4B48672511726300E7CC2F /* NetworkService.swift */,
-				BC4B486B2511737800E7CC2F /* LoginResponse.swift */,
 				BC4B486D2511747600E7CC2F /* LoginRequest.swift */,
 				BC4B486F251177CB00E7CC2F /* APIRouter.swift */,
 			);
@@ -491,9 +505,11 @@
 				BC3736362512C0C3007A1D13 /* RoundedImageView.swift in Sources */,
 				BC37363A2512C0C3007A1D13 /* RoundedButton.swift in Sources */,
 				BC3736332512C0C3007A1D13 /* CardView.swift in Sources */,
+				BC2DCDB6251AB99700956916 /* SplashViewController.swift in Sources */,
 				BC3736492512C0D9007A1D13 /* UIView+Extension.swift in Sources */,
 				BC37363B2512C0C3007A1D13 /* UISwitchCustom.swift in Sources */,
 				BC4B483F2511686A00E7CC2F /* SceneDelegate.swift in Sources */,
+				BC2DCDB4251AB36F00956916 /* UsageResponse.swift in Sources */,
 				BC37364B2512C0D9007A1D13 /* TopBarView.swift in Sources */,
 				BC3736472512C0D9007A1D13 /* UIColor+Extension.swift in Sources */,
 				BC3736372512C0C3007A1D13 /* HelperFunc.swift in Sources */,

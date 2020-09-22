@@ -80,6 +80,18 @@ class PacketTunnelProvider: NEPacketTunnelProvider {
         vpnAdapter.disconnect()
     }
     
+    override func handleAppMessage(_ messageData: Data, completionHandler: ((Data?) -> Void)? = nil) {
+        if String(data: messageData, encoding: .utf8) == "SOME_STATIC_KEY" {
+            let bytesIn = self.vpnAdapter.transportStatistics.bytesIn
+            let bytesOut = self.vpnAdapter.transportStatistics.bytesOut
+            let dict = ["bytesIn":"\(bytesIn)","bytesOut":"\(bytesOut)"]
+            let data = NSKeyedArchiver.archivedData(withRootObject: dict) // here you are archieving data
+            completionHandler?(data)
+        }
+    }
+
+
+    
 }
 
 extension PacketTunnelProvider: OpenVPNAdapterDelegate {

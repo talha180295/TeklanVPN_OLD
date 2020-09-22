@@ -51,7 +51,7 @@ class VPNViewController: UIViewController {
         self.serverIP.text = "\(serverList[0].serverIP ?? "0") \(serverList[0].serverPort ?? "0")"
         self.countryName.text = "\(serverList[0].country ?? "")"
         self.cityName.text = "\(serverList[0].city ?? "")"
-        
+        self.flag.image = UIImage.init(named: serverList[0].flag ?? "")
         
         self.connectionBtn.backgroundColor = UIColor(hexString: "3CB371")
 //        self.connectionBtn.setGradiantColors(colours: [UIColor(hexString: "#2B1468").cgColor, UIColor(hexString: "#70476F").cgColor])
@@ -103,6 +103,18 @@ class VPNViewController: UIViewController {
         }
         
         
+    }
+    
+    func getTrafficStats() {
+        if let session = self.providerManager.connection as? NETunnelProviderSession {
+            do {
+                try session.sendProviderMessage("SOME_STATIC_KEY".data(using: .utf8)!) { (data) in
+                    // here you can unarchieve your data and get traffic stats as dict
+                }
+            } catch {
+                // some error
+            }
+        }
     }
     
     @IBAction func sideMenuBtn(_ sender:UIBarButtonItem){
@@ -264,6 +276,7 @@ extension VPNViewController:ServerListProtocol{
         self.serverIP.text = server.serverIP
         self.countryName.text = "\(server.country ?? "")"
         self.cityName.text = "\(server.city ?? "")"
+        self.flag.image = UIImage.init(named: server.flag ?? "")
         
     }
     

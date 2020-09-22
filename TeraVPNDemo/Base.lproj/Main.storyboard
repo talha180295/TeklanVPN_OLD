@@ -240,7 +240,7 @@
                                                     <action selector="loginBtn:" destination="BYZ-38-t0r" eventType="touchUpInside" id="eep-02-e53"/>
                                                 </connections>
                                             </button>
-                                            <imageView hidden="YES" clipsSubviews="YES" userInteractionEnabled="NO" alpha="0.90000000000000002" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon1" translatesAutoresizingMaskIntoConstraints="NO" id="ymb-ZD-BmQ">
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" alpha="0.90000000000000002" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ymb-ZD-BmQ">
                                                 <rect key="frame" x="122.5" y="8" width="130" height="70"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="70" id="32y-lJ-xk7"/>

@@ -85,7 +85,8 @@ class PacketTunnelProvider: NEPacketTunnelProvider {
             let bytesIn = self.vpnAdapter.transportStatistics.bytesIn
             let bytesOut = self.vpnAdapter.transportStatistics.bytesOut
             let dict = ["bytesIn":"\(bytesIn)","bytesOut":"\(bytesOut)"]
-            let data = NSKeyedArchiver.archivedData(withRootObject: dict) // here you are archieving data
+            let data = try! NSKeyedArchiver.archivedData(withRootObject: dict, requiringSecureCoding: false)
+            // here you are archieving data
             completionHandler?(data)
         }
     }
@@ -104,9 +105,9 @@ extension PacketTunnelProvider: OpenVPNAdapterDelegate {
         setTunnelNetworkSettings(networkSettings) { (error) in
             completionHandler(error == nil ? self.packetFlow : nil)
         }
-        self.packetFlow.readPackets { [weak self] (packets: [Data], protocols: [NSNumber]) in
-            print("packets=\(packets)")
-        }
+//        self.packetFlow.readPackets { [weak self] (packets: [Data], protocols: [NSNumber]) in
+//            print("packets=\(packets)")
+//        }
     }
     
     // Process events returned by the OpenVPN library

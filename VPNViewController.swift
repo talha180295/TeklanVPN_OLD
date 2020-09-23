@@ -16,10 +16,12 @@ import LMGaugeViewSwift
 class VPNViewController: UIViewController {
     
     
-  
-//    var usage:UsageResponse!
-    var usagelimit:Double!// =      32210912720
-    var usageRemaining: Double!// = 30210912720
+    
+    //    var usage:UsageResponse!
+    // = 30210912720
+    
+    var usagelimitInMbs:Double = 0.0// =      32210912720
+    var usageRemainingInMbs: Double = 0.0// = 30210912720
     
     
     @IBOutlet weak var gaugeView: GaugeView!
@@ -37,8 +39,13 @@ class VPNViewController: UIViewController {
     var serverList = [Server]()
     var username:String!
     var password:String!
+    var usagelimit:Double!// =      32210912720
+    var usageRemaining: Double!
     
     
+    //VPN Data Variables
+    var dataSentInMbs = 0.0
+    var dataRecievedInMbs = 0.0
     
     //VPN Var
     let tunnelBundleId = "abc.org.TeraVPNDemo.PacketTunnel"
@@ -50,9 +57,23 @@ class VPNViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        
+        let screenMinSize = min(UIScreen.main.bounds.size.width, UIScreen.main.bounds.size.height)
+        let ratio = Double(screenMinSize)/320
+        gaugeView.divisionsRadius = 1.25 * ratio
+        gaugeView.divisionsPadding = 8
+        gaugeView.subDivisionsRadius = (1.25 - 0.5) * ratio
+        gaugeView.ringThickness = 10 * ratio
+        gaugeView.valueFont = UIFont(name: GaugeView.defaultFontName, size: CGFloat(16 * ratio))!
+        gaugeView.unitOfMeasurementFont = UIFont(name: GaugeView.defaultFontName, size: CGFloat(11 * ratio))!
+        gaugeView.minMaxValueFont = UIFont(name: GaugeView.defaultMinMaxValueFont, size: CGFloat(9 * ratio))!
+        gaugeView.unitOfMeasurement = "Remaining MB/S"
+        gaugeView.showMinMaxValue = false
+        self.setupGaugeValue(maxValue: 100, value: 100)
+        
         NotificationCenter.default.addObserver(self, selector: #selector(VPNViewController.VPNStatusDidChange(_:)), name: NSNotification.Name.NEVPNStatusDidChange, object: nil)
         
-        setupGaugeView()
+        
         self.title = "TeraVPN"
         
         self.selectedIP = "\(serverList[0].serverIP ?? "0") \(serverList[0].serverPort ?? "0")"
@@ -63,10 +84,76 @@ class VPNViewController: UIViewController {
         self.connectionStatus.text = "Disconnected"
         self.connectionStatus.textColor = .red
         self.connectionBtn.backgroundColor = UIColor(hexString: "3CB371")
+        
+        
+        self.dataSent.text = "\(self.dataSentInMbs) MBs"
+        self.dataRecieved.text = "\(self.dataRecievedInMbs) MBs"
+        
+        
+        if let _ = self.usagelimit{
+            self.usagelimitInMbs = self.usagelimit / 1000000.00 // Convert bytes into Mbs
+            self.usageRemainingInMbs =  self.usageRemaining / 1000000.00 // Convert bytes into Mbs
+           
+            gaugeView.isHidden = false
+            
+        }
+        else{
+            gaugeView.isHidden = true
+
+        }
+        
+        
+        
         //        self.connectionBtn.setGradiantColors(colours: [UIColor(hexString: "#2B1468").cgColor, UIColor(hexString: "#70476F").cgColor])
         
     }
+    
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.setNavigationBarHidden(false, animated: animated)
+    }
+    
+    
+    
+    @IBAction func connectBtn(_ sender:UIButton){
+        
+        self.checkUsage()
+        
+    }
+    
+    
+    @IBAction func sideMenuBtn(_ sender:UIBarButtonItem){
+        
+        var vc = SideMenuViewController()
+        if #available(iOSApplicationExtension 13.0, *) {
+            vc = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(identifier: "SideMenuViewController") as! SideMenuViewController
+        } else {
+            vc = storyboard?.instantiateViewController(withIdentifier: "SideMenuViewController") as! SideMenuViewController
+        }
+        vc.serverList = self.serverList
+        vc.delegate = self
+        // Define the menu
+        let leftMenuNavigationController = SideMenuNavigationController(rootViewController: vc)
+        SideMenuManager.default.leftMenuNavigationController = leftMenuNavigationController
+        
+        SideMenuManager.default.addPanGestureToPresent(toView: self.navigationController!.navigationBar)
+        SideMenuManager.default.addScreenEdgePanGesturesToPresent(toView: self.navigationController!.view)
+        
+        leftMenuNavigationController.statusBarEndAlpha = 0
+        leftMenuNavigationController.menuWidth = 280
+        present(leftMenuNavigationController, animated: true, completion: nil)
+    }
+    
+    @IBAction func settingsBtn(_ sender:UIBarButtonItem){
+        
+    }
+    
+}
 
+
+//VPN
+extension VPNViewController{
     
     func checkUsage(){
         
@@ -80,6 +167,16 @@ class VPNViewController: UIViewController {
                 
                 self.usagelimit = Double(usageResponse?.usagelimit ?? "0")
                 self.usageRemaining =  Double(usageResponse?.remaining ?? "0")
+                
+                self.usagelimitInMbs = self.usagelimit / 1000000.00 // Convert bytes into Mbs
+                self.usageRemainingInMbs =  self.usageRemaining / 1000000.00 // Convert bytes into Mbs
+                
+                self.setupGaugeValue(maxValue: self.usagelimitInMbs, value: self.usageRemainingInMbs)
+                self.gaugeView.maxValue = self.usagelimitInMbs
+
+                
+                
+                self.gaugeView.isHidden = false
                 self.connectVpn()
                 
             }
@@ -133,49 +230,6 @@ class VPNViewController: UIViewController {
         
     }
     
-    @IBAction func connectBtn(_ sender:UIButton){
-        
-        self.checkUsage()
-        
-    }
-    
-    func getTrafficStats() {
-        if let session = self.providerManager.connection as? NETunnelProviderSession {
-            do {
-                try session.sendProviderMessage("SOME_STATIC_KEY".data(using: .utf8)!) { (data) in
-                    // here you can unarchieve your data and get traffic stats as dict
-                }
-            } catch {
-                // some error
-            }
-        }
-    }
-    
-    @IBAction func sideMenuBtn(_ sender:UIBarButtonItem){
-        
-        var vc = SideMenuViewController()
-        if #available(iOSApplicationExtension 13.0, *) {
-            vc = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(identifier: "SideMenuViewController") as! SideMenuViewController
-        } else {
-            vc = storyboard?.instantiateViewController(withIdentifier: "SideMenuViewController") as! SideMenuViewController
-        }
-        vc.serverList = self.serverList
-        vc.delegate = self
-        // Define the menu
-        let leftMenuNavigationController = SideMenuNavigationController(rootViewController: vc)
-        SideMenuManager.default.leftMenuNavigationController = leftMenuNavigationController
-        
-        SideMenuManager.default.addPanGestureToPresent(toView: self.navigationController!.navigationBar)
-        SideMenuManager.default.addScreenEdgePanGesturesToPresent(toView: self.navigationController!.view)
-        
-        leftMenuNavigationController.statusBarEndAlpha = 0
-        leftMenuNavigationController.menuWidth = 280
-        present(leftMenuNavigationController, animated: true, completion: nil)
-    }
-    
-    @IBAction func settingsBtn(_ sender:UIBarButtonItem){
-    }
-    
     func loadProviderManager(completion:@escaping () -> Void) {
         NETunnelProviderManager.loadAllFromPreferences { (managers, error) in
             if error == nil {
@@ -218,6 +272,7 @@ class VPNViewController: UIViewController {
             }
         }
     }
+    
     func getFileData(path: String) -> Data?{
         
         var constr : String!
@@ -233,6 +288,7 @@ class VPNViewController: UIViewController {
         
         
     }
+    
     func readFile(path: String) -> String? {
         
         if let filepath = Bundle.main.path(forResource: path, ofType: "ovpn") {
@@ -269,6 +325,13 @@ class VPNViewController: UIViewController {
             self.connectionBtn.setTitle("Stop Connection", for: .normal)
             self.connectionBtn.backgroundColor = .red
             
+            // Create a timer to getTrafficStats
+            Timer.scheduledTimer(timeInterval: 2,
+                                 target: self,
+                                 selector: #selector(getTrafficStats),
+                                 userInfo: nil,
+                                 repeats: true)
+            
             break
         case .disconnecting:
             print("Disconnecting...")
@@ -296,9 +359,6 @@ class VPNViewController: UIViewController {
 }
 
 
-
-
-
 extension VPNViewController:ServerListProtocol{
     
     func selectServer(server: Server) {
@@ -321,50 +381,51 @@ extension VPNViewController:ServerListProtocol{
 //Gauge View
 extension VPNViewController{
     
-    func setupGaugeView(){
-        
-        // Configure gauge view
-        let screenMinSize = min(UIScreen.main.bounds.size.width, UIScreen.main.bounds.size.height)
-        let ratio = Double(screenMinSize)/320
-        gaugeView.divisionsRadius = 1.25 * ratio
-        gaugeView.subDivisionsRadius = (1.25 - 0.5) * ratio
-        gaugeView.ringThickness = 16 * ratio
-        gaugeView.valueFont = UIFont(name: GaugeView.defaultFontName, size: CGFloat(16 * ratio))!
-        gaugeView.unitOfMeasurementFont = UIFont(name: GaugeView.defaultFontName, size: CGFloat(9 * ratio))!
-        gaugeView.minMaxValueFont = UIFont(name: GaugeView.defaultMinMaxValueFont, size: CGFloat(9 * ratio))!
-        gaugeView.unitOfMeasurement = "Remaining MB/S"
-        
-        // Update gauge view
+    func setupGaugeValue(maxValue:Double,value:Double){
+    
         gaugeView.minValue = 0
-        gaugeView.maxValue = usagelimit
-//        gaugeView.limitValue = 50
-        gaugeView.showMinMaxValue = false
-        gaugeView.value = usageRemaining
+        gaugeView.maxValue = maxValue
+        gaugeView.value = value
         
         // Create a timer to update value for gauge view
-        Timer.scheduledTimer(timeInterval: 2,
-                             target: self,
-                             selector: #selector(updateGaugeTimer),
-                             userInfo: nil,
-                             repeats: true)
+        //        Timer.scheduledTimer(timeInterval: 2,
+        //                             target: self,
+        //                             selector: #selector(updateGaugeTimer),
+        //                             userInfo: nil,
+        //                             repeats: true)
     }
     // MARK: GAUGE VIEW DELEGATE
     
     func ringStokeColor(gaugeView: GaugeView, value: Double) -> UIColor {
-
-//        if nightModeSwitch.isOn {
-//            return UIColor(red: 76.0/255, green: 217.0/255, blue: 100.0/255, alpha: 1)
-//        }
+        
+        //        if nightModeSwitch.isOn {
+        //            return UIColor(red: 76.0/255, green: 217.0/255, blue: 100.0/255, alpha: 1)
+        //        }
         return UIColor(red: 11.0/255, green: 150.0/255, blue: 246.0/255, alpha: 1)
     }
     
     // MARK: EVENTS
-
+    
     @objc func updateGaugeTimer() {
-
-        usageRemaining -= 111254720
+        
+        usageRemainingInMbs -= 1
         
         // Set value for gauge view
-        gaugeView.value = usageRemaining
+        gaugeView.value = usageRemainingInMbs
+    }
+    
+    @objc func getTrafficStats() {
+        if let session = self.providerManager.connection as? NETunnelProviderSession {
+            do {
+                try session.sendProviderMessage("SOME_STATIC_KEY".data(using: .utf8)!) { (data) in
+                    // here you can unarchieve your data and get traffic stats as dict
+                    
+                    //                    self.usageRemainingInMbs -= sent + recieved
+                    self.updateGaugeTimer()
+                }
+            } catch {
+                // some error
+            }
+        }
     }
 }

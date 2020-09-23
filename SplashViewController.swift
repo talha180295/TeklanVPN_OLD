@@ -10,19 +10,32 @@ import UIKit
 
 class SplashViewController: UIViewController {
 
+    @IBOutlet weak var versionStr:UILabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        let appVersion = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String
+        versionStr.text = "Version \(appVersion ?? "")"
+        
         let loginResponse = HelperFunc().getUserDefaultData(dec: LoginResponse.self, title: User_Defaults.user)
        
-        if loginResponse != nil && loginResponse?.success == "true"{
-            openHomeScreen(loginResponse: loginResponse!)
-        }
-        else{
-            openLoginScreen()
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
+            
+            if loginResponse != nil && loginResponse?.success == "true"{
+                self.openHomeScreen(loginResponse: loginResponse!)
+            }
+            else{
+                self.openLoginScreen()
+            }
         }
         
-        
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.setNavigationBarHidden(true, animated: animated)
     }
     
 
@@ -50,8 +63,8 @@ class SplashViewController: UIViewController {
         vc.serverList = loginResponse.server ?? [Server]()
         vc.username = loginResponse.username
         vc.password = loginResponse.password
-        vc.usagelimit = Double(loginResponse.usage?.usagelimit ?? "0")
-        vc.usageRemaining = Double(loginResponse.usage?.remaining ?? 0)
+//        vc.usagelimit = Double(loginResponse.usage?.usagelimit ?? "0")
+//        vc.usageRemaining = Double(loginResponse.usage?.remaining ?? 0)
         
         self.navigationController?.pushViewController(vc, animated: true)
     }

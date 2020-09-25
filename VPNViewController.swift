@@ -15,7 +15,7 @@ import LMGaugeViewSwift
 
 class VPNViewController: UIViewController {
     
-    
+    let userData = HelperFunc().getUserDefaultData(dec: LoginResponse.self, title: User_Defaults.user)
     
     //    var usage:UsageResponse!
     // = 30210912720
@@ -157,7 +157,7 @@ extension VPNViewController{
     
     func checkUsage(){
         
-        let userData = HelperFunc().getUserDefaultData(dec: LoginResponse.self, title: User_Defaults.user)
+        
         let params = ["user":"\(userData?.username ?? "")"]
         
         let request = APIRouter.usage(params)
@@ -210,8 +210,11 @@ extension VPNViewController{
             
             let connectAction = UIAlertAction(title: "YES", style: UIAlertAction.Style.default) { _ in
                 
+                let password = self.userData?.password ?? ""
                 self.loadProviderManager {
-                    self.configureVPN(serverAddress: self.selectedIP, username: self.username, password: "dcd76cbc5ad008a")
+//                    self.configureVPN(serverAddress: self.selectedIP, username: self.username, password: "dcd76cbc5ad008a")
+                    self.configureVPN(serverAddress: self.selectedIP, username: self.username, password: password)
+                    
                 }
                 
             }

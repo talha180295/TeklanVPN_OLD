@@ -85,9 +85,14 @@ class PacketTunnelProvider: NEPacketTunnelProvider {
             let bytesIn = self.vpnAdapter.transportStatistics.bytesIn
             let bytesOut = self.vpnAdapter.transportStatistics.bytesOut
             let dict = ["bytesIn":"\(bytesIn)","bytesOut":"\(bytesOut)"]
-            let data = try! NSKeyedArchiver.archivedData(withRootObject: dict, requiringSecureCoding: false)
+            if #available(iOSApplicationExtension 11.0, *) {
+                let data = try! NSKeyedArchiver.archivedData(withRootObject: dict, requiringSecureCoding: false)
+                completionHandler?(data)
+            } else {
+                // Fallback on earlier versions
+            }
             // here you are archieving data
-            completionHandler?(data)
+            completionHandler?(nil)
         }
     }
 

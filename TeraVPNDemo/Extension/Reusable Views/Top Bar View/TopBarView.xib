@@ -1,15 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
-        <capability name="Named colors" minToolsVersion="9.0"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17125"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="TopBarView" customModule="Bidkum" customModuleProvider="target">
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="TopBarView" customModule="TeraVPNDemo" customModuleProvider="target">
             <connections>
                 <outlet property="leftBtn" destination="YW4-RE-2Zh" id="j78-e0-dbz"/>
                 <outlet property="rightBtn" destination="W7G-Ay-LeE" id="PNu-Y2-FT1"/>
@@ -23,7 +22,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rOO-QE-c1L">
-                    <rect key="frame" x="167.5" y="17.5" width="40.5" height="24"/>
+                    <rect key="frame" x="167.5" y="17.5" width="40" height="24"/>
                     <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="20"/>
                     <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <nil key="highlightedColor"/>
@@ -40,7 +39,7 @@
                         <action selector="leftBtnWithSender:" destination="-1" eventType="touchUpInside" id="WjI-9Z-bIk"/>
                     </connections>
                 </button>
-                <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="W7G-Ay-LeE" customClass="UIButtonBadge" customModule="Bidkum" customModuleProvider="target">
+                <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="W7G-Ay-LeE" customClass="UIButtonBadge" customModule="TeraVPNDemo" customModuleProvider="target">
                     <rect key="frame" x="320" y="7" width="40" height="44"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="44" id="CSJ-UA-V29"/>
@@ -70,7 +69,7 @@
                     </userDefinedRuntimeAttributes>
                 </searchBar>
             </subviews>
-            <color key="backgroundColor" name="THEME_PINK"/>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <constraints>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="v2W-Us-eVJ" secondAttribute="bottom" constant="8" id="0ga-NK-jMm"/>
                 <constraint firstItem="v2W-Us-eVJ" firstAttribute="leading" secondItem="YW4-RE-2Zh" secondAttribute="trailing" constant="5" id="3EO-zO-hr7"/>
@@ -86,15 +85,11 @@
                 <constraint firstItem="v2W-Us-eVJ" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="7" id="z9q-Hy-igv"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <point key="canvasLocation" x="130.40000000000001" y="95.802098950524751"/>
         </view>
     </objects>
     <resources>
         <image name="item2" width="37" height="46"/>
         <image name="sideMenu" width="45" height="29"/>
-        <namedColor name="THEME_PINK">
-            <color red="0.73725490196078436" green="0.12156862745098039" blue="0.57647058823529407" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
     </resources>
 </document>

@@ -11,7 +11,7 @@ import UIKit
 
 class Colors{
     
-    let THEME_PINK = UIColor(named: "THEME_PINK")
+//    let THEME_PINK = UIColor(named: "THEME_PINK")
     
 }
 

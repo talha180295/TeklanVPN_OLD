@@ -15,7 +15,7 @@ import LMGaugeViewSwift
 
 class VPNViewController: UIViewController {
     
-    let userData = HelperFunc().getUserDefaultData(dec: LoginResponse.self, title: User_Defaults.user)
+    var userData: LoginResponse!
     
     //    var usage:UsageResponse!
     // = 30210912720
@@ -57,6 +57,7 @@ class VPNViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.userData = HelperFunc().getUserDefaultData(dec: LoginResponse.self, title: User_Defaults.user)
         
         let screenMinSize = min(UIScreen.main.bounds.size.width, UIScreen.main.bounds.size.height)
         let ratio = Double(screenMinSize)/320
@@ -145,8 +146,43 @@ class VPNViewController: UIViewController {
         present(leftMenuNavigationController, animated: true, completion: nil)
     }
     
+    
+    //For logout
     @IBAction func settingsBtn(_ sender:UIBarButtonItem){
         
+        let alert = UIAlertController(title: "LOGOUT", message: "Are you sure to logout?", preferredStyle: UIAlertController.Style.alert)
+        
+        let yesAction = UIAlertAction(title: "Yes", style: UIAlertAction.Style.destructive) { _ in
+            self.logout()
+        }
+        
+        let noAction = UIAlertAction(title: "No", style: UIAlertAction.Style.cancel, handler: nil)
+        
+        // relate actions to controllers
+        alert.addAction(yesAction)
+        
+        alert.addAction(noAction)
+        
+        present(alert, animated: true, completion: nil)
+    }
+    
+    func logout(){
+        
+        HelperFunc().deleteUserDefaultData(title: User_Defaults.user)
+        HelperFunc().deleteUserDefaultData(title: User_Defaults.userCredentials)
+        
+        openLoginScreen()
+    }
+    
+    func openLoginScreen(){
+        var vc = LoginViewController()
+        if #available(iOSApplicationExtension 13.0, *) {
+            vc = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(identifier: "LoginViewController") as! LoginViewController
+
+        } else {
+            vc = self.storyboard?.instantiateViewController(withIdentifier: "LoginViewController") as! LoginViewController
+        }
+        self.navigationController?.pushViewController(vc, animated: true)
     }
     
 }
@@ -211,9 +247,10 @@ extension VPNViewController{
             let connectAction = UIAlertAction(title: "YES", style: UIAlertAction.Style.default) { _ in
                 
                 let password = self.userData?.password ?? ""
+                let username = self.userData?.username ?? ""
                 self.loadProviderManager {
-//                    self.configureVPN(serverAddress: self.selectedIP, username: self.username, password: "dcd76cbc5ad008a")
-                    self.configureVPN(serverAddress: self.selectedIP, username: self.username, password: password)
+//                    self.configureVPN(serverAddress: self.selectedIP, username: self.username, password: "dcd76cbc5ad008a")dfe334f1a50535f
+                    self.configureVPN(serverAddress: self.selectedIP, username: username, password:password)
                     
                 }
                 

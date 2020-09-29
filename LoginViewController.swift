@@ -18,13 +18,13 @@ class LoginViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        usernameTF.text  = "test@user.com"
-        passwordTF.text  = "q0D5whHYs"
+//        usernameTF.text  = "test@user.com"
+//        passwordTF.text  = "q0D5whHYs"
 //
 //
         
-//        usernameTF.text  = "uzair@cyberdude.com"
-//        passwordTF.text  = "abc123"
+        usernameTF.text  = "uzair@cyberdude.com"
+        passwordTF.text  = "abc123"
         
         
         loginBtn.setGradiantColors(colours: [UIColor(hexString: "#2B1468").cgColor, UIColor(hexString: "#70476F").cgColor])
@@ -63,6 +63,11 @@ class LoginViewController: UIViewController {
 //                vc.usagelimit = Double(loginResponse?.usage?.usagelimit ?? "0")
 //                vc.usageRemaining = Double(loginResponse?.usage?.remaining ?? 0)
                 
+                let userCredentials = UserCredentials.init(username: self.usernameTF.text!, password: self.passwordTF.text!)
+                HelperFunc().deleteUserDefaultData(title: User_Defaults.userCredentials)
+                HelperFunc().saveUserDefaultData(data: userCredentials, title: User_Defaults.userCredentials)
+                
+                HelperFunc().deleteUserDefaultData(title: User_Defaults.user)
                 HelperFunc().saveUserDefaultData(data: loginResponse, title: User_Defaults.user)
                 self.navigationController?.pushViewController(vc, animated: true)
  

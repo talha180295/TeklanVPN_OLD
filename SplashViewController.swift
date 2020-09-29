@@ -18,13 +18,16 @@ class SplashViewController: UIViewController {
         let appVersion = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String
         versionStr.text = "Version \(appVersion ?? "")"
         
-        let loginResponse = HelperFunc().getUserDefaultData(dec: LoginResponse.self, title: User_Defaults.user)
+//        let loginResponse = HelperFunc().getUserDefaultData(dec: LoginResponse.self, title: User_Defaults.user)
        
+        let userCredentials = HelperFunc().getUserDefaultData(dec: UserCredentials.self, title: User_Defaults.userCredentials)
+        
         
         DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
             
-            if loginResponse != nil && loginResponse?.success == "true"{
-                self.openHomeScreen(loginResponse: loginResponse!)
+            if userCredentials != nil {
+//                self.openHomeScreen(loginResponse: loginResponse!)
+                self.login(username: userCredentials?.username ?? "", password:  userCredentials?.password ?? "")
             }
             else{
                 self.openLoginScreen()
@@ -43,39 +46,68 @@ class SplashViewController: UIViewController {
         var vc = LoginViewController()
         if #available(iOSApplicationExtension 13.0, *) {
             vc = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(identifier: "LoginViewController") as! LoginViewController
-            
+
         } else {
             vc = self.storyboard?.instantiateViewController(withIdentifier: "LoginViewController") as! LoginViewController
         }
         self.navigationController?.pushViewController(vc, animated: true)
     }
     
-    func openHomeScreen(loginResponse:LoginResponse){
+//    func openHomeScreen(loginResponse:LoginResponse){
+//
+//        var vc = VPNViewController()
+//        if #available(iOSApplicationExtension 13.0, *) {
+//            vc = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(identifier: "VPNViewController") as! VPNViewController
+//
+//        } else {
+//            vc = self.storyboard?.instantiateViewController(withIdentifier: "VPNViewController") as! VPNViewController
+//        }
+//
+//        vc.serverList = loginResponse.server ?? [Server]()
+//        vc.username = loginResponse.username
+//        vc.password = loginResponse.password
+////        vc.usagelimit = Double(loginResponse.usage?.usagelimit ?? "0")
+////        vc.usageRemaining = Double(loginResponse.usage?.remaining ?? 0)
+//
+//        self.navigationController?.pushViewController(vc, animated: true)
+//    }
+
+    
+    func login(username:String, password:String){
         
-        var vc = VPNViewController()
-        if #available(iOSApplicationExtension 13.0, *) {
-            vc = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(identifier: "VPNViewController") as! VPNViewController
+        let params = ["username":username,"password":password]
+        
+        let request = APIRouter.login(params)
+        NetworkService.serverRequest(url: request, dec: LoginResponse.self, view: self.view) { (loginResponse, error) in
             
-        } else {
-            vc = self.storyboard?.instantiateViewController(withIdentifier: "VPNViewController") as! VPNViewController
+            if loginResponse?.success == "true"{
+                
+                var vc = VPNViewController()
+                if #available(iOSApplicationExtension 13.0, *) {
+                    vc = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(identifier: "VPNViewController") as! VPNViewController
+                    
+                } else {
+                    vc = self.storyboard?.instantiateViewController(withIdentifier: "VPNViewController") as! VPNViewController
+                }
+                
+                vc.serverList = loginResponse?.server ?? [Server]()
+                vc.username = loginResponse?.username
+                vc.password = loginResponse?.password
+//                vc.usagelimit = Double(loginResponse?.usage?.usagelimit ?? "0")
+//                vc.usageRemaining = Double(loginResponse?.usage?.remaining ?? 0)
+                
+                let userCredentials = UserCredentials.init(username: username, password: password)
+                HelperFunc().deleteUserDefaultData(title: User_Defaults.userCredentials)
+                HelperFunc().saveUserDefaultData(data: userCredentials, title: User_Defaults.userCredentials)
+                
+                HelperFunc().deleteUserDefaultData(title: User_Defaults.user)
+                HelperFunc().saveUserDefaultData(data: loginResponse, title: User_Defaults.user)
+                self.navigationController?.pushViewController(vc, animated: true)
+ 
+            }
+            
         }
         
-        vc.serverList = loginResponse.server ?? [Server]()
-        vc.username = loginResponse.username
-        vc.password = loginResponse.password
-//        vc.usagelimit = Double(loginResponse.usage?.usagelimit ?? "0")
-//        vc.usageRemaining = Double(loginResponse.usage?.remaining ?? 0)
-        
-        self.navigationController?.pushViewController(vc, animated: true)
     }
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }

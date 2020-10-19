@@ -35,5 +35,5 @@ struct Server: Codable {
 // MARK: - Usage
 struct Usage: Codable {
     var usagelimit, usagetotal, limitrange: String?
-    var remaining: Int?
+//    var remaining: Int?
 }

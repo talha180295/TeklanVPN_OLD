@@ -1,3 +1,6 @@
 framework module OpenVPNAdapter {
-   umbrella header "Umbrella-Header.h"
+  umbrella header "OpenVPNAdapter-umbrella.h"
+
+  export *
+  module * { export * }
 }

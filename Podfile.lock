@@ -2,16 +2,21 @@ PODS:
   - Alamofire (4.9.1)
   - EzPopup (1.1)
   - iProgressHUD (1.1.1)
+  - IQKeyboardManagerSwift (6.3.0)
   - LMGaugeViewSwift (1.0.0)
-  - OpenVPNAdapter (0.4.0):
-    - OpenVPNAdapter/asio (= 0.4.0)
-    - OpenVPNAdapter/lz4 (= 0.4.0)
-    - OpenVPNAdapter/mbedtls (= 0.4.0)
-    - OpenVPNAdapter/openvpn (= 0.4.0)
-  - OpenVPNAdapter/asio (0.4.0)
-  - OpenVPNAdapter/lz4 (0.4.0)
-  - OpenVPNAdapter/mbedtls (0.4.0)
-  - OpenVPNAdapter/openvpn (0.4.0)
+  - OpenVPNAdapter (0.7.0):
+    - OpenVPNAdapter/ASIO (= 0.7.0)
+    - OpenVPNAdapter/LZ4 (= 0.7.0)
+    - OpenVPNAdapter/mbedTLS (= 0.7.0)
+    - OpenVPNAdapter/OpenVPN3 (= 0.7.0)
+    - OpenVPNAdapter/OpenVPNAdapter (= 0.7.0)
+    - OpenVPNAdapter/OpenVPNClient (= 0.7.0)
+  - OpenVPNAdapter/ASIO (0.7.0)
+  - OpenVPNAdapter/LZ4 (0.7.0)
+  - OpenVPNAdapter/mbedTLS (0.7.0)
+  - OpenVPNAdapter/OpenVPN3 (0.7.0)
+  - OpenVPNAdapter/OpenVPNAdapter (0.7.0)
+  - OpenVPNAdapter/OpenVPNClient (0.7.0)
   - SDWebImage (5.8.4):
     - SDWebImage/Core (= 5.8.4)
   - SDWebImage/Core (5.8.4)
@@ -22,8 +27,9 @@ DEPENDENCIES:
   - Alamofire (~> 4.2)
   - EzPopup
   - iProgressHUD
+  - IQKeyboardManagerSwift (= 6.3.0)
   - LMGaugeViewSwift
-  - OpenVPNAdapter (from `https://github.com/ss-abramchuk/OpenVPNAdapter.git`, tag `0.4.0`)
+  - OpenVPNAdapter (from `https://github.com/ss-abramchuk/OpenVPNAdapter.git`, tag `0.7.0`)
   - SDWebImage
   - SideMenu
   - Toast-Swift
@@ -33,6 +39,7 @@ SPEC REPOS:
     - Alamofire
     - EzPopup
     - iProgressHUD
+    - IQKeyboardManagerSwift
     - LMGaugeViewSwift
     - SDWebImage
     - SideMenu
@@ -41,23 +48,24 @@ SPEC REPOS:
 EXTERNAL SOURCES:
   OpenVPNAdapter:
     :git: https://github.com/ss-abramchuk/OpenVPNAdapter.git
-    :tag: 0.4.0
+    :tag: 0.7.0
 
 CHECKOUT OPTIONS:
   OpenVPNAdapter:
     :git: https://github.com/ss-abramchuk/OpenVPNAdapter.git
-    :tag: 0.4.0
+    :tag: 0.7.0
 
 SPEC CHECKSUMS:
   Alamofire: 85e8a02c69d6020a0d734f6054870d7ecb75cf18
   EzPopup: b959cfb0d70d782a28e770a96c454df0401467c7
   iProgressHUD: caa742128253c97f2c2e1ec59e2bbe6cf689df6a
+  IQKeyboardManagerSwift: a8228c257614af98743b4cd8584637025f36358f
   LMGaugeViewSwift: 049e8550417b3b00c67f396103c52fb3730550bf
-  OpenVPNAdapter: 68a98746423a3d4f96fbdc7f1214671a9db55ca9
+  OpenVPNAdapter: 173fcc4c11a3a8a83ae8d250c079cdc5b9fb8ff1
   SDWebImage: cf6922231e95550934da2ada0f20f2becf2ceba9
   SideMenu: 4a891be552d30bb6fa87ad404d62e485f8450c34
   Toast-Swift: 9b6a70f28b3bf0b96c40d46c0c4b9d6639846711
 
-PODFILE CHECKSUM: 01ce461fdee8c3712b9ef1c69683c1ae2a99f19b
+PODFILE CHECKSUM: d57a9ce288c9485b3c435ac9be79cdb7f1aad9aa
 
 COCOAPODS: 1.9.3

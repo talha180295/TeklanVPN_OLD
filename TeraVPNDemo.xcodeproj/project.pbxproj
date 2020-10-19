@@ -32,6 +32,7 @@
 		BC37364C2512C0D9007A1D13 /* BottomBarView.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC3736452512C0D9007A1D13 /* BottomBarView.xib */; };
 		BC37364D2512C0D9007A1D13 /* BottomBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC3736462512C0D9007A1D13 /* BottomBarView.swift */; };
 		BC3736512512D075007A1D13 /* vpn-01.ovpn in Resources */ = {isa = PBXBuildFile; fileRef = BC3736502512D074007A1D13 /* vpn-01.ovpn */; };
+		BC3BB089253857C200EFB904 /* test.ovpn in Resources */ = {isa = PBXBuildFile; fileRef = BC3BB0792538538D00EFB904 /* test.ovpn */; };
 		BC4B483D2511686A00E7CC2F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC4B483C2511686A00E7CC2F /* AppDelegate.swift */; };
 		BC4B483F2511686A00E7CC2F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC4B483E2511686A00E7CC2F /* SceneDelegate.swift */; };
 		BC4B48442511686A00E7CC2F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BC4B48422511686A00E7CC2F /* Main.storyboard */; };
@@ -105,6 +106,7 @@
 		BC3736452512C0D9007A1D13 /* BottomBarView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BottomBarView.xib; sourceTree = "<group>"; };
 		BC3736462512C0D9007A1D13 /* BottomBarView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BottomBarView.swift; sourceTree = "<group>"; };
 		BC3736502512D074007A1D13 /* vpn-01.ovpn */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "vpn-01.ovpn"; sourceTree = "<group>"; };
+		BC3BB0792538538D00EFB904 /* test.ovpn */ = {isa = PBXFileReference; lastKnownFileType = text; name = test.ovpn; path = Response/test.ovpn; sourceTree = "<group>"; };
 		BC4B48392511686A00E7CC2F /* TeraVPNDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TeraVPNDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BC4B483C2511686A00E7CC2F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BC4B483E2511686A00E7CC2F /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -288,6 +290,7 @@
 			children = (
 				BC2DCDB2251AB35600956916 /* Response */,
 				BC3736502512D074007A1D13 /* vpn-01.ovpn */,
+				BC3BB0792538538D00EFB904 /* test.ovpn */,
 				BC37363C2512C0D9007A1D13 /* Extension */,
 				BC37361E2512C0C3007A1D13 /* Helper */,
 				BC3736192512BE57007A1D13 /* cell */,
@@ -403,6 +406,7 @@
 			files = (
 				BC37364A2512C0D9007A1D13 /* TopBarView.xib in Resources */,
 				BC4B48492511686F00E7CC2F /* LaunchScreen.storyboard in Resources */,
+				BC3BB089253857C200EFB904 /* test.ovpn in Resources */,
 				BC3736512512D075007A1D13 /* vpn-01.ovpn in Resources */,
 				BC4B48462511686F00E7CC2F /* Assets.xcassets in Resources */,
 				BC37361D2512BE85007A1D13 /* MenuCell.xib in Resources */,
@@ -680,16 +684,20 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = TeraVPNDemo/TeraVPNDemo.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 5H5DV35BTW;
+				CURRENT_PROJECT_VERSION = 1.0.0;
+				DEVELOPMENT_TEAM = 573VF9FKGC;
 				INFOPLIST_FILE = TeraVPNDemo/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = abc.org.TeraVPNDemo;
+				MARKETING_VERSION = 1.0.3;
+				PRODUCT_BUNDLE_IDENTIFIER = abc.org.TeraVPNDemo1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -702,16 +710,20 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = TeraVPNDemo/TeraVPNDemo.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 5H5DV35BTW;
+				CURRENT_PROJECT_VERSION = 1.0.0;
+				DEVELOPMENT_TEAM = 573VF9FKGC;
 				INFOPLIST_FILE = TeraVPNDemo/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = abc.org.TeraVPNDemo;
+				MARKETING_VERSION = 1.0.3;
+				PRODUCT_BUNDLE_IDENTIFIER = abc.org.TeraVPNDemo1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -722,16 +734,18 @@
 			baseConfigurationReference = 199953BA8C71747FD9CBE729 /* Pods-PacketTunnel.debug.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = PacketTunnel/PacketTunnel.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 5H5DV35BTW;
+				DEVELOPMENT_TEAM = 573VF9FKGC;
 				INFOPLIST_FILE = PacketTunnel/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = abc.org.TeraVPNDemo.PacketTunnel;
+				PRODUCT_BUNDLE_IDENTIFIER = abc.org.TeraVPNDemo1.PacketTunnel;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -743,16 +757,18 @@
 			baseConfigurationReference = 94BACDFF84660D1B9D6E769A /* Pods-PacketTunnel.release.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = PacketTunnel/PacketTunnel.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 5H5DV35BTW;
+				DEVELOPMENT_TEAM = 573VF9FKGC;
 				INFOPLIST_FILE = PacketTunnel/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = abc.org.TeraVPNDemo.PacketTunnel;
+				PRODUCT_BUNDLE_IDENTIFIER = abc.org.TeraVPNDemo1.PacketTunnel;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";

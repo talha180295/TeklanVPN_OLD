@@ -29,14 +29,20 @@ class PacketTunnelProvider: NEPacketTunnelProvider {
         
         let configuration = OpenVPNConfiguration()
         configuration.fileContent = ovpnFileContent
-        configuration.disableClientCert = true
-        configuration.forceCiphersuitesAESCBC = false
-        //  configuration.proto = OpenVPNTransportProtocol.UDP
-        // configuration.tlsCertProfile = OpenVPNTLSCertProfile.preferred
+//        configuration.disableClientCert = true
+//        configuration.forceCiphersuitesAESCBC = false
+//          configuration.proto = OpenVPNTransportProtocol.UDP
+//         configuration.tlsCertProfile = OpenVPNTLSCertProfile.preferred
         // configuration.settings = [Any]
         
+        
+        // Uncomment this line if you want to keep TUN interface active during pauses or reconnections
+//         configuration.tunPersist = true
+
+
+        
         // Apply OpenVPN configuration
-        let properties: OpenVPNProperties
+        let properties: OpenVPNConfigurationEvaluation
         do {
             properties = try vpnAdapter.apply(configuration: configuration)
         } catch {
@@ -67,7 +73,7 @@ class PacketTunnelProvider: NEPacketTunnelProvider {
         
         // Establish connection and wait for .connected event
         startHandler = completionHandler
-        vpnAdapter.connect()
+        vpnAdapter.connect(using: packetFlow)
     }
     
     override func stopTunnel(with reason: NEProviderStopReason, completionHandler: @escaping () -> Void) {
@@ -85,14 +91,36 @@ class PacketTunnelProvider: NEPacketTunnelProvider {
             let bytesIn = self.vpnAdapter.transportStatistics.bytesIn
             let bytesOut = self.vpnAdapter.transportStatistics.bytesOut
             let dict = ["bytesIn":"\(bytesIn)","bytesOut":"\(bytesOut)"]
-            if #available(iOSApplicationExtension 11.0, *) {
-                let data = try! NSKeyedArchiver.archivedData(withRootObject: dict, requiringSecureCoding: false)
-                completionHandler?(data)
-            } else {
-                // Fallback on earlier versions
+            
+            
+            
+            do {
+                let data: Data = try! JSONSerialization.data(withJSONObject:dict,options: JSONSerialization.WritingOptions.prettyPrinted)
+                let dataBase64 = data.base64EncodedString()
+                completionHandler?(Data(base64Encoded: dataBase64))
+            } catch{
+                print("could not make data")
             }
-            // here you are archieving data
-            completionHandler?(nil)
+//            if let jsonString = String(data: data!, encoding: . utf8){
+//                print("jsonString=\(jsonString)")
+//
+//            }
+            
+//            let encoder = JSONEncoder()
+//            if let jsonData = try? encoder.encode(dict){
+//
+//                completionHandler?(jsonData)
+//                
+//            }
+//            completionHandler?(jsonData)
+//            if #available(iOSApplicationExtension 11.0, *) {
+//                let data = try! NSKeyedArchiver.archivedData(withRootObject: dict, requiringSecureCoding: false)
+//                completionHandler?(data)
+//            } else {
+//                // Fallback on earlier versions
+//            }
+//            // here you are archieving data
+//            completionHandler?(Data(base64Encoded: "bm8gZGF0YQ=="))
         }
     }
 
@@ -101,6 +129,16 @@ class PacketTunnelProvider: NEPacketTunnelProvider {
 }
 
 extension PacketTunnelProvider: OpenVPNAdapterDelegate {
+
+    func openVPNAdapter(_ openVPNAdapter: OpenVPNAdapter, configureTunnelWithNetworkSettings networkSettings: NEPacketTunnelNetworkSettings?, completionHandler: @escaping (Error?) -> Void) {
+        // In order to direct all DNS queries first to the VPN DNS servers before the primary DNS servers
+        // send empty string to NEDNSSettings.matchDomains
+        networkSettings?.dnsSettings?.matchDomains = [""]
+
+        // Set the network settings for the current tunneling session.
+        setTunnelNetworkSettings(networkSettings, completionHandler: completionHandler)
+    }
+    
     
     func openVPNAdapter(_ openVPNAdapter: OpenVPNAdapter, configureTunnelWithNetworkSettings networkSettings: NEPacketTunnelNetworkSettings?, completionHandler: @escaping (OpenVPNAdapterPacketFlow?) -> Void) {
         

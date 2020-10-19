@@ -7,6 +7,7 @@ target 'TeraVPNDemo' do
   
   # Pods for TeraVPNDemo
 #  pod 'TPKeyboardAvoidingSwift'
+  pod 'IQKeyboardManagerSwift', '6.3.0'
   pod 'Alamofire' , '~> 4.2'
   pod 'iProgressHUD'
   pod 'SDWebImage'
@@ -24,7 +25,7 @@ target 'PacketTunnel' do
   
   # Pods for PacketTunnel
   #pod 'OpenVPNAdapter', :git => 'https://github.com/ss-abramchuk/OpenVPNAdapter.git', :tag => '0.6.0'
-  pod 'OpenVPNAdapter', :git => 'https://github.com/ss-abramchuk/OpenVPNAdapter.git', :tag => '0.4.0'
+  pod 'OpenVPNAdapter', :git => 'https://github.com/ss-abramchuk/OpenVPNAdapter.git', :tag => '0.7.0'
   
   
 end

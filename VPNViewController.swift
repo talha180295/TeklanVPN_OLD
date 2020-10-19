@@ -17,6 +17,7 @@ class VPNViewController: UIViewController {
     
     var userData: LoginResponse!
     
+    var timer : Timer?
     //    var usage:UsageResponse!
     // = 30210912720
     
@@ -48,10 +49,28 @@ class VPNViewController: UIViewController {
     var dataRecievedInMbs = 0.0
     
     //VPN Var
-    let tunnelBundleId = "abc.org.TeraVPNDemo.PacketTunnel"
+    let tunnelBundleId = "abc.org.TeraVPNDemo1.PacketTunnel"
     var providerManager = NETunnelProviderManager()
     var selectedIP : String!
     var isVPNConnected : Bool = false
+   
+    
+    func startTimer () {
+        guard timer == nil else { return }
+        
+        timer =  Timer.scheduledTimer(
+            timeInterval: TimeInterval(0.3),
+            target      : self,
+            selector    : #selector(getTrafficStats),
+            userInfo    : nil,
+            repeats     : true)
+    }
+    
+    
+    func stopTimer() {
+        timer?.invalidate()
+        timer = nil
+    }
     
     
     override func viewDidLoad() {
@@ -77,8 +96,8 @@ class VPNViewController: UIViewController {
         
         self.title = "TeraVPN"
         
-        self.selectedIP = "\(serverList[0].serverIP ?? "0") \(serverList[0].serverPort ?? "0")"
-        self.serverIP.text = "\(serverList[0].serverIP ?? "0") \(serverList[0].serverPort ?? "0")"
+        self.selectedIP = "\(serverList[0].serverIP ?? "0")" //\(serverList[0].serverPort ?? "0")"
+        self.serverIP.text = "\(serverList[0].serverIP ?? "0")" //" \(serverList[0].serverPort ?? "0")"
         self.countryName.text = "\(serverList[0].country ?? "")"
         self.cityName.text = "\(serverList[0].city ?? "")"
         self.flag.image = UIImage.init(named: serverList[0].flag ?? "")
@@ -119,7 +138,14 @@ class VPNViewController: UIViewController {
     
     @IBAction func connectBtn(_ sender:UIButton){
         
-        self.checkUsage()
+        if isVPNConnected == true {
+            self.connectVpn()
+        }
+        else{
+            self.checkUsage()
+        }
+//
+       
         
     }
     
@@ -250,7 +276,7 @@ extension VPNViewController{
                 let username = self.userData?.username ?? ""
                 self.loadProviderManager {
 //                    self.configureVPN(serverAddress: self.selectedIP, username: self.username, password: "dcd76cbc5ad008a")dfe334f1a50535f
-                    self.configureVPN(serverAddress: self.selectedIP, username: username, password:password)
+                    self.configureVPN(serverAddress: "", username: username, password:password)
                     
                 }
                 
@@ -287,7 +313,7 @@ extension VPNViewController{
         self.providerManager.loadFromPreferences { error in
             if error == nil {
                 let tunnelProtocol = NETunnelProviderProtocol()
-                tunnelProtocol.username = username
+//                tunnelProtocol.username = username
                 tunnelProtocol.serverAddress = serverAddress
                 tunnelProtocol.providerBundleIdentifier = self.tunnelBundleId// bundle id of the network extension target
                 //                tunnelProtocol.providerConfiguration = ["ovpn": configurationFileContent as NSData,"u":"test@user.com" as! String ,"p":"dcd76cbc5ad008a" as! String]
@@ -310,6 +336,9 @@ extension VPNViewController{
                     }
                 })
             }
+            else{
+                print(error.debugDescription)
+            }
         }
     }
     
@@ -321,9 +350,12 @@ extension VPNViewController{
         
         constr = content
         
-        constr = constr.replacingOccurrences(of: "remote ip", with: "remote \(self.selectedIP ?? "")")
-        constr = constr.replacingOccurrences(of: "\r\n", with: "\n")
+        constr = constr.replacingOccurrences(of: "remote ip", with: "remote \(self.selectedIP ?? "") 1194")
         
+        print("selectedIP=\(self.selectedIP ?? "")")
+//        constr = constr.replacingOccurrences(of: "remote ip", with: "remote \(self.selectedIP ?? "") 443"
+        constr = constr.replacingOccurrences(of: "\r\n", with: "\n")
+        print("constr=\(constr as String)")
         return (constr as String).data(using: String.Encoding.utf8)! as Data
         
         
@@ -354,8 +386,10 @@ extension VPNViewController{
         let status = self.providerManager.connection.status
         switch status {
         case .connecting:
+            isVPNConnected = true
             print("Connecting...")
             self.connectionStatus.text = "Connecting..."
+            self.stopTimer()
             break
         case .connected:
             isVPNConnected = true
@@ -365,12 +399,13 @@ extension VPNViewController{
             self.connectionBtn.setTitle("Stop Connection", for: .normal)
             self.connectionBtn.backgroundColor = .red
             
+            self.startTimer()
             // Create a timer to getTrafficStats
-            Timer.scheduledTimer(timeInterval: 2,
-                                 target: self,
-                                 selector: #selector(getTrafficStats),
-                                 userInfo: nil,
-                                 repeats: true)
+//            Timer.scheduledTimer(timeInterval: 2,
+//                                 target: self,
+//                                 selector: #selector(getTrafficStats),
+//                                 userInfo: nil,
+//                                 repeats: true)
             
             break
         case .disconnecting:
@@ -384,6 +419,7 @@ extension VPNViewController{
             self.connectionStatus.textColor = .red
             self.connectionBtn.setTitle("Start Connection", for: .normal)
             self.connectionBtn.backgroundColor = UIColor(hexString: "3CB371")
+            self.stopTimer()
             break
         case .invalid:
             print("Invliad")
@@ -406,7 +442,7 @@ extension VPNViewController:ServerListProtocol{
             self.providerManager.connection.stopVPNTunnel()
         }
         
-        self.selectedIP = "\(server.serverIP ?? "0") \(server.serverPort ?? "0")"
+        self.selectedIP = "\(server.serverIP ?? "0")"// \(server.serverPort ?? "0")"
         self.serverIP.text = server.serverIP
         self.countryName.text = "\(server.country ?? "")"
         self.cityName.text = "\(server.city ?? "")"
@@ -460,12 +496,45 @@ extension VPNViewController{
                 try session.sendProviderMessage("SOME_STATIC_KEY".data(using: .utf8)!) { (data) in
                     // here you can unarchieve your data and get traffic stats as dict
                     
+                    if let _ = data{
+//                        let decodedString = String(data: data!, encoding: .utf8)!
+//
+//                        print("jsonString=\(decodedString)")
+                        
+                        if let bytesData = String(data: data!, encoding: . utf8){
+//                            print("bytesData=\(bytesData)")
+
+                            let dict = self.convertToDictionary(text: bytesData)
+                            
+                            let bytesIn = dict?["bytesIn"] as! String
+                            let bytesOut = dict?["bytesOut"] as! String
+                            
+                            self.dataRecieved.text = "\(Int(bytesIn)!/1000) KB/S"
+                            self.dataSent.text = "\(Int(bytesOut)!/1000) KB/S"
+//                            print("\(Int(bytesIn)!/1000000) MBs")
+                            
+                        }
+                    }
+                    
+                    
+                   
                     //                    self.usageRemainingInMbs -= sent + recieved
-                    self.updateGaugeTimer()
+//                    self.updateGaugeTimer()
                 }
             } catch {
                 // some error
             }
         }
+    }
+    
+    func convertToDictionary(text: String) -> [String: Any]? {
+        if let data = text.data(using: .utf8) {
+            do {
+                return try JSONSerialization.jsonObject(with: data, options: []) as? [String: Any]
+            } catch {
+                print(error.localizedDescription)
+            }
+        }
+        return nil
     }
 }

@@ -471,7 +471,7 @@ extension VPNViewController:ServerListProtocol{
             self.providerManager.connection.stopVPNTunnel()
         }
         
-        self.selectedIP = "\(server.serverIP ?? "0")"// \(server.serverPort ?? "0")"
+        self.selectedIP = "\(server.serverIP ?? "0") \(server.serverPort ?? "0")"
         self.serverIP.text = server.serverIP
         self.countryName.text = "\(server.country ?? "")"
         self.cityName.text = "\(server.city ?? "")"

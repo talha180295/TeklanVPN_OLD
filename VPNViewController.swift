@@ -49,7 +49,7 @@ class VPNViewController: UIViewController {
     var dataRecievedInMbs = 0.0
     
     //VPN Var
-    let tunnelBundleId = "abc.org.TeraVPNDemo1.PacketTunnel"
+    let tunnelBundleId = "abc.org.TeraVPNDemo3.PacketTunnel"
     var providerManager = NETunnelProviderManager()
     var selectedIP : String!
     var isVPNConnected : Bool = false
@@ -350,7 +350,7 @@ extension VPNViewController{
         
         constr = content
         
-        constr = constr.replacingOccurrences(of: "remote ip", with: "remote \(self.selectedIP ?? "") 1194")
+        constr = constr.replacingOccurrences(of: "remote ip", with: "remote \(self.selectedIP ?? "")")
         
         print("selectedIP=\(self.selectedIP ?? "")")
 //        constr = constr.replacingOccurrences(of: "remote ip", with: "remote \(self.selectedIP ?? "") 443"
@@ -362,6 +362,9 @@ extension VPNViewController{
     }
     
     func readFile(path: String) -> String? {
+        
+//        let port = UInt16(1994)
+//        print(isPortOpen(port:port))
         
         if let filepath = Bundle.main.path(forResource: path, ofType: "ovpn") {
             do {
@@ -378,6 +381,32 @@ extension VPNViewController{
         
         
         return nil
+    }
+    
+    func isPortOpen(port: in_port_t) -> Bool {
+
+        let socketFileDescriptor = socket(AF_INET, SOCK_STREAM, 0)
+        if socketFileDescriptor == -1 {
+            return false
+        }
+
+        var addr = sockaddr_in()
+        let sizeOfSockkAddr = MemoryLayout<sockaddr_in>.size
+        addr.sin_len = __uint8_t(sizeOfSockkAddr)
+        addr.sin_family = sa_family_t(AF_INET)
+        addr.sin_port = Int(OSHostByteOrder()) == OSLittleEndian ? _OSSwapInt16(port) : port
+        addr.sin_addr = in_addr(s_addr: inet_addr("0.0.0.0"))
+        addr.sin_zero = (0, 0, 0, 0, 0, 0, 0, 0)
+        var bind_addr = sockaddr()
+        memcpy(&bind_addr, &addr, Int(sizeOfSockkAddr))
+
+        if Darwin.bind(socketFileDescriptor, &bind_addr, socklen_t(sizeOfSockkAddr)) == -1 {
+            return false
+        }
+        if listen(socketFileDescriptor, SOMAXCONN ) == -1 {
+            return false
+        }
+        return true
     }
     
     @objc func VPNStatusDidChange(_ notification: Notification?) {

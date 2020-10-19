@@ -206,6 +206,9 @@ extension PacketTunnelProvider: OpenVPNAdapterDelegate {
     // Use this method to process any log message returned by OpenVPN library.
     func openVPNAdapter(_ openVPNAdapter: OpenVPNAdapter, handleLogMessage logMessage: String) {
         // Handle log messages
+        
+       NSLog("logMessage = %@", logMessage)
+//    os_log("logMessage = %@", log: log, url.absoluteString)
     }
     
 }

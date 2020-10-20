@@ -98,7 +98,7 @@ class VPNViewController: UIViewController {
         self.title = "TeraVPN"
         
         self.selectedIP = "\(serverList[0].serverIP ?? "0") \(serverList[0].serverPort ?? "0")"
-        self.serverIP.text = "\(serverList[0].serverIP ?? "0") \(serverList[0].serverPort ?? "0")"
+        self.serverIP.text = "\(serverList[0].serverIP ?? "0")"//" \(serverList[0].serverPort ?? "0")"
         self.countryName.text = "\(serverList[0].country ?? "")"
         self.cityName.text = "\(serverList[0].city ?? "")"
         self.flag.image = UIImage.init(named: serverList[0].flag ?? "")
@@ -207,6 +207,10 @@ extension VPNViewController{
         NetworkService.serverRequest(url: request, dec: UsageResponse.self, view: self.view) { (usageResponse, error) in
             
             if usageResponse?.success == "true"{
+                
+                print("**********UsageResponse**********")
+                print(usageResponse!)
+                print("**********UsageResponse**********")
                 
                 self.usagelimit = Double(usageResponse?.usagelimit ?? "0")
                 self.usageRemaining =  Double(usageResponse?.remaining ?? "0")
@@ -336,6 +340,16 @@ extension VPNViewController{
         print("selectedIP=\(self.selectedIP ?? "")")
 //        constr = constr.replacingOccurrences(of: "remote ip", with: "remote \(self.selectedIP ?? "") 443"
         constr = constr.replacingOccurrences(of: "\r\n", with: "\n")
+        
+        if let adBlocker = UserDefaults.standard.value(forKey: User_Defaults.adBlocker) as? Bool{
+            
+            if adBlocker{
+                constr = constr.replacingOccurrences(of: "dhcp-option DNS 8.8.8.8", with: "dhcp-option DNS 8.8.8.8 \(self.userData.adblocker ?? "")")
+            }
+            
+        }
+        
+        
         print("constr=\(constr as String)")
         return (constr as String).data(using: String.Encoding.utf8)! as Data
         
@@ -494,8 +508,8 @@ extension VPNViewController{
     
     @objc func updateGaugeTimer() {
         
-        usageRemainingInMbs -= 1
-        
+//        usageRemainingInMbs -= 1
+        print(usageRemainingInMbs)
         // Set value for gauge view
         gaugeView.value = usageRemainingInMbs
     }
@@ -507,13 +521,13 @@ extension VPNViewController{
                     // here you can unarchieve your data and get traffic stats as dict
                     
                     if let _ = data{
-//                        let decodedString = String(data: data!, encoding: .utf8)!
-//
-//                        print("jsonString=\(decodedString)")
+                        //                        let decodedString = String(data: data!, encoding: .utf8)!
+                        //
+                        //                        print("jsonString=\(decodedString)")
                         
                         if let bytesData = String(data: data!, encoding: . utf8){
-//                            print("bytesData=\(bytesData)")
-
+                            //                            print("bytesData=\(bytesData)")
+                            
                             let dict = self.convertToDictionary(text: bytesData)
                             
                             let bytesIn = dict?["bytesIn"] as! String
@@ -521,15 +535,16 @@ extension VPNViewController{
                             
                             self.dataRecieved.text = "\(Int(bytesIn)!/1000) KB/S"
                             self.dataSent.text = "\(Int(bytesOut)!/1000) KB/S"
-//                            print("\(Int(bytesIn)!/1000000) MBs")
+                            //                            print("\(Int(bytesIn)!/1000000) MBs")
+                            self.usageRemainingInMbs -= Double(bytesOut)!/1000000.00  + Double(bytesIn)!/1000000.00
+                            self.updateGaugeTimer()
                             
                         }
                     }
                     
                     
-                   
-                    //                    self.usageRemainingInMbs -= sent + recieved
-//                    self.updateGaugeTimer()
+                    
+                                        
                 }
             } catch {
                 // some error

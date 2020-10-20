@@ -396,7 +396,7 @@
                                 <action selector="sideMenuBtn:" destination="sIc-Cl-F90" id="8j2-aJ-9Ns"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" image="settings2" id="Ngz-aD-a0y">
+                        <barButtonItem key="rightBarButtonItem" image="settings1" id="Ngz-aD-a0y">
                             <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <connections>
                                 <action selector="settingsBtn:" destination="sIc-Cl-F90" id="tjn-nw-Ned"/>
@@ -642,7 +642,7 @@
         <image name="logo2" width="337" height="109"/>
         <image name="map" width="1004" height="650"/>
         <image name="menu1" width="16" height="16"/>
-        <image name="settings2" width="32" height="32"/>
+        <image name="settings1" width="16" height="16"/>
         <image name="splash" width="2395" height="1959"/>
     </resources>
 </document>

@@ -14,6 +14,7 @@ struct LoginResponse: Codable {
     var nextdue, curloc, query, package: String?
     var server: [Server]?
     var usage: Usage?
+    var adblocker:String?
 }
 
 // MARK: - Server

@@ -21,7 +21,11 @@ class SettingsViewController: UIViewController {
         
         self.expiryLable.text = "Account Expires: \(userData?.nextdue ?? "")"
         self.packageLable.text = "Package: \(userData?.package ?? "")"
-        self.adSwitch.isOn = false
+        
+        
+        if let adBlocker = UserDefaults.standard.value(forKey: User_Defaults.adBlocker) as? Bool{
+            self.adSwitch.isOn = adBlocker
+        }
     }
     
     @IBAction func switchChange(_ sender:UISwitch){
@@ -52,6 +56,7 @@ class SettingsViewController: UIViewController {
         
         HelperFunc().deleteUserDefaultData(title: User_Defaults.user)
         HelperFunc().deleteUserDefaultData(title: User_Defaults.userCredentials)
+        HelperFunc().deleteUserDefaultData(title: User_Defaults.adBlocker)
         
         openLoginScreen()
     }

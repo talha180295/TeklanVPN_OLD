@@ -26,6 +26,9 @@ class SettingsViewController: UIViewController {
         if let adBlocker = UserDefaults.standard.value(forKey: User_Defaults.adBlocker) as? Bool{
             self.adSwitch.isOn = adBlocker
         }
+        else{
+            self.adSwitch.isOn = false
+        }
     }
     
     @IBAction func switchChange(_ sender:UISwitch){

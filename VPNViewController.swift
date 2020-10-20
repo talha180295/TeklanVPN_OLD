@@ -205,12 +205,19 @@ extension VPNViewController{
         
         let request = APIRouter.usage(params)
         NetworkService.serverRequest(url: request, dec: UsageResponse.self, view: self.view) { (usageResponse, error) in
+     
+            if usageResponse != nil{
+                print("**********usageResponse**********")
+                print(usageResponse!)
+                print("**********usageResponse**********")
+            }
+            else if error != nil{
+                print("**********usageResponse**********")
+                print(error!)
+                print("**********usageResponse**********")
+            }
             
             if usageResponse?.success == "true"{
-                
-                print("**********UsageResponse**********")
-                print(usageResponse!)
-                print("**********UsageResponse**********")
                 
                 self.usagelimit = Double(usageResponse?.usagelimit ?? "0")
                 self.usageRemaining =  Double(usageResponse?.remaining ?? "0")

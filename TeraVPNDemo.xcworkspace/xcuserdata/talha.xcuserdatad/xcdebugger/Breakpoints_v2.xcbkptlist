@@ -7,54 +7,6 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "5F3598C0-EC05-4518-9EC8-203AABE9ADA3"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "VPNViewController.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "262"
-            endingLineNumber = "262"
-            landmarkName = "connectVpn()"
-            landmarkType = "7">
-            <Locations>
-               <Location
-                  uuid = "5F3598C0-EC05-4518-9EC8-203AABE9ADA3 - 12674ad6fb94384a"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #2 (__C.UIAlertAction) -&gt; () in TeraVPNDemo.VPNViewController.connectVpn() -&gt; ()"
-                  moduleName = "TeraVPNDemo"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/talha/Documents/vpn%20pro/TeraVPNDemo/VPNViewController.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "252"
-                  endingLineNumber = "252"
-                  offsetFromSymbolStart = "852">
-               </Location>
-               <Location
-                  uuid = "5F3598C0-EC05-4518-9EC8-203AABE9ADA3 - 13e233f9e614d320"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 () -&gt; () in closure #2 (__C.UIAlertAction) -&gt; () in TeraVPNDemo.VPNViewController.connectVpn() -&gt; ()"
-                  moduleName = "TeraVPNDemo"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/talha/Documents/vpn%20pro/TeraVPNDemo/VPNViewController.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "254"
-                  endingLineNumber = "254"
-                  offsetFromSymbolStart = "88">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
             uuid = "F27F4276-4217-491C-9C2E-705CE30720A7"
             shouldBeEnabled = "No"
             ignoreCount = "0"
@@ -62,25 +14,9 @@
             filePath = "VPNViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "303"
-            endingLineNumber = "303"
+            startingLineNumber = "310"
+            endingLineNumber = "310"
             landmarkName = "configureVPN(serverAddress:username:password:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "2F386FFD-03E7-4A4D-B587-F6DA9501A6F1"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "PacketTunnel/PacketTunnelProvider.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "56"
-            endingLineNumber = "56"
-            landmarkName = "startTunnel(options:completionHandler:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -94,8 +30,8 @@
             filePath = "VPNViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "347"
-            endingLineNumber = "347"
+            startingLineNumber = "354"
+            endingLineNumber = "354"
             landmarkName = "getFileData(path:)"
             landmarkType = "7">
          </BreakpointContent>

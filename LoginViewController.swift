@@ -47,11 +47,19 @@ class LoginViewController: UIViewController {
         let request = APIRouter.login(params)
         NetworkService.serverRequest(url: request, dec: LoginResponse.self, view: self.view) { (loginResponse, error) in
             
-            if loginResponse?.success == "true"{
-                
+            if loginResponse != nil{
                 print("**********loginResponse**********")
                 print(loginResponse!)
                 print("**********loginResponse**********")
+            }
+            else if error != nil{
+                print("**********loginResponse**********")
+                print(error!)
+                print("**********loginResponse**********")
+            }
+            
+            if loginResponse?.success == "true"{
+                
                 var vc = VPNViewController()
                 if #available(iOSApplicationExtension 13.0, *) {
                     vc = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(identifier: "VPNViewController") as! VPNViewController

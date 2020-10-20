@@ -226,7 +226,7 @@
                                                     <constraint firstAttribute="height" constant="40" id="b7M-HO-SfX"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="15"/>
-                                                <state key="normal" title="Start">
+                                                <state key="normal" title="Start Connection">
                                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </state>
                                                 <userDefinedRuntimeAttributes>

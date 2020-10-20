@@ -49,7 +49,8 @@ class VPNViewController: UIViewController {
     var dataRecievedInMbs = 0.0
     
     //VPN Var
-    let tunnelBundleId = "abc.org.TeraVPNDemo3.PacketTunnel"
+    let tunnelBundleId = "\(Bundle.main.bundleIdentifier!).PacketTunnel"
+    // "abc.org.TeraVPNDemo3.PacketTunnel"
     var providerManager = NETunnelProviderManager()
     var selectedIP : String!
     var isVPNConnected : Bool = false
@@ -96,8 +97,8 @@ class VPNViewController: UIViewController {
         
         self.title = "TeraVPN"
         
-        self.selectedIP = "\(serverList[0].serverIP ?? "0")" //\(serverList[0].serverPort ?? "0")"
-        self.serverIP.text = "\(serverList[0].serverIP ?? "0")" //" \(serverList[0].serverPort ?? "0")"
+        self.selectedIP = "\(serverList[0].serverIP ?? "0") \(serverList[0].serverPort ?? "0")"
+        self.serverIP.text = "\(serverList[0].serverIP ?? "0") \(serverList[0].serverPort ?? "0")"
         self.countryName.text = "\(serverList[0].country ?? "")"
         self.cityName.text = "\(serverList[0].city ?? "")"
         self.flag.image = UIImage.init(named: serverList[0].flag ?? "")
@@ -176,37 +177,17 @@ class VPNViewController: UIViewController {
     //For logout
     @IBAction func settingsBtn(_ sender:UIBarButtonItem){
         
-        let alert = UIAlertController(title: "LOGOUT", message: "Are you sure to logout?", preferredStyle: UIAlertController.Style.alert)
-        
-        let yesAction = UIAlertAction(title: "Yes", style: UIAlertAction.Style.destructive) { _ in
-            self.logout()
-        }
-        
-        let noAction = UIAlertAction(title: "No", style: UIAlertAction.Style.cancel, handler: nil)
-        
-        // relate actions to controllers
-        alert.addAction(yesAction)
-        
-        alert.addAction(noAction)
-        
-        present(alert, animated: true, completion: nil)
+        self.openSettingsScreen()
+       
     }
     
-    func logout(){
-        
-        HelperFunc().deleteUserDefaultData(title: User_Defaults.user)
-        HelperFunc().deleteUserDefaultData(title: User_Defaults.userCredentials)
-        
-        openLoginScreen()
-    }
-    
-    func openLoginScreen(){
-        var vc = LoginViewController()
+    func openSettingsScreen(){
+        var vc = SettingsViewController()
         if #available(iOSApplicationExtension 13.0, *) {
-            vc = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(identifier: "LoginViewController") as! LoginViewController
+            vc = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(identifier: "SettingsViewController") as! SettingsViewController
 
         } else {
-            vc = self.storyboard?.instantiateViewController(withIdentifier: "LoginViewController") as! LoginViewController
+            vc = self.storyboard?.instantiateViewController(withIdentifier: "SettingsViewController") as! SettingsViewController
         }
         self.navigationController?.pushViewController(vc, animated: true)
     }

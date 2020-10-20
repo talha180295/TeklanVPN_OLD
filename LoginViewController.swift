@@ -49,6 +49,9 @@ class LoginViewController: UIViewController {
             
             if loginResponse?.success == "true"{
                 
+                print("**********loginResponse**********")
+                print(loginResponse!)
+                print("**********loginResponse**********")
                 var vc = VPNViewController()
                 if #available(iOSApplicationExtension 13.0, *) {
                     vc = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(identifier: "VPNViewController") as! VPNViewController

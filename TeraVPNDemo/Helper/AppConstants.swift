@@ -13,6 +13,7 @@ struct User_Defaults {
     static let user = "User"
     static let usage = "usage"
     static let userCredentials = "UserCredentials"
+    static let adBlocker = "adBlocker"
 }
 
 class AppConstants {

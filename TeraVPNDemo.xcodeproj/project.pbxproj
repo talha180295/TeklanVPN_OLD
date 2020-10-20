@@ -48,6 +48,7 @@
 		BC4B486E2511747600E7CC2F /* LoginRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC4B486D2511747600E7CC2F /* LoginRequest.swift */; };
 		BC4B4870251177CB00E7CC2F /* APIRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC4B486F251177CB00E7CC2F /* APIRouter.swift */; };
 		BC62748C2523C9F400C3E43D /* UserCredentials.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC6274782523C8CA00C3E43D /* UserCredentials.swift */; };
+		BCBED0D1253F1B7300C950AD /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCBED0D0253F1B7300C950AD /* SettingsViewController.swift */; };
 		BCCBB99A2513B5A6002FBD6E /* VPNViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCCBB9992513B5A6002FBD6E /* VPNViewController.swift */; };
 		BCE2C5872516AF0400CD81FE /* PacketTunnelProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC4B485625116B9E00E7CC2F /* PacketTunnelProvider.swift */; };
 /* End PBXBuildFile section */
@@ -126,6 +127,7 @@
 		BC4B486D2511747600E7CC2F /* LoginRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginRequest.swift; sourceTree = "<group>"; };
 		BC4B486F251177CB00E7CC2F /* APIRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIRouter.swift; sourceTree = "<group>"; };
 		BC6274782523C8CA00C3E43D /* UserCredentials.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCredentials.swift; sourceTree = "<group>"; };
+		BCBED0D0253F1B7300C950AD /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		BCCBB9992513B5A6002FBD6E /* VPNViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VPNViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -189,6 +191,7 @@
 				BC3736172512B8AE007A1D13 /* SideMenuViewController.swift */,
 				BCCBB9992513B5A6002FBD6E /* VPNViewController.swift */,
 				BC2DCDB5251AB99700956916 /* SplashViewController.swift */,
+				BCBED0D0253F1B7300C950AD /* SettingsViewController.swift */,
 			);
 			name = Controller;
 			path = ..;
@@ -516,6 +519,7 @@
 				BC2DCDB6251AB99700956916 /* SplashViewController.swift in Sources */,
 				BC3736492512C0D9007A1D13 /* UIView+Extension.swift in Sources */,
 				BC37363B2512C0C3007A1D13 /* UISwitchCustom.swift in Sources */,
+				BCBED0D1253F1B7300C950AD /* SettingsViewController.swift in Sources */,
 				BC4B483F2511686A00E7CC2F /* SceneDelegate.swift in Sources */,
 				BC2DCDB4251AB36F00956916 /* UsageResponse.swift in Sources */,
 				BC37364B2512C0D9007A1D13 /* TopBarView.swift in Sources */,
@@ -694,7 +698,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0.4;
+				MARKETING_VERSION = 1.0.5;
 				PRODUCT_BUNDLE_IDENTIFIER = abc.org.TeraVPNDemo3;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -720,7 +724,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0.4;
+				MARKETING_VERSION = 1.0.5;
 				PRODUCT_BUNDLE_IDENTIFIER = abc.org.TeraVPNDemo3;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";

@@ -81,6 +81,10 @@ class SplashViewController: UIViewController {
         NetworkService.serverRequest(url: request, dec: LoginResponse.self, view: self.view) { (loginResponse, error) in
             
             if loginResponse?.success == "true"{
+               
+                print("**********loginResponse**********")
+                print(loginResponse!)
+                print("**********loginResponse**********")
                 
                 var vc = VPNViewController()
                 if #available(iOSApplicationExtension 13.0, *) {

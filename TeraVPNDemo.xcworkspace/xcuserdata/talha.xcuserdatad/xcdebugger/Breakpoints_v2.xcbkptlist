@@ -14,8 +14,8 @@
             filePath = "VPNViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "277"
-            endingLineNumber = "277"
+            startingLineNumber = "258"
+            endingLineNumber = "258"
             landmarkName = "connectVpn()"
             landmarkType = "7">
             <Locations>
@@ -62,8 +62,8 @@
             filePath = "VPNViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "318"
-            endingLineNumber = "318"
+            startingLineNumber = "299"
+            endingLineNumber = "299"
             landmarkName = "configureVPN(serverAddress:username:password:)"
             landmarkType = "7">
          </BreakpointContent>

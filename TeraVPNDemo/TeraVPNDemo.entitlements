@@ -15,7 +15,7 @@
 	</array>
 	<key>com.apple.security.application-groups</key>
 	<array>
-		<string>group.abc.org.TeraVPNDemo3</string>
+		<string>group.abc.org.TeraVPNDemo1</string>
 	</array>
 </dict>
 </plist>

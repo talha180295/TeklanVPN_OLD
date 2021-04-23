@@ -167,8 +167,8 @@ class VPNViewController: UIViewController {
 //        self.connectionStatus.text = "Disconnected"
         self.connectionStatus.text = "Tap to Connect"
 //        self.connectionStatus.textColor = .red
-        self.connectionBtn.backgroundColor = UIColor(hexString: "3CB371")
-        
+//        self.connectionBtn.backgroundColor = UIColor(hexString: "3CB371")
+        self.connectionBtn.setImage(UIImage.init(named: "disconnected"), for: .normal)
         
         self.dataSent.text = "--"//"\(self.dataSentInMbs) MBs"
         self.dataRecieved.text = "--"//"\(self.dataRecievedInMbs) MBs"
@@ -509,9 +509,9 @@ extension VPNViewController{
 //            self.connectionStatus.text = "Connected"
             self.connectionStatus.text = "Tap to Disconnect"
 //            self.connectionStatus.textColor = .green
-            self.connectionBtn.setTitle("Stop Connection", for: .normal)
-            self.connectionBtn.backgroundColor = .red
-            
+//            self.connectionBtn.setTitle("Stop Connection", for: .normal)
+//            self.connectionBtn.backgroundColor = .red
+            self.connectionBtn.setImage(UIImage.init(named: "connected"), for: .normal)
             self.startTrafficTimer()
             self.startTimerLabel()
             // Create a timer to getTrafficStats
@@ -533,8 +533,9 @@ extension VPNViewController{
 //            self.connectionStatus.text = "Disconnected"
             self.connectionStatus.text = "Tap to Connect"
 //            self.connectionStatus.textColor = .red
-            self.connectionBtn.setTitle("Start Connection", for: .normal)
-            self.connectionBtn.backgroundColor = UIColor(hexString: "3CB371")
+//            self.connectionBtn.setTitle("Start Connection", for: .normal)
+//            self.connectionBtn.backgroundColor = UIColor(hexString: "3CB371")
+            self.connectionBtn.setImage(UIImage.init(named: "disconnected"), for: .normal)
             self.stopTrafficTimer()
             self.stopTimerLabel()
             break

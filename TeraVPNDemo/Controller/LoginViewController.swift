@@ -36,8 +36,8 @@ class LoginViewController: UIViewController {
         
         self.signUpSuccessMsg.isHidden = true
         
-        usernameTF.text  = "uzair@cyberdude.com"
-        passwordTF.text  = "abc123"
+//        usernameTF.text  = "uzair@cyberdude.com"
+//        passwordTF.text  = "abc123"
         
         
 //        loginBtn.setGradiantColors(colours: [UIColor(hexString: "#2B1468").cgColor, UIColor(hexString: "#70476F").cgColor])

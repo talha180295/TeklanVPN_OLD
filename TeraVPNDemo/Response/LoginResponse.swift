@@ -67,9 +67,9 @@ enum TypeEnum: String, Codable {
 // MARK: - Usage
 class Usage: Codable {
     var usagelimit, usagetotal, ratelimit, limitrange: String?
-    var remaining: Int?
+    var remaining: Int64?
 
-    init(usagelimit: String?, usagetotal: String?, ratelimit: String?, limitrange: String?, remaining: Int?) {
+    init(usagelimit: String?, usagetotal: String?, ratelimit: String?, limitrange: String?, remaining: Int64?) {
         self.usagelimit = usagelimit
         self.usagetotal = usagetotal
         self.ratelimit = ratelimit

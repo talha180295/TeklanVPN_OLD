@@ -18,8 +18,13 @@ class VPNViewController: UIViewController {
     var userData: LoginResponse!
     
     var timer : Timer?
+    var timer2 : Timer?
     //    var usage:UsageResponse!
     // = 30210912720
+    
+    var hours: Int = 0
+    var minutes: Int = 0
+    var seconds: Int = 0
     
     var usagelimitInMbs:Double = 0.0// =      32210912720
     var usageRemainingInMbs: Double = 0.0// = 30210912720
@@ -29,7 +34,7 @@ class VPNViewController: UIViewController {
     @IBOutlet weak var flag:UIImageView!
     @IBOutlet weak var countryName:UILabel!
     @IBOutlet weak var cityName:UILabel!
-    @IBOutlet weak var timmer:UILabel!
+    @IBOutlet weak var timerClock:UILabel!
     @IBOutlet weak var connectionBtn:GradientButton!
     @IBOutlet weak var serverIP:UILabel!
     @IBOutlet weak var dataRecieved:UILabel!
@@ -56,7 +61,7 @@ class VPNViewController: UIViewController {
     var isVPNConnected : Bool = false
    
     
-    func startTimer () {
+    func startTrafficTimer () {
         guard timer == nil else { return }
         
         timer =  Timer.scheduledTimer(
@@ -68,14 +73,71 @@ class VPNViewController: UIViewController {
     }
     
     
-    func stopTimer() {
+    func stopTrafficTimer() {
         timer?.invalidate()
         timer = nil
     }
     
+    func startTimerLabel () {
+        self.timerClock.isHidden = false
+        guard timer2 == nil else { return }
+        
+        timer2 =  Timer.scheduledTimer(
+            timeInterval: TimeInterval(1),
+            target      : self,
+            selector    : #selector(VPNViewController.update),
+            userInfo    : nil,
+            repeats     : true)
+    }
+    func stopTimerLabel() {
+        self.timerClock.isHidden = true
+        timer2?.invalidate()
+        timer2 = nil
+        self.hours = 0
+        self.minutes = 0
+        self.seconds = 0
+        
+        self.timerClock.text = "00:00:00"
+    }
     
+    
+    @objc func update() {
+        if self.seconds == 59 {
+            self.seconds = 0
+            if self.minutes == 59 {
+                self.minutes = 0
+                self.hours = self.hours + 1
+            } else {
+                self.minutes = self.minutes + 1
+            }
+        } else {
+            self.seconds = self.seconds + 1
+        }
+      
+        var h = ""
+        var m = ""
+        var s = ""
+        
+        if self.hours < 10{
+            h = "0"
+        }
+        if self.minutes < 10{
+            m = "0"
+        }
+        if self.seconds < 10{
+            s = "0"
+        }
+        self.timerClock.text = "\(h)\(self.hours):\(m)\(self.minutes):\(s)\(self.seconds)"
+        
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default) //UIImage.init(named: "transparent.png")
+        self.navigationController?.navigationBar.shadowImage = UIImage()
+        self.navigationController?.navigationBar.isTranslucent = true
+        self.navigationController?.view.backgroundColor = .clear
+        
         
         self.userData = HelperFunc().getUserDefaultData(dec: LoginResponse.self, title: User_Defaults.user)
         
@@ -102,13 +164,14 @@ class VPNViewController: UIViewController {
         self.countryName.text = "\(serverList[0].country ?? "")"
         self.cityName.text = "\(serverList[0].city ?? "")"
         self.flag.image = UIImage.init(named: serverList[0].flag ?? "")
-        self.connectionStatus.text = "Disconnected"
-        self.connectionStatus.textColor = .red
+//        self.connectionStatus.text = "Disconnected"
+        self.connectionStatus.text = "Tap to Connect"
+//        self.connectionStatus.textColor = .red
         self.connectionBtn.backgroundColor = UIColor(hexString: "3CB371")
         
         
-        self.dataSent.text = "\(self.dataSentInMbs) MBs"
-        self.dataRecieved.text = "\(self.dataRecievedInMbs) MBs"
+        self.dataSent.text = "--"//"\(self.dataSentInMbs) MBs"
+        self.dataRecieved.text = "--"//"\(self.dataRecievedInMbs) MBs"
         
         
         if let _ = self.usagelimit{
@@ -179,6 +242,23 @@ class VPNViewController: UIViewController {
         
         self.openSettingsScreen()
        
+    }
+    
+    @IBAction func locationBtn(_ sender:UIButton){
+        
+        var vc = LocationVC()
+        if #available(iOSApplicationExtension 13.0, *) {
+            vc = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(identifier: "LocationVC") as! LocationVC
+            
+        } else {
+            vc = self.storyboard?.instantiateViewController(withIdentifier: "LocationVC") as! LocationVC
+        }
+        
+        vc.serverList = self.serverList
+        vc.delegate = self
+        
+        self.navigationController?.pushViewController(vc, animated: true)
+        
     }
     
     func openSettingsScreen(){
@@ -420,17 +500,20 @@ extension VPNViewController{
             isVPNConnected = true
             print("Connecting...")
             self.connectionStatus.text = "Connecting..."
-            self.stopTimer()
+            self.stopTrafficTimer()
+            self.stopTimerLabel()
             break
         case .connected:
             isVPNConnected = true
             print("Connected...")
-            self.connectionStatus.text = "Connected"
-            self.connectionStatus.textColor = .green
+//            self.connectionStatus.text = "Connected"
+            self.connectionStatus.text = "Tap to Disconnect"
+//            self.connectionStatus.textColor = .green
             self.connectionBtn.setTitle("Stop Connection", for: .normal)
             self.connectionBtn.backgroundColor = .red
             
-            self.startTimer()
+            self.startTrafficTimer()
+            self.startTimerLabel()
             // Create a timer to getTrafficStats
 //            Timer.scheduledTimer(timeInterval: 2,
 //                                 target: self,
@@ -442,15 +525,18 @@ extension VPNViewController{
         case .disconnecting:
             print("Disconnecting...")
             self.connectionStatus.text = "Disconnecting..."
+            self.stopTimerLabel()
             break
         case .disconnected:
             isVPNConnected = false
             print("Disconnected...")
-            self.connectionStatus.text = "Disconnected"
-            self.connectionStatus.textColor = .red
+//            self.connectionStatus.text = "Disconnected"
+            self.connectionStatus.text = "Tap to Connect"
+//            self.connectionStatus.textColor = .red
             self.connectionBtn.setTitle("Start Connection", for: .normal)
             self.connectionBtn.backgroundColor = UIColor(hexString: "3CB371")
-            self.stopTimer()
+            self.stopTrafficTimer()
+            self.stopTimerLabel()
             break
         case .invalid:
             print("Invliad")
@@ -540,8 +626,8 @@ extension VPNViewController{
                             let bytesIn = dict?["bytesIn"] as! String
                             let bytesOut = dict?["bytesOut"] as! String
                             
-                            self.dataRecieved.text = "\(Int(bytesIn)!/1000) KB/S"
-                            self.dataSent.text = "\(Int(bytesOut)!/1000) KB/S"
+                            self.dataRecieved.text = "\(Int(bytesIn)!/1000) KB"
+                            self.dataSent.text = "\(Int(bytesOut)!/1000) KB"
                             //                            print("\(Int(bytesIn)!/1000000) MBs")
                             self.usageRemainingInMbs -= Double(bytesOut)!/1000000.00  + Double(bytesIn)!/1000000.00
                             self.updateGaugeTimer()

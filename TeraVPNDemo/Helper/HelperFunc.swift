@@ -231,4 +231,10 @@ class HelperFunc{
        source.present(popupVC, animated: true)
     }
     
+    func showAlert(title: String, message: String, controller: UIViewController) {
+        let alert = UIAlertController(title: title, message: message, preferredStyle: UIAlertController.Style.alert)
+        alert.addAction(UIAlertAction(title: "Ok", style: UIAlertAction.Style.default, handler: nil))
+        controller.present(alert, animated: true, completion: nil)
+    }
+    
 }

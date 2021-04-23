@@ -20,11 +20,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         IQKeyboardManager.shared.enable = true
         
-        let navigationBarAppearace = UINavigationBar.appearance()
+//        let navigationBarAppearace = UINavigationBar.appearance()
 
-        navigationBarAppearace.tintColor = UIColor(hexString: "#0ffffff")
-        navigationBarAppearace.barTintColor = UIColor(hexString: "#2B1468")
-        navigationBarAppearace.titleTextAttributes = [NSAttributedString.Key.foregroundColor : UIColor.white]
+//        navigationBarAppearace.tintColor = UIColor(hexString: "#0ffffff")
+//        navigationBarAppearace.barTintColor = UIColor(hexString: "#2B1468")
+//        navigationBarAppearace.titleTextAttributes = [NSAttributedString.Key.foregroundColor : UIColor.white]
+//        UINavigationBar.appearance().barTintColor = UIColor.themeBlue
+        UINavigationBar.appearance().tintColor = .white
+        UINavigationBar.appearance().titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
+        UIBarButtonItem.appearance().setTitleTextAttributes([NSAttributedString.Key.foregroundColor: UIColor.clear], for: .normal)
         return true
     }
 

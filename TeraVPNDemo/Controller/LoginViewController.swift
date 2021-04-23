@@ -27,7 +27,7 @@ class LoginViewController: UIViewController {
         passwordTF.text  = "abc123"
         
         
-        loginBtn.setGradiantColors(colours: [UIColor(hexString: "#2B1468").cgColor, UIColor(hexString: "#70476F").cgColor])
+//        loginBtn.setGradiantColors(colours: [UIColor(hexString: "#2B1468").cgColor, UIColor(hexString: "#70476F").cgColor])
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -82,6 +82,9 @@ class LoginViewController: UIViewController {
                 HelperFunc().saveUserDefaultData(data: loginResponse, title: User_Defaults.user)
                 self.navigationController?.pushViewController(vc, animated: true)
  
+            }
+            else{
+                HelperFunc().showAlert(title: "Alert!", message: loginResponse?.message ?? "Something went wrong!", controller: self)
             }
             
         }

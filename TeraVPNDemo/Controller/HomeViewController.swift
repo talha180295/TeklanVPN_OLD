@@ -78,24 +78,24 @@ class HomeViewController: UIViewController {
     }
     
     @IBAction func sideMenuBtn(_ sender:UIBarButtonItem){
-        var vc = SideMenuViewController()
-        if #available(iOSApplicationExtension 13.0, *) {
-            vc = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(identifier: "SideMenuViewController") as! SideMenuViewController
-        } else {
-            vc = storyboard?.instantiateViewController(withIdentifier: "SideMenuViewController") as! SideMenuViewController
-        }
-        vc.serverList = self.serverList
-        vc.delegate = self
-        // Define the menu
-        let leftMenuNavigationController = SideMenuNavigationController(rootViewController: vc)
-        SideMenuManager.default.leftMenuNavigationController = leftMenuNavigationController
-        
-        SideMenuManager.default.addPanGestureToPresent(toView: self.navigationController!.navigationBar)
-        SideMenuManager.default.addScreenEdgePanGesturesToPresent(toView: self.navigationController!.view)
-        
-        leftMenuNavigationController.statusBarEndAlpha = 0
-        leftMenuNavigationController.menuWidth = 280
-        present(leftMenuNavigationController, animated: true, completion: nil)
+//        var vc = SideMenuViewController()
+//        if #available(iOSApplicationExtension 13.0, *) {
+//            vc = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(identifier: "SideMenuViewController") as! SideMenuViewController
+//        } else {
+//            vc = storyboard?.instantiateViewController(withIdentifier: "SideMenuViewController") as! SideMenuViewController
+//        }
+//        vc.serverList = self.serverList
+//        vc.delegate = self
+//        // Define the menu
+//        let leftMenuNavigationController = SideMenuNavigationController(rootViewController: vc)
+//        SideMenuManager.default.leftMenuNavigationController = leftMenuNavigationController
+//        
+//        SideMenuManager.default.addPanGestureToPresent(toView: self.navigationController!.navigationBar)
+//        SideMenuManager.default.addScreenEdgePanGesturesToPresent(toView: self.navigationController!.view)
+//        
+//        leftMenuNavigationController.statusBarEndAlpha = 0
+//        leftMenuNavigationController.menuWidth = 280
+//        present(leftMenuNavigationController, animated: true, completion: nil)
     }
     
     @IBAction func connectVPNBtn(_ sender:UIButton){

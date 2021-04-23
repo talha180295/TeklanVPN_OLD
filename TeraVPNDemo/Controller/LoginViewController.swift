@@ -15,6 +15,15 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var passwordTF:UITextField!
     @IBOutlet weak var loginBtn:GradientButton!
     
+    @IBOutlet weak var fullNameTF:UITextField!
+    @IBOutlet weak var emailTF:UITextField!
+    @IBOutlet weak var signUP_PasswordTF:UITextField!
+
+    @IBOutlet weak var signInView:UIView!
+    @IBOutlet weak var signUpView:UIView!
+    
+    @IBOutlet weak var signUpSuccessMsg:UILabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -22,6 +31,10 @@ class LoginViewController: UIViewController {
 //        passwordTF.text  = "q0D5whHYs"
 //
 //
+        self.signInView.isHidden = false
+        self.signUpView.isHidden = true
+        
+        self.signUpSuccessMsg.isHidden = true
         
         usernameTF.text  = "uzair@cyberdude.com"
         passwordTF.text  = "abc123"
@@ -40,56 +53,141 @@ class LoginViewController: UIViewController {
         navigationController?.setNavigationBarHidden(false, animated: animated)
     }
     
+    @IBAction func dontHaveAccountBtn(_ sender:UIButton){
+        self.signInView.isHidden = true
+        self.signUpView.isHidden = false
+    }
+    
+    @IBAction func alreadyHaveAccountBtn(_ sender:UIButton){
+        self.signInView.isHidden = false
+        self.signUpView.isHidden = true
+    }
     
     @IBAction func loginBtn(_ sender:UIButton){
-        let params = ["username":usernameTF.text!,"password":passwordTF.text!]
         
-        let request = APIRouter.login(params)
-        NetworkService.serverRequest(url: request, dec: LoginResponse.self, view: self.view) { (loginResponse, error) in
+        if validateLogin(){
             
-            if loginResponse != nil{
-                print("**********loginResponse**********")
-                print(loginResponse!)
-                print("**********loginResponse**********")
-            }
-            else if error != nil{
-                print("**********loginResponse**********")
-                print(error!)
-                print("**********loginResponse**********")
-            }
+            let params = ["username":usernameTF.text!,"password":passwordTF.text!]
             
-            if loginResponse?.success == "true"{
+            let request = APIRouter.login(params)
+            NetworkService.serverRequest(url: request, dec: LoginResponse.self, view: self.view) { (loginResponse, error) in
                 
-                var vc = VPNViewController()
-                if #available(iOSApplicationExtension 13.0, *) {
-                    vc = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(identifier: "VPNViewController") as! VPNViewController
-                    
-                } else {
-                    vc = self.storyboard?.instantiateViewController(withIdentifier: "VPNViewController") as! VPNViewController
+                if loginResponse != nil{
+                    print("**********loginResponse**********")
+                    print(loginResponse!)
+                    print("**********loginResponse**********")
+                }
+                else if error != nil{
+                    print("**********loginResponse**********")
+                    print(error!)
+                    print("**********loginResponse**********")
                 }
                 
-                vc.serverList = loginResponse?.server ?? [Server]()
-                vc.username = loginResponse?.username
-                vc.password = loginResponse?.password
-//                vc.usagelimit = Double(loginResponse?.usage?.usagelimit ?? "0")
-//                vc.usageRemaining = Double(loginResponse?.usage?.remaining ?? 0)
+                if loginResponse?.success == "true"{
+                    
+                    var vc = VPNViewController()
+                    if #available(iOSApplicationExtension 13.0, *) {
+                        vc = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(identifier: "VPNViewController") as! VPNViewController
+                        
+                    } else {
+                        vc = self.storyboard?.instantiateViewController(withIdentifier: "VPNViewController") as! VPNViewController
+                    }
+                    
+                    vc.serverList = loginResponse?.server ?? [Server]()
+                    vc.username = loginResponse?.username
+                    vc.password = loginResponse?.password
+                    //                vc.usagelimit = Double(loginResponse?.usage?.usagelimit ?? "0")
+                    //                vc.usageRemaining = Double(loginResponse?.usage?.remaining ?? 0)
+                    
+                    let userCredentials = UserCredentials.init(username: self.usernameTF.text!, password: self.passwordTF.text!)
+                    HelperFunc().deleteUserDefaultData(title: User_Defaults.userCredentials)
+                    HelperFunc().saveUserDefaultData(data: userCredentials, title: User_Defaults.userCredentials)
+                    
+                    HelperFunc().deleteUserDefaultData(title: User_Defaults.user)
+                    HelperFunc().saveUserDefaultData(data: loginResponse, title: User_Defaults.user)
+                    self.navigationController?.pushViewController(vc, animated: true)
+                    
+                }
+                else{
+                    HelperFunc().showAlert(title: "Alert!", message: loginResponse?.message ?? "Something went wrong!", controller: self)
+                }
                 
-                let userCredentials = UserCredentials.init(username: self.usernameTF.text!, password: self.passwordTF.text!)
-                HelperFunc().deleteUserDefaultData(title: User_Defaults.userCredentials)
-                HelperFunc().saveUserDefaultData(data: userCredentials, title: User_Defaults.userCredentials)
-                
-                HelperFunc().deleteUserDefaultData(title: User_Defaults.user)
-                HelperFunc().saveUserDefaultData(data: loginResponse, title: User_Defaults.user)
-                self.navigationController?.pushViewController(vc, animated: true)
- 
-            }
-            else{
-                HelperFunc().showAlert(title: "Alert!", message: loginResponse?.message ?? "Something went wrong!", controller: self)
             }
             
         }
         
     }
+    
+    @IBAction func signUPBtn(_ sender:UIButton){
+        
+        if validateSignup(){
+            
+            let params = ["name":fullNameTF.text!, "email":emailTF.text!, "pass":signUP_PasswordTF.text!]
+            
+            let request = APIRouter.signup(params)
+            NetworkService.serverRequest(url: request, dec: SignUPResponse.self, view: self.view) { (signUPResponse, error) in
+                
+                if signUPResponse != nil{
+                    print("**********loginResponse**********")
+                    print(signUPResponse!)
+                    print("**********loginResponse**********")
+                }
+                else if error != nil{
+                    print("**********loginResponse**********")
+                    print(error!)
+                    print("**********loginResponse**********")
+                }
+                
+                if signUPResponse?.result == "success"{
+                    
+                    HelperFunc().showAlert(title: "Alert!", message: signUPResponse?.message ?? "Something went wrong!", controller: self)
+                    self.signUpSuccessMsg.isHidden = false
+                    self.signUpSuccessMsg.text = signUPResponse?.message ?? "Something went wrong!"
+                    
+                }
+                else{
+                    HelperFunc().showAlert(title: "Alert!", message: signUPResponse?.message ?? "Something went wrong!", controller: self)
+                    self.signUpSuccessMsg.isHidden = false
+                    self.signUpSuccessMsg.text = signUPResponse?.message ?? "Something went wrong!"
+                }
+                
+            }
+            
+        }
+    }
+    
+    
+    func validateLogin() -> Bool{
+        
+        if !usernameTF.hasText{
+            HelperFunc().showAlert(title: "Alert!", message: "Username Field is Empty!", controller: self)
+            return false
+        }
+        if !passwordTF.hasText{
+            HelperFunc().showAlert(title: "Alert!", message: "Password Field is Empty!", controller: self)
+            return false
+        }
+        return true
+    }
+    
+    func validateSignup() -> Bool{
+        
+        if !fullNameTF.hasText{
+            HelperFunc().showAlert(title: "Alert!", message: "Full Name Field is Empty!", controller: self)
+            return false
+        }
+        if !emailTF.hasText{
+            HelperFunc().showAlert(title: "Alert!", message: "Email Field is Empty!", controller: self)
+            return false
+        }
+        if !signUP_PasswordTF.hasText{
+            HelperFunc().showAlert(title: "Alert!", message: "Password Field is Empty!", controller: self)
+            return false
+        }
+
+        return true
+    }
+    
     
 }
 

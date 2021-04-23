@@ -70,7 +70,7 @@ enum APIRouter: URLRequestConvertible {
         case .usage:
             return "https://cloud.teravpn.com/api/usage.php"
         case .signup:
-            return "signup"
+            return "https://cloud.teravpn.com/api/signup.php"
         case .getShopList:
             return "shoplist"
         case .getCategoryProduct(_):

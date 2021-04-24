@@ -53,7 +53,7 @@ class SettingsViewController: UIViewController {
             vc = self.storyboard?.instantiateViewController(withIdentifier: "UserDetailsPopup") as! UserDetailsPopup
         }
         
-        HelperFunc().popUp(popup: vc, source: self, popupWidth: 300, popupHeight: 120, cornerRadius: 20)
+//        HelperFunc().popUp(popup: vc, source: self, popupWidth: 300, popupHeight: 120, cornerRadius: 20)
     }
     
     //For Website

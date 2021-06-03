@@ -15,26 +15,26 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var passwordTF:UITextField!
     @IBOutlet weak var loginBtn:GradientButton!
     
-    @IBOutlet weak var fullNameTF:UITextField!
-    @IBOutlet weak var emailTF:UITextField!
-    @IBOutlet weak var signUP_PasswordTF:UITextField!
+//    @IBOutlet weak var fullNameTF:UITextField!
+//    @IBOutlet weak var emailTF:UITextField!
+//    @IBOutlet weak var signUP_PasswordTF:UITextField!
 
     @IBOutlet weak var signInView:UIView!
-    @IBOutlet weak var signUpView:UIView!
+//    @IBOutlet weak var signUpView:UIView!
     
-    @IBOutlet weak var signUpSuccessMsg:UILabel!
+//    @IBOutlet weak var signUpSuccessMsg:UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-//        usernameTF.text  = "test@user.com"
-//        passwordTF.text  = "q0D5whHYs"
+        usernameTF.text  = "ios@teklanhosting.co.uk"
+        passwordTF.text  = "7V{e(06m*O}_"
 //
 //
-        self.signInView.isHidden = false
-        self.signUpView.isHidden = true
-        
-        self.signUpSuccessMsg.isHidden = true
+//        self.signInView.isHidden = false
+//        self.signUpView.isHidden = true
+//
+//        self.signUpSuccessMsg.isHidden = true
         
 //        usernameTF.text  = "uzair@cyberdude.com"
 //        passwordTF.text  = "abc123"
@@ -55,13 +55,13 @@ class LoginViewController: UIViewController {
     
     @IBAction func dontHaveAccountBtn(_ sender:UIButton){
         self.signInView.isHidden = true
-        self.signUpView.isHidden = false
+//        self.signUpView.isHidden = false
     }
     
-    @IBAction func alreadyHaveAccountBtn(_ sender:UIButton){
-        self.signInView.isHidden = false
-        self.signUpView.isHidden = true
-    }
+//    @IBAction func alreadyHaveAccountBtn(_ sender:UIButton){
+//        self.signInView.isHidden = false
+//        self.signUpView.isHidden = true
+//    }
     
     @IBAction func loginBtn(_ sender:UIButton){
         
@@ -118,43 +118,43 @@ class LoginViewController: UIViewController {
         
     }
     
-    @IBAction func signUPBtn(_ sender:UIButton){
-        
-        if validateSignup(){
-            
-            let params = ["name":fullNameTF.text!, "email":emailTF.text!, "pass":signUP_PasswordTF.text!]
-            
-            let request = APIRouter.signup(params)
-            NetworkService.serverRequest(url: request, dec: SignUPResponse.self, view: self.view) { (signUPResponse, error) in
-                
-                if signUPResponse != nil{
-                    print("**********loginResponse**********")
-                    print(signUPResponse!)
-                    print("**********loginResponse**********")
-                }
-                else if error != nil{
-                    print("**********loginResponse**********")
-                    print(error!)
-                    print("**********loginResponse**********")
-                }
-                
-                if signUPResponse?.result == "success"{
-                    
-                    HelperFunc().showAlert(title: "Alert!", message: signUPResponse?.message ?? "Something went wrong!", controller: self)
-                    self.signUpSuccessMsg.isHidden = false
-                    self.signUpSuccessMsg.text = signUPResponse?.message ?? "Something went wrong!"
-                    
-                }
-                else{
-                    HelperFunc().showAlert(title: "Alert!", message: signUPResponse?.message ?? "Something went wrong!", controller: self)
-                    self.signUpSuccessMsg.isHidden = false
-                    self.signUpSuccessMsg.text = signUPResponse?.message ?? "Something went wrong!"
-                }
-                
-            }
-            
-        }
-    }
+//    @IBAction func signUPBtn(_ sender:UIButton){
+//
+//        if validateSignup(){
+//
+//            let params = ["name":fullNameTF.text!, "email":emailTF.text!, "pass":signUP_PasswordTF.text!]
+//
+//            let request = APIRouter.signup(params)
+//            NetworkService.serverRequest(url: request, dec: SignUPResponse.self, view: self.view) { (signUPResponse, error) in
+//
+//                if signUPResponse != nil{
+//                    print("**********loginResponse**********")
+//                    print(signUPResponse!)
+//                    print("**********loginResponse**********")
+//                }
+//                else if error != nil{
+//                    print("**********loginResponse**********")
+//                    print(error!)
+//                    print("**********loginResponse**********")
+//                }
+//
+//                if signUPResponse?.result == "success"{
+//
+//                    HelperFunc().showAlert(title: "Alert!", message: signUPResponse?.message ?? "Something went wrong!", controller: self)
+//                    self.signUpSuccessMsg.isHidden = false
+//                    self.signUpSuccessMsg.text = signUPResponse?.message ?? "Something went wrong!"
+//
+//                }
+//                else{
+//                    HelperFunc().showAlert(title: "Alert!", message: signUPResponse?.message ?? "Something went wrong!", controller: self)
+//                    self.signUpSuccessMsg.isHidden = false
+//                    self.signUpSuccessMsg.text = signUPResponse?.message ?? "Something went wrong!"
+//                }
+//
+//            }
+//
+//        }
+//    }
     
     
     func validateLogin() -> Bool{
@@ -170,23 +170,23 @@ class LoginViewController: UIViewController {
         return true
     }
     
-    func validateSignup() -> Bool{
-        
-        if !fullNameTF.hasText{
-            HelperFunc().showAlert(title: "Alert!", message: "Full Name Field is Empty!", controller: self)
-            return false
-        }
-        if !emailTF.hasText{
-            HelperFunc().showAlert(title: "Alert!", message: "Email Field is Empty!", controller: self)
-            return false
-        }
-        if !signUP_PasswordTF.hasText{
-            HelperFunc().showAlert(title: "Alert!", message: "Password Field is Empty!", controller: self)
-            return false
-        }
-
-        return true
-    }
+//    func validateSignup() -> Bool{
+//        
+//        if !fullNameTF.hasText{
+//            HelperFunc().showAlert(title: "Alert!", message: "Full Name Field is Empty!", controller: self)
+//            return false
+//        }
+//        if !emailTF.hasText{
+//            HelperFunc().showAlert(title: "Alert!", message: "Email Field is Empty!", controller: self)
+//            return false
+//        }
+//        if !signUP_PasswordTF.hasText{
+//            HelperFunc().showAlert(title: "Alert!", message: "Password Field is Empty!", controller: self)
+//            return false
+//        }
+//
+//        return true
+//    }
     
     
 }

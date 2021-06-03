@@ -17,7 +17,7 @@ class LoginResponse: Codable {
     var success, message, name, username, password: String?
     var nextdue, curloc, query, package: String?
     var server: [Server]?
-    var usage: Usage?
+//    var usage: Usage?
     var adblocker: String?
 
     init(success: String?, message: String?, name: String?, username: String?, password: String?, nextdue: String?, curloc: String?, query: String?, package: String?, server: [Server]?, usage: Usage?, adblocker: String?) {
@@ -31,7 +31,7 @@ class LoginResponse: Codable {
         self.query = query
         self.package = package
         self.server = server
-        self.usage = usage
+//        self.usage = usage
         self.adblocker = adblocker
     }
 }

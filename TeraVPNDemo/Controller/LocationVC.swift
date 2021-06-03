@@ -24,7 +24,7 @@ class LocationVC: UIViewController {
         
         self.title = "Servers"
         
-        navigationController?.setNavigationBarHidden(false, animated: false)
+        navigationController?.setNavigationBarHidden(true, animated: false)
         
         HelperFunc().registerTableCell(tableView: serverNameTbl, nibName: "MenuCell", identifier: "MenuCell")
         serverNameTbl.delegate = self
@@ -73,8 +73,8 @@ extension LocationVC: UITableViewDelegate, UITableViewDataSource{
         catch{
             
         }
-//        dismiss(animated: true, completion: nil)
-        self.navigationController?.popViewController(animated: true)
+        dismiss(animated: true, completion: nil)
+//        self.navigationController?.popViewController(animated: true)
     }
     
 }

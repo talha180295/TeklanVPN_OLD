@@ -66,7 +66,7 @@ enum APIRouter: URLRequestConvertible {
         switch self {
        
         case .login:
-            return "https://cloud.teravpn.com/api/app/login.php"
+            return "https://teklanvpn.com/api/app/login.php"
         case .usage:
             return "https://cloud.teravpn.com/api/usage.php"
         case .signup:

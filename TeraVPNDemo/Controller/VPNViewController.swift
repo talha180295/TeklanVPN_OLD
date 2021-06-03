@@ -157,7 +157,7 @@ class VPNViewController: UIViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(VPNViewController.VPNStatusDidChange(_:)), name: NSNotification.Name.NEVPNStatusDidChange, object: nil)
         
         
-        self.title = "TeraVPN"
+        self.title = "Teklan VPN"
         
         self.selectedIP = "\(serverList[0].serverIP ?? "0") \(serverList[0].serverPort ?? "0")"
         self.serverIP.text = "\(serverList[0].serverIP ?? "0")"//" \(serverList[0].serverPort ?? "0")"
@@ -195,7 +195,7 @@ class VPNViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        navigationController?.setNavigationBarHidden(false, animated: animated)
+        navigationController?.setNavigationBarHidden(true, animated: animated)
     }
     
     
@@ -214,13 +214,43 @@ class VPNViewController: UIViewController {
     }
     
     
-    @IBAction func sideMenuBtn(_ sender:UIBarButtonItem){
+    @IBAction func sideMenuBtn(_ sender:UIButton){
         
-        var vc = SideMenuViewController()
+        openLocationScreen()
+    }
+    
+    
+    //For logout
+    @IBAction func settingsBtn(_ sender:UIButton){
+        
+        self.openSettingsScreen()
+       
+    }
+    
+    @IBAction func locationBtn(_ sender:UIButton){
+        
+        openLocationScreen()
+        
+    }
+    
+    func openSettingsScreen(){
+        var vc = SettingsViewController()
         if #available(iOSApplicationExtension 13.0, *) {
-            vc = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(identifier: "SideMenuViewController") as! SideMenuViewController
+            vc = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(identifier: "SettingsViewController") as! SettingsViewController
+
         } else {
-            vc = storyboard?.instantiateViewController(withIdentifier: "SideMenuViewController") as! SideMenuViewController
+            vc = self.storyboard?.instantiateViewController(withIdentifier: "SettingsViewController") as! SettingsViewController
+        }
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
+    
+    func openLocationScreen(){
+        
+        var vc = LocationVC()
+        if #available(iOSApplicationExtension 13.0, *) {
+            vc = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(identifier: "LocationVC") as! LocationVC
+        } else {
+            vc = storyboard?.instantiateViewController(withIdentifier: "LocationVC") as! LocationVC
         }
         vc.serverList = self.serverList
         vc.delegate = self
@@ -234,42 +264,6 @@ class VPNViewController: UIViewController {
         leftMenuNavigationController.statusBarEndAlpha = 0
         leftMenuNavigationController.menuWidth = 280
         present(leftMenuNavigationController, animated: true, completion: nil)
-    }
-    
-    
-    //For logout
-    @IBAction func settingsBtn(_ sender:UIBarButtonItem){
-        
-        self.openSettingsScreen()
-       
-    }
-    
-    @IBAction func locationBtn(_ sender:UIButton){
-        
-        var vc = LocationVC()
-        if #available(iOSApplicationExtension 13.0, *) {
-            vc = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(identifier: "LocationVC") as! LocationVC
-            
-        } else {
-            vc = self.storyboard?.instantiateViewController(withIdentifier: "LocationVC") as! LocationVC
-        }
-        
-        vc.serverList = self.serverList
-        vc.delegate = self
-        
-        self.navigationController?.pushViewController(vc, animated: true)
-        
-    }
-    
-    func openSettingsScreen(){
-        var vc = SettingsViewController()
-        if #available(iOSApplicationExtension 13.0, *) {
-            vc = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(identifier: "SettingsViewController") as! SettingsViewController
-
-        } else {
-            vc = self.storyboard?.instantiateViewController(withIdentifier: "SettingsViewController") as! SettingsViewController
-        }
-        self.navigationController?.pushViewController(vc, animated: true)
     }
     
 }

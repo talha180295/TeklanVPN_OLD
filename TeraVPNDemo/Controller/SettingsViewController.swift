@@ -12,7 +12,7 @@ class SettingsViewController: UIViewController {
 
     @IBOutlet weak var expiryLable:UILabel!
     @IBOutlet weak var packageLable:UILabel!
-    @IBOutlet weak var userEmail:UILabel!
+//    @IBOutlet weak var userEmail:UILabel!
     @IBOutlet weak var adSwitch:UISwitch!
     
     override func viewDidLoad() {
@@ -23,7 +23,7 @@ class SettingsViewController: UIViewController {
         
         self.expiryLable.text = "Account Expires: \(userData?.nextdue ?? "")"
         self.packageLable.text = "Package: \(userData?.package ?? "")"
-        self.userEmail.text = userData?.username ?? ""
+//        self.userEmail.text = userData?.username ?? ""
         
         if let adBlocker = UserDefaults.standard.value(forKey: User_Defaults.adBlocker) as? Bool{
             self.adSwitch.isOn = adBlocker

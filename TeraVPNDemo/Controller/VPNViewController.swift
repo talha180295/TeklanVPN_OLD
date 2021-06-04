@@ -418,6 +418,17 @@ extension VPNViewController{
         
         constr = constr.replacingOccurrences(of: "remote ip", with: "remote \(self.selectedIP ?? "")")
         
+        let proto = UserDefaults.standard.value(forKey: User_Defaults.proto) as? String ?? "udp"
+        
+        
+        if proto == Proto_type.tcp.rawValue{
+            constr = constr.replacingOccurrences(of: "proto", with: "proto \(proto)")
+        }
+        else if proto == Proto_type.udp.rawValue{
+            constr = constr.replacingOccurrences(of: "proto", with: "proto \(proto)\n\("explicit-exit-notify")")
+        }
+        
+        
         print("selectedIP=\(self.selectedIP ?? "")")
 //        constr = constr.replacingOccurrences(of: "remote ip", with: "remote \(self.selectedIP ?? "") 443"
         constr = constr.replacingOccurrences(of: "\r\n", with: "\n")
@@ -425,7 +436,10 @@ extension VPNViewController{
         if let adBlocker = UserDefaults.standard.value(forKey: User_Defaults.adBlocker) as? Bool{
             
             if adBlocker{
-                constr = constr.replacingOccurrences(of: "dhcp-option DNS 8.8.8.8", with: "dhcp-option DNS 8.8.8.8 \(self.userData.adblocker ?? "")")
+                constr = constr.replacingOccurrences(of: "dhcp-option", with: "pull-filter ignore \"dhcp-option DNS\"\nredirect-gateway\ndhcp-option DNS \(self.userData.adblocker ?? "")")
+            }
+            else{
+                constr = constr.replacingOccurrences(of: "dhcp-option", with: "")
             }
             
         }

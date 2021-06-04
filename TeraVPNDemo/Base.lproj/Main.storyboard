@@ -1015,6 +1015,7 @@
                                                         <color key="onTintColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <color key="thumbTintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <connections>
+                                                            <action selector="protoSwitchChange:" destination="go8-E6-Ep0" eventType="touchUpInside" id="LWj-98-gjb"/>
                                                             <action selector="switchChange:" destination="go8-E6-Ep0" eventType="touchUpInside" id="94J-B7-NDj"/>
                                                         </connections>
                                                     </switch>
@@ -1114,6 +1115,8 @@
                         <outlet property="adSwitch" destination="7dO-Wm-Ox4" id="k43-K4-Ced"/>
                         <outlet property="expiryLable" destination="Asj-zb-nHL" id="lwr-16-euG"/>
                         <outlet property="packageLable" destination="ji0-Ve-06V" id="rjN-4g-A49"/>
+                        <outlet property="protoLable" destination="uX2-uc-pnG" id="EGw-cd-3B7"/>
+                        <outlet property="protoSwitch" destination="NHT-Uf-1Rw" id="qo7-yi-Mnx"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5BJ-aE-SiJ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

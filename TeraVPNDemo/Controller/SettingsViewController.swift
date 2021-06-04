@@ -14,6 +14,8 @@ class SettingsViewController: UIViewController {
     @IBOutlet weak var packageLable:UILabel!
 //    @IBOutlet weak var userEmail:UILabel!
     @IBOutlet weak var adSwitch:UISwitch!
+    @IBOutlet weak var protoSwitch:UISwitch!
+    @IBOutlet weak var protoLable:UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -41,6 +43,20 @@ class SettingsViewController: UIViewController {
     @IBAction func switchChange(_ sender:UISwitch){
         
         UserDefaults.standard.set(sender.isOn, forKey: User_Defaults.adBlocker)
+    }
+    
+    @IBAction func protoSwitchChange(_ sender:UISwitch){
+        
+        
+        if sender.isOn{
+            self.protoLable.text = "VPN Protocol - TCP"
+            UserDefaults.standard.set(Proto_type.tcp.rawValue, forKey: User_Defaults.proto)
+        }
+        else{
+            UserDefaults.standard.set(Proto_type.udp.rawValue, forKey: User_Defaults.proto)
+            self.protoLable.text = "VPN Protocol - UDP"
+        }
+        
     }
     
     //For User Details

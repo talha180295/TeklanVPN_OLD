@@ -14,6 +14,7 @@ struct User_Defaults {
     static let usage = "usage"
     static let userCredentials = "UserCredentials"
     static let adBlocker = "adBlocker"
+    static let proto = "proto"
 }
 
 class AppConstants {
@@ -35,4 +36,10 @@ enum HTTPHeaderField: String {
     case contentType = "Content-Type"
     case acceptType = "Accept"
     case acceptEncoding = "Accept-Encoding"
+}
+
+enum Proto_type : String{
+//    case auto = "Automatic"
+    case tcp
+    case udp
 }

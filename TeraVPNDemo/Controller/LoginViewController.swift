@@ -27,8 +27,8 @@ class LoginViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        usernameTF.text  = "ios@teklanhosting.co.uk"
-        passwordTF.text  = "7V{e(06m*O}_"
+//        usernameTF.text  = "ios@teklanhosting.co.uk"
+//        passwordTF.text  = "7V{e(06m*O}_"
 //
 //
 //        self.signInView.isHidden = false

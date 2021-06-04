@@ -55,7 +55,7 @@ class VPNViewController: UIViewController {
     
     //VPN Var
     let tunnelBundleId = "\(Bundle.main.bundleIdentifier!).PacketTunnel"
-    // "abc.org.TeraVPNDemo3.PacketTunnel"
+
     var providerManager = NETunnelProviderManager()
     var selectedIP : String!
     var isVPNConnected : Bool = false
@@ -201,13 +201,13 @@ class VPNViewController: UIViewController {
     
     
     @IBAction func connectBtn(_ sender:UIButton){
-        
-        if isVPNConnected == true {
-            self.connectVpn()
-        }
-        else{
-            self.checkUsage()
-        }
+        self.connectVpn()
+//        if isVPNConnected == true {
+//            self.connectVpn()
+//        }
+//        else{
+//            self.checkUsage()
+//        }
 //
        
         
@@ -334,7 +334,7 @@ extension VPNViewController{
         }
         else{
             
-            let otherAlert = UIAlertController(title: "Tera VPN", message: "Are you sure access VPN Connection", preferredStyle: UIAlertController.Style.alert)
+            let otherAlert = UIAlertController(title: "Teklan VPN", message: "Are you sure access VPN Connection", preferredStyle: UIAlertController.Style.alert)
             
             let connectAction = UIAlertAction(title: "YES", style: UIAlertAction.Style.default) { _ in
                 
@@ -374,7 +374,7 @@ extension VPNViewController{
     func configureVPN(serverAddress: String, username: String, password: String) {
         
         
-        guard let configurationFileContent = self.getFileData(path: "vpn-01") else { return }
+        guard let configurationFileContent = self.getFileData(path: "nopie") else { return }
         
         self.providerManager.loadFromPreferences { error in
             if error == nil {
@@ -388,7 +388,7 @@ extension VPNViewController{
                 
                 tunnelProtocol.disconnectOnSleep = false
                 self.providerManager.protocolConfiguration = tunnelProtocol
-                self.providerManager.localizedDescription = "TeraVPN" // the title of the VPN profile which will appear on Settings
+                self.providerManager.localizedDescription = "TeklanVPN" // the title of the VPN profile which will appear on Settings
                 self.providerManager.isEnabled = true
                 self.providerManager.saveToPreferences(completionHandler: { (error) in
                     if error == nil  {

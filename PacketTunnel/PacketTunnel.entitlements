@@ -11,7 +11,7 @@
 	</array>
 	<key>com.apple.security.application-groups</key>
 	<array>
-		<string>group.abc.demo.TeraVPN.PacketTunnel</string>
+		<string>group.abc.demo.TeklanVPN.PacketTunnel</string>
 	</array>
 	<key>keychain-access-groups</key>
 	<array/>

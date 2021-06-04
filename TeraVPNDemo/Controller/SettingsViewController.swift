@@ -87,6 +87,12 @@ class SettingsViewController: UIViewController {
         present(alert, animated: true, completion: nil)
     }
     
+    @IBAction func speedTestBtn(_ sender:UIButton){
+        self.openSpeedTestScreen()
+    }
+    
+   
+    
     func logout(){
         
         HelperFunc().deleteUserDefaultData(title: User_Defaults.user)
@@ -104,6 +110,17 @@ class SettingsViewController: UIViewController {
 
         } else {
             vc = self.storyboard?.instantiateViewController(withIdentifier: "LoginViewController") as! LoginViewController
+        }
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
+    
+    func openSpeedTestScreen(){
+        var vc = SpeedTestViewController()
+        if #available(iOSApplicationExtension 13.0, *) {
+            vc = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(identifier: "SpeedTestViewController") as! SpeedTestViewController
+
+        } else {
+            vc = self.storyboard?.instantiateViewController(withIdentifier: "SpeedTestViewController") as! SpeedTestViewController
         }
         self.navigationController?.pushViewController(vc, animated: true)
     }

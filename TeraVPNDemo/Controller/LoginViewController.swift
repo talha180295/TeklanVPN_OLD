@@ -27,8 +27,8 @@ class LoginViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-//        usernameTF.text  = "ios@teklanhosting.co.uk"
-//        passwordTF.text  = "7V{e(06m*O}_"
+       usernameTF.text  = "ios@teklanhosting.co.uk"
+        passwordTF.text  = "7V{e(06m*O}_"
 //
 //
 //        self.signInView.isHidden = false
@@ -118,6 +118,21 @@ class LoginViewController: UIViewController {
         
     }
     
+    
+    
+    @IBAction func forgotPassBtn(_ sender:UIButton){
+        
+        var vc = WebViewController()
+        if #available(iOSApplicationExtension 13.0, *) {
+            vc = UIStoryboard.init(name: "Main", bundle: nil).instantiateViewController(identifier: "WebViewController") as! WebViewController
+            
+        } else {
+            vc = self.storyboard?.instantiateViewController(withIdentifier: "WebViewController") as! WebViewController
+        }
+        self.navigationController?.pushViewController(vc, animated: true)
+        
+    }
+    
 //    @IBAction func signUPBtn(_ sender:UIButton){
 //
 //        if validateSignup(){
@@ -171,7 +186,7 @@ class LoginViewController: UIViewController {
     }
     
 //    func validateSignup() -> Bool{
-//        
+//
 //        if !fullNameTF.hasText{
 //            HelperFunc().showAlert(title: "Alert!", message: "Full Name Field is Empty!", controller: self)
 //            return false
@@ -230,7 +245,7 @@ class GradientButton: UIButton {
 //        super.layoutSubviews()
 //        gradientLayer.frame = bounds
 //    }
-//    
+//
     func setGradiantColors(colours: [Any]){
         self.colors = colours
         gradientLayer.frame = bounds

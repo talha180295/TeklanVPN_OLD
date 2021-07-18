@@ -15,7 +15,7 @@ class WebViewController: UIViewController, WKNavigationDelegate {
     var webView: WKWebView!
     
     override func loadView() {
-        self.title = "Forgot Paasword"
+        self.title = "Forgot Password"
         UINavigationBar.appearance().tintColor = .black
         UINavigationBar.appearance().titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.black]
         webView = WKWebView()

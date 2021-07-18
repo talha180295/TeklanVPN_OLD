@@ -27,8 +27,13 @@ class LoginViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-       usernameTF.text  = "ios@teklanhosting.co.uk"
-        passwordTF.text  = "7V{e(06m*O}_"
+//        #if targetEnvironment(simulator)
+            
+//        usernameTF.text  = "ios@teklanhosting.co.uk"
+//        passwordTF.text  = "7V{e(06m*O}_"
+        
+//        #endif
+       
 //
 //
 //        self.signInView.isHidden = false
@@ -53,10 +58,10 @@ class LoginViewController: UIViewController {
         navigationController?.setNavigationBarHidden(false, animated: animated)
     }
     
-    @IBAction func dontHaveAccountBtn(_ sender:UIButton){
-        self.signInView.isHidden = true
-//        self.signUpView.isHidden = false
-    }
+//    @IBAction func dontHaveAccountBtn(_ sender:UIButton){
+//        self.signInView.isHidden = true
+////        self.signUpView.isHidden = false
+//    }
     
 //    @IBAction func alreadyHaveAccountBtn(_ sender:UIButton){
 //        self.signInView.isHidden = false

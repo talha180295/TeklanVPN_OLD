@@ -28,14 +28,14 @@ class VPNViewController: UIViewController {
     
     var usagelimitInMbs:Double = 0.0// =      32210912720
     var usageRemainingInMbs: Double = 0.0// = 30210912720
-    
+    var selectedServer:Server!
     
     @IBOutlet weak var gaugeView: GaugeView!
     @IBOutlet weak var flag:UIImageView!
     @IBOutlet weak var countryName:UILabel!
     @IBOutlet weak var cityName:UILabel!
     @IBOutlet weak var timerClock:UILabel!
-    @IBOutlet weak var connectionBtn:GradientButton!
+    @IBOutlet weak var connectionBtn:UIButton!
     @IBOutlet weak var serverIP:UILabel!
     @IBOutlet weak var dataRecieved:UILabel!
     @IBOutlet weak var dataSent:UILabel!
@@ -185,6 +185,30 @@ class VPNViewController: UIViewController {
             gaugeView.isHidden = true
 
         }
+        self.selectedServer = serverList.first
+        
+        self.loadProviderManager {
+            if self.checkConnectionOnstartup(){
+                if self.providerManager.connection.status == .disconnected || self.providerManager.connection.status == .invalid {
+                    self.connectVpn()
+                }
+            }
+            if self.providerManager.connection.status == .connected {
+                if let connectedServer = self.getConnectedVpnData(){
+
+                    self.connected()
+                    self.selectedIP = "\(connectedServer.serverIP ?? "0")"//" \(server.serverPort ?? "0")"
+                    self.serverIP.text = connectedServer.serverIP
+                    self.countryName.text = "\(connectedServer.country ?? "") , \(connectedServer.city ?? "")"
+                    self.flag.image = UIImage.init(named: connectedServer.flag ?? "")
+
+                    self.selectedServer = connectedServer
+                    self.connectionStatus.text = "Connected"
+                    self.isVPNConnected = true
+
+                }
+            }
+        }
         
         
         
@@ -200,7 +224,7 @@ class VPNViewController: UIViewController {
     
     
     
-    @IBAction func connectBtn(_ sender:UIButton){
+    @IBAction func connectionBtn(_ sender:UIButton){
         self.connectVpn()
 //        if isVPNConnected == true {
 //            self.connectVpn()
@@ -316,46 +340,58 @@ extension VPNViewController{
         
         if isVPNConnected == true {
             
-            let alert = UIAlertController(title: "Cancel Confirmation", message: "Disconnect the connected VPN cancel the connection attempt?", preferredStyle: UIAlertController.Style.alert)
-            
-            let disconnectAction = UIAlertAction(title: "DISCONNECT", style: UIAlertAction.Style.destructive) { _ in
-                self.providerManager.connection.stopVPNTunnel()
-                
-            }
-            
-            let dismiss = UIAlertAction(title: "Cancel", style: UIAlertAction.Style.cancel, handler: nil)
-            
-            // relate actions to controllers
-            alert.addAction(disconnectAction)
-            
-            alert.addAction(dismiss)
-            
-            present(alert, animated: true, completion: nil)
+            self.providerManager.connection.stopVPNTunnel()
+//            let alert = UIAlertController(title: "Cancel Confirmation", message: "Disconnect the connected VPN cancel the connection attempt?", preferredStyle: UIAlertController.Style.alert)
+//
+//            let disconnectAction = UIAlertAction(title: "DISCONNECT", style: UIAlertAction.Style.destructive) { _ in
+//                self.providerManager.connection.stopVPNTunnel()
+//
+//            }
+//
+//            let dismiss = UIAlertAction(title: "Cancel", style: UIAlertAction.Style.cancel, handler: nil)
+//
+//            // relate actions to controllers
+//            alert.addAction(disconnectAction)
+//
+//            alert.addAction(dismiss)
+//
+//            present(alert, animated: true, completion: nil)
         }
         else{
             
-            let otherAlert = UIAlertController(title: "Teklan VPN", message: "Are you sure access VPN Connection", preferredStyle: UIAlertController.Style.alert)
-            
-            let connectAction = UIAlertAction(title: "YES", style: UIAlertAction.Style.default) { _ in
+            let password = self.userData?.password ?? ""
+            let username = self.userData?.username ?? ""
+            self.loadProviderManager {
+//                self.configureVPN(serverAddress: "", username: username, password:password)
                 
-                let password = self.userData?.password ?? ""
-                let username = self.userData?.username ?? ""
-                self.loadProviderManager {
-//                    self.configureVPN(serverAddress: self.selectedIP, username: self.username, password: "dcd76cbc5ad008a")dfe334f1a50535f
-                    self.configureVPN(serverAddress: "", username: username, password:password)
-                    
-                }
+                self.connectionBtn.isEnabled = false
+                self.configureVPN(serverAddress: "", username: username, password:password)
+                self.connecting()
                 
             }
             
-            let dismiss = UIAlertAction(title: "NO", style: UIAlertAction.Style.cancel, handler: nil)
-            
-            // relate actions to controllers
-            otherAlert.addAction(connectAction)
-            
-            otherAlert.addAction(dismiss)
-            
-            present(otherAlert, animated: true, completion: nil)
+//            let otherAlert = UIAlertController(title: "Teklan VPN", message: "Please click Yes to proceed with VPN connection", preferredStyle: UIAlertController.Style.alert)
+//
+//            let connectAction = UIAlertAction(title: "YES", style: UIAlertAction.Style.default) { _ in
+//
+//                let password = self.userData?.password ?? ""
+//                let username = self.userData?.username ?? ""
+//                self.loadProviderManager {
+////                    self.configureVPN(serverAddress: self.selectedIP, username: self.username, password: "dcd76cbc5ad008a")dfe334f1a50535f
+//                    self.configureVPN(serverAddress: "", username: username, password:password)
+//
+//                }
+//
+//            }
+//
+//            let dismiss = UIAlertAction(title: "NO", style: UIAlertAction.Style.cancel, handler: nil)
+//
+//            // relate actions to controllers
+//            otherAlert.addAction(connectAction)
+//
+//            otherAlert.addAction(dismiss)
+//
+//            present(otherAlert, animated: true, completion: nil)
             
             
         }
@@ -508,26 +544,24 @@ extension VPNViewController{
             isVPNConnected = true
             print("Connecting...")
             self.connectionStatus.text = "Connecting..."
+            self.connectionBtn.setImage(UIImage.init(named: "connecting"), for: .normal)
             self.stopTrafficTimer()
             self.stopTimerLabel()
             break
         case .connected:
             isVPNConnected = true
             print("Connected...")
-//            self.connectionStatus.text = "Connected"
-            self.connectionStatus.text = "Tap to Disconnect"
-//            self.connectionStatus.textColor = .green
-//            self.connectionBtn.setTitle("Stop Connection", for: .normal)
-//            self.connectionBtn.backgroundColor = .red
+            self.connectionStatus.text = "Connected"
             self.connectionBtn.setImage(UIImage.init(named: "connected"), for: .normal)
             self.startTrafficTimer()
             self.startTimerLabel()
-            // Create a timer to getTrafficStats
-//            Timer.scheduledTimer(timeInterval: 2,
-//                                 target: self,
-//                                 selector: #selector(getTrafficStats),
-//                                 userInfo: nil,
-//                                 repeats: true)
+          
+            self.connectionBtn.isEnabled = true
+            
+
+            self.connected()
+            self.saveConnectedVpnData(connectedServer: self.selectedServer)
+            
             
             break
         case .disconnecting:
@@ -538,20 +572,26 @@ extension VPNViewController{
         case .disconnected:
             isVPNConnected = false
             print("Disconnected...")
-//            self.connectionStatus.text = "Disconnected"
-            self.connectionStatus.text = "Tap to Connect"
+            self.connectionStatus.text = "Disconnected"
+//            self.connectionStatus.text = "Tap to Connect"
 //            self.connectionStatus.textColor = .red
 //            self.connectionBtn.setTitle("Start Connection", for: .normal)
 //            self.connectionBtn.backgroundColor = UIColor(hexString: "3CB371")
             self.connectionBtn.setImage(UIImage.init(named: "disconnected"), for: .normal)
             self.stopTrafficTimer()
             self.stopTimerLabel()
+            self.connectionBtn.isEnabled = true
+            self.disconnected()
+            self.deleteConnectedVpnData()
             break
         case .invalid:
             print("Invliad")
             break
         case .reasserting:
             print("Reasserting...")
+            self.connectionStatus.text = "Titles.VPN_STATE_RECONNECTING.rawValue.localiz().uppercased()"
+            self.connectionBtn.isEnabled = false
+            self.reconnecting()
             break
         @unknown default:
             print("Fatel Error...")
@@ -574,6 +614,7 @@ extension VPNViewController:ServerListProtocol{
         self.cityName.text = "\(server.city ?? "")"
         self.flag.image = UIImage.init(named: server.flag ?? "")
         
+        self.selectedServer = server
     }
     
     
@@ -663,5 +704,86 @@ extension VPNViewController{
             }
         }
         return nil
+    }
+}
+
+
+extension VPNViewController{
+    
+
+    func reconnecting(){
+//        circularView.progressLayer.strokeColor = UIColor.ButtonDisconnected.cgColor
+//        signal1.setImageTintColor(UIColor.AntennaDisconnected)
+//        signal2.setImageTintColor(UIColor.AntennaDisconnected)
+//        signal3.setImageTintColor(UIColor.AntennaDisconnected)
+//        connectionBtn.setImageTintColor(UIColor.ButtonDisconnected)
+//        pauseTimerLabel()
+        
+    }
+    
+    func connecting(){
+//        stopCircularTimer()
+//        stopSignalTimer()
+//
+//        circularView.progressLayer.isHidden = false
+//        circularView.progressLayer.strokeColor = UIColor.AntennaConnecting.cgColor
+        self.connectionBtn.setImageTintColor(UIColor.ButtonConnecting)
+//        circularProgrress()
+//        startCircularTimer()
+//        startSignalTimer()
+        stopTimerLabel()
+        
+    }
+    func connected(){
+
+        startTimerLabel()
+        self.serverIP.text = getIPAddress()
+        
+//        self.saveConnectedVpnData(connectedServer: self.selectedServer)
+    }
+    func disconnected(){
+
+        connectionBtn.setImageTintColor(UIColor.ButtonDisconnected)
+
+        stopTimerLabel()
+        
+        self.serverIP.text = getIPAddress()
+        
+//        self.deleteConnectedVpnData()
+    }
+    
+    
+    func saveConnectedVpnData(connectedServer:Server){
+
+        HelperFunc().saveUserDefaultData(data: connectedServer, title: User_Defaults.connectedServer)
+    }
+    
+    func deleteConnectedVpnData(){
+
+        HelperFunc().deleteUserDefaultData(title: User_Defaults.connectedServer)
+    }
+    
+    func getConnectedVpnData() -> Server?{
+        let connectedServer = HelperFunc().getUserDefaultData(dec: Server.self, title: User_Defaults.connectedServer)
+        return connectedServer
+    }
+    
+    
+    func checkConnectionOnstartup() -> Bool{
+        let startupSwitch = UserDefaults.standard.value(forKey: User_Defaults.startupSwitch) as? Bool
+        
+        return startupSwitch ?? false
+    }
+    
+    func getIPAddress() -> String {
+        var publicIP = ""
+        do {
+            try publicIP = String(contentsOf: URL(string: "https://www.bluewindsolution.com/tools/getpublicip.php")!, encoding: String.Encoding.utf8)
+            publicIP = publicIP.trimmingCharacters(in: CharacterSet.whitespaces)
+        }
+        catch {
+            print("Error: \(error)")
+        }
+        return publicIP
     }
 }

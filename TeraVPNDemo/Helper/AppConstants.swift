@@ -15,6 +15,16 @@ struct User_Defaults {
     static let userCredentials = "UserCredentials"
     static let adBlocker = "adBlocker"
     static let proto = "proto"
+    static let encryption = "encryption"
+    static let logging = "logging"
+    static let selectIp = "selectIp"
+    static let selectServer = "selectServer"
+    static let favServers = "favServers"
+    static let selectedLanguage = "selectedLanguage"
+    static let startupSwitch = "startupSwitch"
+    static let dropSwitch = "dropSwitch"
+    static let killSwitch = "killSwitch"
+    static let connectedServer = "connectedServer"
 }
 
 class AppConstants {

@@ -100,38 +100,68 @@ class VPNViewController: UIViewController {
         self.timerClock.text = "00:00:00"
     }
     
-    
     @objc func update() {
-        if self.seconds == 59 {
-            self.seconds = 0
-            if self.minutes == 59 {
-                self.minutes = 0
-                self.hours = self.hours + 1
-            } else {
-                self.minutes = self.minutes + 1
-            }
-        } else {
-            self.seconds = self.seconds + 1
-        }
-      
+        
+        let conTime = self.providerManager.connection.connectedDate ?? Date()
+        let nowT = Date()
+        
+        let dif = nowT.timeIntervalSince1970 - conTime.timeIntervalSince1970
+        
+        let hour = dif / 3600;
+        let minute = dif.truncatingRemainder(dividingBy: 3600) / 60
+        let second = dif.truncatingRemainder(dividingBy: 3600).truncatingRemainder(dividingBy: 60)
+        
+        
         var h = ""
         var m = ""
         var s = ""
         
-        if self.hours < 10{
+        if hour < 10{
             h = "0"
         }
-        if self.minutes < 10{
+        if minute < 10{
             m = "0"
         }
-        if self.seconds < 10{
+        if second < 10{
             s = "0"
         }
-        self.timerClock.text = "\(h)\(self.hours):\(m)\(self.minutes):\(s)\(self.seconds)"
         
+        print("HH:MM:SS = \(h)\(Int(hour)):\(m)\(Int(minute)):\(s)\(Int(second))")
+        self.timerClock.text = "\(h)\(Int(hour)):\(m)\(Int(minute)):\(s)\(Int(second))"
     }
+//    @objc func update() {
+//        if self.seconds == 59 {
+//            self.seconds = 0
+//            if self.minutes == 59 {
+//                self.minutes = 0
+//                self.hours = self.hours + 1
+//            } else {
+//                self.minutes = self.minutes + 1
+//            }
+//        } else {
+//            self.seconds = self.seconds + 1
+//        }
+//
+//        var h = ""
+//        var m = ""
+//        var s = ""
+//
+//        if self.hours < 10{
+//            h = "0"
+//        }
+//        if self.minutes < 10{
+//            m = "0"
+//        }
+//        if self.seconds < 10{
+//            s = "0"
+//        }
+//        self.timerClock.text = "\(h)\(self.hours):\(m)\(self.minutes):\(s)\(self.seconds)"
+//
+//    }
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.disconnected()
         
         self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: .default) //UIImage.init(named: "transparent.png")
         self.navigationController?.navigationBar.shadowImage = UIImage()
@@ -551,10 +581,7 @@ extension VPNViewController{
         case .connected:
             isVPNConnected = true
             print("Connected...")
-            self.connectionStatus.text = "Connected"
-            self.connectionBtn.setImage(UIImage.init(named: "connected"), for: .normal)
-            self.startTrafficTimer()
-            self.startTimerLabel()
+            
           
             self.connectionBtn.isEnabled = true
             
@@ -578,9 +605,7 @@ extension VPNViewController{
 //            self.connectionBtn.setTitle("Start Connection", for: .normal)
 //            self.connectionBtn.backgroundColor = UIColor(hexString: "3CB371")
             self.connectionBtn.setImage(UIImage.init(named: "disconnected"), for: .normal)
-            self.stopTrafficTimer()
-            self.stopTimerLabel()
-            self.connectionBtn.isEnabled = true
+            
             self.disconnected()
             self.deleteConnectedVpnData()
             break
@@ -718,7 +743,8 @@ extension VPNViewController{
 //        signal3.setImageTintColor(UIColor.AntennaDisconnected)
 //        connectionBtn.setImageTintColor(UIColor.ButtonDisconnected)
 //        pauseTimerLabel()
-        
+        self.connectionStatus.text = "Connecting..."
+        self.connectionBtn.setImage(UIImage.init(named: "connecting"), for: .normal)
     }
     
     func connecting(){
@@ -727,7 +753,7 @@ extension VPNViewController{
 //
 //        circularView.progressLayer.isHidden = false
 //        circularView.progressLayer.strokeColor = UIColor.AntennaConnecting.cgColor
-        self.connectionBtn.setImageTintColor(UIColor.ButtonConnecting)
+//        self.connectionBtn.setImageTintColor(UIColor.ButtonConnecting)
 //        circularProgrress()
 //        startCircularTimer()
 //        startSignalTimer()
@@ -736,17 +762,21 @@ extension VPNViewController{
     }
     func connected(){
 
-        startTimerLabel()
+        self.connectionStatus.text = "Connected"
+        self.connectionBtn.setImage(UIImage.init(named: "connected"), for: .normal)
+        self.startTrafficTimer()
+        self.startTimerLabel()
+//        startTimerLabel()
         self.serverIP.text = getIPAddress()
         
 //        self.saveConnectedVpnData(connectedServer: self.selectedServer)
     }
     func disconnected(){
 
-        connectionBtn.setImageTintColor(UIColor.ButtonDisconnected)
-
-        stopTimerLabel()
-        
+//        connectionBtn.setImageTintColor(UIColor.ButtonDisconnected)
+        self.stopTrafficTimer()
+        self.stopTimerLabel()
+        self.connectionBtn.isEnabled = true
         self.serverIP.text = getIPAddress()
         
 //        self.deleteConnectedVpnData()

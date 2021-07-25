@@ -528,7 +528,7 @@ Click here to create account!</string>
                                             <userDefinedRuntimeAttribute type="boolean" keyPath="clipsToBounds" value="YES"/>
                                         </userDefinedRuntimeAttributes>
                                         <connections>
-                                            <action selector="connectBtn:" destination="sIc-Cl-F90" eventType="touchUpInside" id="TQJ-DO-3Vf"/>
+                                            <action selector="connectionBtn:" destination="sIc-Cl-F90" eventType="touchUpInside" id="J1b-f9-ack"/>
                                         </connections>
                                     </button>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="L0t-2f-tSi">

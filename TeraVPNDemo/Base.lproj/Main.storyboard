@@ -286,7 +286,7 @@
                                                             <constraint firstAttribute="height" constant="1" id="uoM-P6-zwV"/>
                                                         </constraints>
                                                     </view>
-                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Enter Paasword" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="GnT-l3-GeB">
+                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Enter Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="GnT-l3-GeB">
                                                         <rect key="frame" x="50" y="13" width="215" height="34"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                         <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
@@ -390,7 +390,7 @@
                                             <constraint firstAttribute="height" constant="94" id="Kle-JB-61V"/>
                                         </constraints>
                                     </imageView>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="system" lineBreakMode="characterWrap" translatesAutoresizingMaskIntoConstraints="NO" id="OIl-rq-zHP">
+                                    <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="system" lineBreakMode="characterWrap" translatesAutoresizingMaskIntoConstraints="NO" id="OIl-rq-zHP">
                                         <rect key="frame" x="20" y="419" width="275" height="48"/>
                                         <state key="normal">
                                             <string key="title">Missing out the action? 
@@ -537,21 +537,21 @@ Click here to create account!</string>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Current IP" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tx4-VF-ksH">
                                                 <rect key="frame" x="0.0" y="0.0" width="83" height="20.5"/>
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
-                                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Server Ip" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1m2-iy-RUd">
                                                 <rect key="frame" x="0.0" y="28.5" width="83" height="20.5"/>
                                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
-                                                <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                         </subviews>
                                     </stackView>
                                     <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="STATUS" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cmd-Pk-ZGU">
-                                        <rect key="frame" x="153.5" y="282" width="68" height="21.5"/>
+                                        <rect key="frame" x="153.5" y="431.5" width="68" height="21.5"/>
                                         <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="18"/>
-                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0ME-zs-IKR" customClass="CardView" customModule="TeraVPNDemo" customModuleProvider="target">
@@ -821,7 +821,7 @@ Click here to create account!</string>
                                     <constraint firstItem="L0t-2f-tSi" firstAttribute="centerX" secondItem="E4t-l9-VJd" secondAttribute="centerX" id="acK-1O-YuW"/>
                                     <constraint firstItem="r7l-Q8-Zxm" firstAttribute="top" secondItem="YPX-G6-LeG" secondAttribute="bottom" constant="10" id="bqy-JY-Sij"/>
                                     <constraint firstItem="bno-Pv-w1F" firstAttribute="top" secondItem="0ME-zs-IKR" secondAttribute="bottom" constant="5" id="dfk-Vk-Sve"/>
-                                    <constraint firstItem="0ME-zs-IKR" firstAttribute="top" secondItem="cmd-Pk-ZGU" secondAttribute="bottom" constant="70" id="die-VY-ZZt"/>
+                                    <constraint firstItem="0ME-zs-IKR" firstAttribute="top" secondItem="cmd-Pk-ZGU" secondAttribute="bottom" constant="-79.5" id="die-VY-ZZt"/>
                                     <constraint firstItem="DU3-tY-F57" firstAttribute="leading" secondItem="E4t-l9-VJd" secondAttribute="leading" id="hkm-X7-kdg"/>
                                     <constraint firstAttribute="bottom" secondItem="c5n-cQ-ng4" secondAttribute="bottom" constant="10" id="igV-kK-5dO"/>
                                     <constraint firstItem="0ME-zs-IKR" firstAttribute="centerX" secondItem="E4t-l9-VJd" secondAttribute="centerX" id="kNn-AR-Cjs"/>
@@ -987,8 +987,8 @@ Click here to create account!</string>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Dor-EE-7Pj">
                                                 <rect key="frame" x="0.0" y="0.0" width="343" height="43"/>
                                                 <subviews>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ad Blocker Disabled" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Gsb-1R-mqR">
-                                                        <rect key="frame" x="0.0" y="10" width="161" height="22"/>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ad Blocker" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Gsb-1R-mqR">
+                                                        <rect key="frame" x="0.0" y="10" width="86.5" height="22"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                                         <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <nil key="highlightedColor"/>

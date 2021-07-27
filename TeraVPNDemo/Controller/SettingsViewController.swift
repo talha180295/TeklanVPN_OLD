@@ -33,6 +33,19 @@ class SettingsViewController: UIViewController {
         else{
             self.adSwitch.isOn = false
         }
+        
+        let proto = UserDefaults.standard.value(forKey: User_Defaults.proto) as? String ?? "udp"
+        
+        
+        if proto == Proto_type.tcp.rawValue{
+            self.protoLable.text = "VPN Protocol - TCP"
+            protoSwitch.isOn = true
+        }
+        else if proto == Proto_type.udp.rawValue{
+            self.protoLable.text = "VPN Protocol - UDP"
+            protoSwitch.isOn = false
+        }
+        
     }
     
     @IBAction func backBtn(_ sender:UIButton){

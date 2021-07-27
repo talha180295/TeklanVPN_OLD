@@ -61,7 +61,7 @@ class VPNViewController: UIViewController {
     var isVPNConnected : Bool = false
    
     
-    func startTrafficTimer () {
+    func startTimerTrafficStats () {
         guard timer == nil else { return }
         
         timer =  Timer.scheduledTimer(
@@ -129,35 +129,6 @@ class VPNViewController: UIViewController {
         print("HH:MM:SS = \(h)\(Int(hour)):\(m)\(Int(minute)):\(s)\(Int(second))")
         self.timerClock.text = "\(h)\(Int(hour)):\(m)\(Int(minute)):\(s)\(Int(second))"
     }
-//    @objc func update() {
-//        if self.seconds == 59 {
-//            self.seconds = 0
-//            if self.minutes == 59 {
-//                self.minutes = 0
-//                self.hours = self.hours + 1
-//            } else {
-//                self.minutes = self.minutes + 1
-//            }
-//        } else {
-//            self.seconds = self.seconds + 1
-//        }
-//
-//        var h = ""
-//        var m = ""
-//        var s = ""
-//
-//        if self.hours < 10{
-//            h = "0"
-//        }
-//        if self.minutes < 10{
-//            m = "0"
-//        }
-//        if self.seconds < 10{
-//            s = "0"
-//        }
-//        self.timerClock.text = "\(h)\(self.hours):\(m)\(self.minutes):\(s)\(self.seconds)"
-//
-//    }
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -701,11 +672,15 @@ extension VPNViewController{
                             let bytesIn = dict?["bytesIn"] as! String
                             let bytesOut = dict?["bytesOut"] as! String
                             
-                            self.dataRecieved.text = "\(Int(bytesIn)!/1000) KB"
-                            self.dataSent.text = "\(Int(bytesOut)!/1000) KB"
+                            self.dataRecieved.text = self.getFormatedbytes(bytes: Double(bytesIn) ?? 0.0)
+                            self.dataSent.text = self.getFormatedbytes(bytes: Double(bytesOut) ?? 0.0)
+                            
+//                            self.dataRecieved.text = "\(Int(bytesIn)!/1000) KB"
+//                            self.dataSent.text = "\(Int(bytesOut)!/1000) KB"
+
                             //                            print("\(Int(bytesIn)!/1000000) MBs")
                             self.usageRemainingInMbs -= Double(bytesOut)!/1000000.00  + Double(bytesIn)!/1000000.00
-                            self.updateGaugeTimer()
+//                            self.updateGaugeTimer()
                             
                         }
                     }
@@ -719,6 +694,44 @@ extension VPNViewController{
             }
         }
     }
+    
+//    @objc func getTrafficStats() {
+//        if let session = self.providerManager.connection as? NETunnelProviderSession {
+//            do {
+//                try session.sendProviderMessage("SOME_STATIC_KEY".data(using: .utf8)!) { (data) in
+//                    // here you can unarchieve your data and get traffic stats as dict
+//
+//                    if let _ = data{
+//                        //                        let decodedString = String(data: data!, encoding: .utf8)!
+//                        //
+//                        //                        print("jsonString=\(decodedString)")
+//
+//                        if let bytesData = String(data: data!, encoding: . utf8){
+//                            //                            print("bytesData=\(bytesData)")
+//
+//                            let dict = self.convertToDictionary(text: bytesData)
+//
+//                            let bytesIn = dict?["bytesIn"] as! String
+//                            let bytesOut = dict?["bytesOut"] as! String
+//
+//                            self.dataRecieved.text = "\(Int(bytesIn)!/1000) KB"
+//                            self.dataSent.text = "\(Int(bytesOut)!/1000) KB"
+//                            //                            print("\(Int(bytesIn)!/1000000) MBs")
+//                            self.usageRemainingInMbs -= Double(bytesOut)!/1000000.00  + Double(bytesIn)!/1000000.00
+//                            self.updateGaugeTimer()
+//
+//                        }
+//                    }
+//
+//
+//
+//
+//                }
+//            } catch {
+//                // some error
+//            }
+//        }
+//    }
     
     func convertToDictionary(text: String) -> [String: Any]? {
         if let data = text.data(using: .utf8) {
@@ -743,7 +756,9 @@ extension VPNViewController{
 //        signal3.setImageTintColor(UIColor.AntennaDisconnected)
 //        connectionBtn.setImageTintColor(UIColor.ButtonDisconnected)
 //        pauseTimerLabel()
+        self.timerClock.isHidden = true
         self.connectionStatus.text = "Connecting..."
+        self.connectionStatus.isHidden = false
         self.connectionBtn.setImage(UIImage.init(named: "connecting"), for: .normal)
     }
     
@@ -757,14 +772,16 @@ extension VPNViewController{
 //        circularProgrress()
 //        startCircularTimer()
 //        startSignalTimer()
+        self.connectionStatus.isHidden = false
+        self.connectionStatus.text = "Connecting..."
         stopTimerLabel()
         
     }
     func connected(){
-
+        self.connectionStatus.isHidden = true
         self.connectionStatus.text = "Connected"
         self.connectionBtn.setImage(UIImage.init(named: "connected"), for: .normal)
-        self.startTrafficTimer()
+        self.startTimerTrafficStats()
         self.startTimerLabel()
 //        startTimerLabel()
         self.serverIP.text = getIPAddress()
@@ -816,4 +833,32 @@ extension VPNViewController{
         }
         return publicIP
     }
+}
+
+
+extension VPNViewController{
+    func getFormatedbytes(bytes:Double) -> String{
+
+        if(bytes < 1024){
+            return  "\(floor(bytes)) B";
+        }
+        else if ((bytes >= 1024) && (bytes < 1048_576)) {
+            return  "\(floor( bytes / 1024)) KB"
+        }
+        else if (bytes < (pow(1024,3)) ) {
+            return "\(floor(bytes / 1048_576)) MB"
+        }
+        else{
+            return "\(floor(bytes / (pow(1024,3)))) GB"
+        }
+    }
+}
+
+
+extension Date {
+
+    static func - (lhs: Date, rhs: Date) -> TimeInterval {
+        return lhs.timeIntervalSinceReferenceDate - rhs.timeIntervalSinceReferenceDate
+    }
+
 }
